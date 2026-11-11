@@ -180,7 +180,7 @@ function ask(q){
   scrollEnd(qm);
   setTimeout(function(){ wait.remove(); answer(q,scopeSel.value); },380);
 }
-function answerLocal(q,scope){
+function answerLocal(q,scope,nf){
   var r=search(q,scope), qt=r.qt, top=r.res.filter(function(d){ return d.k==='p'; }), qbest=r.res.filter(function(d){ return d.k==='q'; })[0];
   var h='', best=top[0];
   var strong=best&&best._s>3.2&&best._cov>=.5;
@@ -190,7 +190,7 @@ function answerLocal(q,scope){
   }
   var p=P[best.i], ans=bestSentences(p.x,qt,r.it), l=L[p.l];
   if(r.it==='list'&&P[best.i+1]&&P[best.i+1].l===p.l&&sentences(ans).length<3&&/(\(\d\)|:|●)/.test(ans)){ var nx=sentences(P[best.i+1].x).slice(0,3-sentences(ans).length).join(' '); ans+=' '+nx; }
-  h+='<div class="lab'+(strong?'':' warn')+'">'+(strong?'الجواب من كتابك':'أقرب ما وجدته في كتابك')+'</div>';
+  if(nf){ strong=false; } h+='<div class="lab'+(strong?'':' warn')+'">'+(nf?'الكتاب لا يجيب عن سؤالك مباشرة — هذا أقرب نص وجدته':(strong?'الجواب من كتابك':'أقرب ما وجدته في كتابك'))+'</div>';
   h+='<p class="ans" data-say="'+esc(ans)+'">'+hl(ans,qt)+'</p>';
   h+='<div class="src"><span class="tag">📘 '+lessonTag(p.l,p.p)+'</span><a class="go" href="lessons/'+l.f[0]+'.html">افتح عرض الدرس ←</a><button type="button" class="mini say" data-act="say">'+SPK+'استمع</button><button type="button" class="mini" data-act="full">الفقرة كاملة</button></div>';
   h+='<div class="full" hidden>'+hl(p.x,qt)+'</div>';
@@ -207,7 +207,7 @@ function answer(q,scope){
   var pas=top.map(function(d){ var p=P[d.i]; return {x:p.x,tag:lessonTag(p.l,p.p)}; });
   fetch('/.netlify/functions/ask',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({q:q,passages:pas}),signal:ctl?ctl.signal:undefined})
    .then(function(x){ if(!x.ok){ throw ('HTTP '+x.status); } return x.json(); })
-   .then(function(j){ clearTimeout(tm); wait.remove(); var t=String(j.answer||''); if(!t||/لم أجد الجواب في الفقرات/.test(t)){ dbg(t?'AI: not in passages':'AI: empty'); return answerLocal(q,scope); }
+   .then(function(j){ clearTimeout(tm); wait.remove(); var t=String(j.answer||''); if(!t||/لم أجد الجواب في الفقرات/.test(t)){ dbg(t?'AI: not in passages':'AI: empty'); return answerLocal(q,scope,!!t); }
      var m=t.match(/\[المصدر:\s*([\d٠-٩]+)\]/), n=m?parseInt(m[1].replace(/[٠-٩]/g,function(c){ return '٠١٢٣٤٥٦٧٨٩'.indexOf(c); }),10):1; if(!(n>=1&&n<=top.length)){ n=1; }
      var clean=t.replace(/\s*\[المصدر:[^\]]*\]/g,'').trim(), p=P[top[n-1].i], l=L[p.l];
      var h='<div class="lab">✨ جواب مصاغ من كتابك بالذكاء الاصطناعي</div><p class="ans" data-say="'+esc(clean)+'">'+esc(clean)+'</p>'+
