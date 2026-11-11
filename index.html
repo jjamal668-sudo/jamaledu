@@ -693,6 +693,27 @@ html #view-home .hx .gp-field > svg{ color:#3355D6 !important; }
 html #view-home .hx .hx-ask svg{ color:#1A1405 !important; }
 @media (max-width:1060px){ #view-home .hx-art{ width:56%; max-width:56%; bottom:64px; opacity:.78; } }
 @supports selector(:has(*)){ @media (max-width:1060px){ body:has(#view-home.active) header.site .brand h1{ font-size:clamp(.74rem,3.8vw,1.15rem) !important; } body:has(#view-home.active) header.site .hdr-in{ gap:8px; } } }
+/* ===== الهيدر كشريط عريض من الحافة للحافة ينتهي بموج ===== */
+body{ overflow-x:clip; }
+html #view-home .hx{ width:100vw; max-width:none; margin-inline:calc(50% - 50vw); border-radius:0; box-shadow:none; padding-bottom:46px;
+  -webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 40px) no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1200V30C1100 52 1000 56 900 44S700 12 600 22 400 58 300 50 100 18 0 34Z'/%3E%3C/svg%3E") bottom/100% 41px no-repeat;
+  mask:linear-gradient(#000,#000) top/100% calc(100% - 40px) no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1200V30C1100 52 1000 56 900 44S700 12 600 22 400 58 300 50 100 18 0 34Z'/%3E%3C/svg%3E") bottom/100% 41px no-repeat; }
+html[data-theme="dark"] #view-home .hx{ box-shadow:none; }
+#view-home .hx > .hx-tx, #view-home .hx > .gp-search{ margin-inline:auto; }
+#view-home .hx-inner{ max-width:920px; margin:0 auto; }
+@media (max-width:1060px){
+  html #view-home .hx{ padding-inline:max(18px,env(safe-area-inset-left,0px)); }
+  html #view-home .hx > .hx-tx, html #view-home .hx > .gp-search{ max-width:none; }
+}
+@media (min-width:1061px){
+  html #view-home .hx{ margin-top:-96px; padding:132px max(48px,calc(50vw - 460px)) 70px; }
+  html #view-home .hx > .hx-tx, html #view-home .hx > .gp-search{ margin-inline:0; }
+  #view-home .hx-art{ left:max(3%,calc(50vw - 520px)); }
+}
+@supports selector(:has(*)){ @media (max-width:1060px){
+  body:has(#view-home.active) #view-home .hx{ margin-top:-140px; padding-top:calc(150px + env(safe-area-inset-top,0px)); }
+} }
+@media (prefers-reduced-motion:no-preference){ #view-home .hx{ animation:none; } }
 /* ===== ضغط المقدمة ورؤوس الصفحات والتذييل على الجوال ===== */
 .unit-tabs,.qz-scroll{ -webkit-mask-image:linear-gradient(to right,transparent 0,#000 30px); mask-image:linear-gradient(to right,transparent 0,#000 30px); padding-inline-end:30px; }
 @media (max-width:760px){
