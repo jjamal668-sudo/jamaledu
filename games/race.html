@@ -445,6 +445,14 @@ html[data-theme="dark"] .banner .autobar{ display:block; height:4px; margin-top:
 </style>
 
 <style id="jm-rart">.rart{display:block;width:100%;max-width:560px;aspect-ratio:16/9;object-fit:cover;border-radius:16px;box-shadow:0 14px 30px -16px rgba(0,0,0,.6);margin:0 auto}</style>
+<style id="jm-hdr-compact">
+@media (max-width:560px){
+  .app > .top{ gap:8px !important; row-gap:8px !important; justify-content:flex-start; }
+  .app > .top .help{ padding:6px 8px !important; min-height:36px !important; font-size:.74rem !important; }
+  .app > .top .help:first-of-type{ margin-inline-start:0 !important; }
+}
+@media (max-width:380px){ .app > .top .help{ padding:5px 6px !important; font-size:.7rem !important; } .app > .top{ gap:5px !important; } }
+</style>
 </head>
 <body>
 <div class="gp-aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -454,7 +462,7 @@ html[data-theme="dark"] .banner .autobar{ display:block; height:4px; margin-top:
   <header class="top">
     <div class="mark cairo">ج</div>
     <div><h1 class="cairo">سباق النيترو</h1><p>وجّه سيارتك وتفادَ الزحام… والنيترو بإجاباتك</p></div>
-    <button class="help" id="btnSound" type="button" aria-pressed="true">🔊 الصوت</button>
+    <button class="help" id="btnSound" type="button" aria-pressed="true" title="الصوت">🔊 الصوت</button>
     <button class="help" id="btnFx" type="button" aria-pressed="false">✨ مؤثرات: كاملة</button>
     <button class="help" id="btnHelp" type="button">القوانين</button>
     <button class="help" id="btnVoice" type="button" aria-pressed="true" title="التشجيع الصوتي">🗣️ التشجيع</button>
@@ -1270,7 +1278,7 @@ function engineStart(){ var c=ac(); if(!c||ENG.on){ return; } try{ ENG.o1=c.crea
 function engineSet(sp,boost,run){ if(!ENG.on||!SND.ctx){ return; } try{ var t=SND.ctx.currentTime; ENG.o1.frequency.setTargetAtTime(46+84*sp+(boost?24:0),t,.08); ENG.o2.frequency.setTargetAtTime((46+84*sp)*1.5,t,.08); ENG.f.frequency.setTargetAtTime(320+1100*sp+(boost?700:0),t,.1); ENG.g.gain.setTargetAtTime(SND.on&&run?(.018+.03*Math.min(1.6,sp)):0,t,.12); }catch(e){} }
 function engineStop(){ if(!ENG.on){ return; } try{ ENG.g.gain.setTargetAtTime(0,SND.ctx.currentTime,.08); var a=ENG.o1,b=ENG.o2; setTimeout(function(){ try{ a.stop(); b.stop(); }catch(e){} },400); }catch(e){} ENG.on=false; }
 function drawSound(){ var b=$('btnSound'); b.textContent=SND.on?'🔊 الصوت':'🔇 صامت'; b.setAttribute('aria-pressed',SND.on?'true':'false'); }
-function drawFx(){ var b=$('btnFx'); b.textContent=window.FXLOW?'✨ مؤثرات: مخففة':'✨ مؤثرات: كاملة'; b.setAttribute('aria-pressed',window.FXLOW?'true':'false'); }
+function drawFx(){ var b=$('btnFx'), sm=window.innerWidth<560; b.textContent=window.FXLOW?(sm?'✨ مخففة':'✨ مؤثرات: مخففة'):(sm?'✨ كاملة':'✨ مؤثرات: كاملة'); b.title='المؤثرات البصرية'; b.setAttribute('aria-pressed',window.FXLOW?'true':'false'); }
 function unlockAudio(){ ac(); document.removeEventListener('pointerdown',unlockAudio); document.removeEventListener('click',unlockAudio); }
 document.addEventListener('pointerdown',unlockAudio); document.addEventListener('click',unlockAudio);
 window.FXLOW=false;
@@ -1613,7 +1621,7 @@ window.addEventListener('load',installVoice);
   var bs=document.getElementById('btnStart'); if(bs){ bs.addEventListener('click',window.voiceStop,true); }
   window.addEventListener('pagehide',window.voiceStop);
   var b=document.getElementById('btnVoice');
-  function paint(){ if(!b){ return; } b.textContent=on?'🗣️ التشجيع':'🔇 التشجيع'; b.setAttribute('aria-pressed',on?'true':'false'); b.title=on?'التشجيع الصوتي: مفعّل (اضغط للإيقاف)':'التشجيع الصوتي: متوقف (اضغط للتشغيل)'; }
+  function paint(){ if(!b){ return; } var sm=window.innerWidth<560; b.textContent=on?(sm?'🗣️':'🗣️ التشجيع'):(sm?'🔇':'🔇 التشجيع'); b.setAttribute('aria-pressed',on?'true':'false'); b.title=on?'التشجيع الصوتي: مفعّل (اضغط للإيقاف)':'التشجيع الصوتي: متوقف (اضغط للتشغيل)'; }
   if(b){ paint(); b.addEventListener('click',function(){ on=!on; try{ window.localStorage.setItem(KEY,on?'1':'0'); }catch(e){} paint(); if(on){ window.voiceSay(true,true); } else { window.voiceStop(); } }); }
 })();
 </script>
