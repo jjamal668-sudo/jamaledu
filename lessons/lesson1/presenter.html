@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>شاشة المعلم — مفهوم علم التاريخ</title>
+<link rel="stylesheet" href="css/presenter.css">
+</head>
+<body>
+<header class="top">
+ <div class="ttl"><b>شاشة المعلم</b><span>مفهوم علم التاريخ وخصائصه وأهميته وأركانه</span></div>
+ <div class="clock"><span id="elapsed" title="الوقت منذ بدء العرض">٠٠:٠٠</span><button type="button" id="reset" title="تصفير المؤقت">↺</button><span id="now"></span></div>
+</header>
+<main class="grid">
+ <section class="cur">
+  <div class="lbl">الآن <b id="ci"></b></div>
+  <h1 id="ct"></h1>
+  <div class="notes" id="cn"></div>
+ </section>
+ <section class="side">
+  <div class="lbl">التالي</div>
+  <h2 id="nt"></h2>
+  <p id="nn"></p>
+  <div class="nav"><button type="button" id="prev">السابق</button><button type="button" id="next" class="go">التالي ←</button></div>
+  <div class="status" id="st">ابحث عن نافذة العرض…</div>
+ </section>
+</main>
+<nav class="list" id="list" aria-label="كل الضغطات"></nav>
+<script src="js/deck.js"></script>
+<script>
+(function(){
+  var B = DECK.beats, N = B.length, cur = 0, AR = '٠١٢٣٤٥٦٧٨٩', t0 = Date.now(), seen = 0;
+  function ar(n){ return String(n).replace(/\d/g, function(d){ return AR[d]; }); }
+  var bc = null; try{ bc = new BroadcastChannel('jamal-lesson1'); }catch(e){}
+  function send(m){ m = Object.assign({ id:Date.now() + '-' + Math.random() }, m); if(bc){ bc.postMessage(m); } try{ localStorage.setItem('jamal-lesson1-cmd', JSON.stringify(m)); }catch(e){} }
+  function show(i){
+    cur = i; var b = B[i], nb = B[i + 1];
+    document.getElementById('ci').textContent = ar(i + 1) + ' / ' + ar(N);
+    document.getElementById('ct').textContent = b.t;
+    document.getElementById('cn').textContent = b.notes || '';
+    document.getElementById('nt').textContent = nb ? nb.t : 'نهاية العرض';
+    document.getElementById('nn').textContent = nb ? (nb.notes || '') : '';
+    [].forEach.call(document.querySelectorAll('#list button'), function(x, k){ x.classList.toggle('on', k === i); if(k === i){ x.scrollIntoView({ block:'nearest', inline:'nearest' }); } });
+  }
+  function onState(m){ if(m && m.type === 'state'){ seen = Date.now(); document.getElementById('st').textContent = 'متصل بنافذة العرض'; document.getElementById('st').classList.add('ok'); show(m.i); } }
+  if(bc){ bc.onmessage = function(e){ onState(e.data); }; }
+  window.addEventListener('storage', function(e){ if(e.key === 'jamal-lesson1-state' && e.newValue){ try{ onState(JSON.parse(e.newValue)); }catch(x){} } });
+  var L = document.getElementById('list');
+  B.forEach(function(b, i){ var x = document.createElement('button'); x.type = 'button'; x.innerHTML = '<i>' + ar(i + 1) + '</i>' + b.t; x.onclick = function(){ send({ type:'go', i:i }); }; L.appendChild(x); });
+  document.getElementById('next').onclick = function(){ send({ type:'next' }); };
+  document.getElementById('prev').onclick = function(){ send({ type:'prev' }); };
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowLeft' || e.key === 'PageDown' || e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); send({ type:'next' }); }
+    if(e.key === 'ArrowRight' || e.key === 'PageUp'){ e.preventDefault(); send({ type:'prev' }); }
+  });
+  document.getElementById('reset').onclick = function(){ t0 = Date.now(); };
+  setInterval(function(){
+    var s = Math.floor((Date.now() - t0) / 1000), mm = Math.floor(s / 60), ss = s % 60;
+    document.getElementById('elapsed').textContent = ar((mm < 10 ? '0' : '') + mm) + ':' + ar((ss < 10 ? '0' : '') + ss);
+    var d = new Date(); document.getElementById('now').textContent = ar(d.getHours() % 12 || 12) + ':' + ar((d.getMinutes() < 10 ? '0' : '') + d.getMinutes());
+    if(Date.now() - seen > 4000){ var st = document.getElementById('st'); st.classList.remove('ok'); st.textContent = 'افتح العرض في نافذة أخرى على نفس الجهاز'; }
+  }, 500);
+  try{ var s0 = JSON.parse(localStorage.getItem('jamal-lesson1-state') || 'null'); if(s0){ show(s0.i); } else { show(0); } }catch(e){ show(0); }
+  send({ type:'hello' });
+})();
+</script>
+</body>
+</html>
