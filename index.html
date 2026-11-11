@@ -613,6 +613,16 @@ html[data-theme="dark"] .hm4-units > li:nth-child(5n+5) .hm4-unit{ --uc:#C99AD8;
   footer.site{ padding-bottom:calc(120px + env(safe-area-inset-bottom,0px)); }
   .qz-cta{ bottom:calc(88px + env(safe-area-inset-bottom,0px)) !important; }
 }
+/* شريط سفلي أنحف + يختفي عند النزول ويظهر عند الصعود */
+@media (max-width:1060px){
+  .hdr-tools{ padding:4px; gap:2px; border-width:1px; border-radius:20px; box-shadow:0 10px 24px -14px rgba(0,0,0,.55); bottom:calc(8px + env(safe-area-inset-bottom,0px)); transition:transform .28s ease, opacity .28s ease; }
+  .hbtn{ min-height:44px; padding:4px 2px; gap:1px; font-size:.68rem; border-radius:15px; }
+  .hbtn svg{ width:19px; height:19px; }
+  .hdr-tools.tools-hide{ transform:translate(-50%,calc(100% + 24px)); opacity:0; pointer-events:none; }
+  main{ padding-bottom:calc(72px + env(safe-area-inset-bottom,0px)); }
+  footer.site{ padding-bottom:calc(84px + env(safe-area-inset-bottom,0px)); }
+}
+@media (prefers-reduced-motion:reduce){ .hdr-tools{ transition:none; } }
 @media (max-width:760px){
   :root{ --hdr:64px; }
   .brand p{ display:none; }
@@ -4193,4 +4203,5 @@ function ccDark(hex){ try{ var c=parseInt(String(hex).replace('#',''),16), r=c>>
 </body>
 </html>
 
+<script>(function(){var t=document.querySelector('.hdr-tools');if(!t)return;var y=window.scrollY,tk=false;function f(){tk=false;var n=window.scrollY,d=n-y;if(n<80||d<-6){t.classList.remove('tools-hide');}else if(d>8){t.classList.add('tools-hide');}if(Math.abs(d)>6)y=n;}window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(f);}},{passive:true});t.addEventListener('focusin',function(){t.classList.remove('tools-hide');});})();</script>
 </body></html>
