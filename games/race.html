@@ -1625,5 +1625,113 @@ window.addEventListener('load',installVoice);
   if(b){ paint(); b.addEventListener('click',function(){ on=!on; try{ window.localStorage.setItem(KEY,on?'1':'0'); }catch(e){} paint(); if(on){ window.voiceSay(true,true); } else { window.voiceStop(); } }); }
 })();
 </script>
+<style id="jm-scope">
+.jsc-seg{ display:grid; grid-template-columns:repeat(3,1fr); gap:4px; padding:4px; border-radius:999px; background:rgba(16,27,51,.07); margin:0 0 10px; max-width:520px; }
+.jsc-seg button{ white-space:nowrap; border:0; background:transparent; border-radius:999px; padding:10px 6px; font:800 clamp(.78rem,3.4vw,.9rem) 'Cairo',Tajawal,Arial,sans-serif; color:#44506A; cursor:pointer; min-height:42px; }
+.jsc-seg button.on{ background:#fff; color:#101B33; box-shadow:0 6px 14px -8px rgba(16,27,51,.6); }
+.jsc-sum{ padding:12px 14px; border-radius:14px; background:rgba(30,122,85,.1); color:#1E6B4C; font-weight:800; font-size:.92rem; margin-bottom:6px; }
+.jsc-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:6px; }
+.jsc-chip{ display:flex; flex-direction:column; align-items:center; gap:1px; flex:1 1 calc(33.333% - 6px); min-width:calc(33.333% - 6px); padding:10px 8px; border-radius:14px; cursor:pointer; font:inherit; background:#fff; border:1.5px solid rgba(16,27,51,.14); color:#101B33; }
+.jsc-chip b{ font-family:'Cairo',Tajawal,Arial,sans-serif; font-size:.88rem; font-weight:800; } .jsc-chip small{ font-size:.72rem; color:#5B6680; font-weight:700; }
+.jsc-chip.on{ background:#3355D6; border-color:#3355D6; color:#fff; } .jsc-chip.on small{ color:rgba(255,255,255,.85); } .jsc-chip.part{ border-color:#3355D6; }
+.jsc-acc{ border-radius:16px; border:1.5px solid rgba(16,27,51,.12); background:#fff; overflow:hidden; } .jsc-acc + .jsc-acc{ margin-top:8px; }
+.jsc-acc-h{ width:100%; display:flex; align-items:center; gap:10px; padding:12px 14px; border:0; background:none; cursor:pointer; font:inherit; color:#101B33; text-align:right; }
+.jsc-acc-h b{ flex:1; font-family:'Cairo',Tajawal,Arial,sans-serif; font-weight:800; font-size:.95rem; } .jsc-acc-h small{ color:#5B6680; font-weight:700; font-size:.78rem; }
+.jsc-acc-h i{ font-style:normal; color:#5B6680; transition:transform .2s; } .jsc-acc.open .jsc-acc-h i{ transform:rotate(180deg); }
+.jsc-ck{ width:24px; height:24px; flex:none; border-radius:7px; border:2px solid rgba(16,27,51,.25); display:grid; place-items:center; font-weight:900; font-size:.8rem; color:#fff; }
+.jsc-ck.on, .jsc-ck.part{ background:#3355D6; border-color:#3355D6; }
+.jsc-acc-b{ display:grid; gap:7px; padding:0 10px 10px; } .jsc-acc-b[hidden]{ display:none !important; }
+#lessonList.jsc-hide{ display:none !important; }
+#lessonList.jsc-pick{ display:block !important; }
+.jsc-tools-hide{ display:none !important; }
+html[data-theme="dark"] .jsc-seg{ background:rgba(255,255,255,.08); } html[data-theme="dark"] .jsc-seg button{ color:rgba(237,234,224,.8); } html[data-theme="dark"] .jsc-seg button.on{ background:#F5B72E; color:#14181F; }
+html[data-theme="dark"] .jsc-sum{ background:rgba(95,211,160,.12); color:#7FE0B5; }
+html[data-theme="dark"] .jsc-chip, html[data-theme="dark"] .jsc-acc{ background:#141F39; border-color:rgba(255,255,255,.16); color:#EDEAE0; }
+html[data-theme="dark"] .jsc-chip small, html[data-theme="dark"] .jsc-acc-h small, html[data-theme="dark"] .jsc-acc-h i{ color:rgba(237,234,224,.7); } html[data-theme="dark"] .jsc-acc-h{ color:#EDEAE0; }
+html[data-theme="dark"] .jsc-chip.on{ background:#F5B72E; border-color:#F5B72E; color:#14181F; } html[data-theme="dark"] .jsc-chip.on small{ color:rgba(20,24,31,.75); }
+html[data-theme="dark"] .jsc-ck{ border-color:rgba(255,255,255,.35); } html[data-theme="dark"] .jsc-ck.on, html[data-theme="dark"] .jsc-ck.part{ background:#F5B72E; border-color:#F5B72E; color:#14181F; }
+@media (min-width:700px){ .jsc-chip{ flex:0 1 auto; min-width:150px; } .jsc-acc-b{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+</style>
+<script id="jm-scope-js">
+/* اختيار النطاق الموحد: الفصل كامل / وحدة / دروس محددة — يعمل فوق قائمة الدروس الأصلية دون تغيير منطق اللعبة */
+(function(){
+  var list = document.getElementById('lessonList'); if(!list || typeof BANK === 'undefined'){ return; }
+  var UN = ['', 'الوحدة الأولى', 'الوحدة الثانية', 'الوحدة الثالثة', 'الوحدة الرابعة', 'الوحدة الخامسة'], AR = '٠١٢٣٤٥٦٧٨٩';
+  function ar(n){ return String(n).replace(/\d/g, function(d){ return AR[d]; }); }
+  var byTitle = {}; BANK.lessons.forEach(function(l){ byTitle[l.title] = l.general ? 'g' : l.unit; });
+  var mode = 'all', openU = 1, busy = false, mo = null;
+  var qa = document.getElementById('qAll'); if(qa && qa.parentElement){ qa.parentElement.classList.add('jsc-tools-hide'); }
+  var seg = document.createElement('div'); seg.className = 'jsc-seg'; seg.setAttribute('role', 'group'); seg.setAttribute('aria-label', 'نطاق الأسئلة');
+  seg.innerHTML = '<button type="button" data-v="all">الفصل كامل</button><button type="button" data-v="unit">وحدة</button><button type="button" data-v="pick">دروس محددة</button>';
+  var extra = document.createElement('div');
+  list.parentNode.insertBefore(seg, list); list.parentNode.insertBefore(extra, list);
+  function btns(){ return Array.prototype.slice.call(list.querySelectorAll('.les')); }
+  function unitOf(b){ var t = (b.querySelector('b') || b).textContent.trim(); return byTitle.hasOwnProperty(t) ? byTitle[t] : 'g'; }
+  function isOn(b){ return b.classList.contains('on'); }
+  function units(){ var u = []; btns().forEach(function(b){ var x = unitOf(b); if(u.indexOf(x) < 0){ u.push(x); } }); return u; }
+  function uName(u){ return u === 'g' ? 'أسئلة عامة' : UN[u]; }
+  function setSel(fn){
+    busy = true;
+    for(var guard = 0; guard < 80; guard++){
+      var bs = btns(), miss = null;
+      for(var i = 0; i < bs.length; i++){ if(isOn(bs[i]) !== !!fn(bs[i])){ miss = bs[i]; break; } }
+      if(!miss){ break; } miss.click();
+    }
+    if(mo){ mo.takeRecords(); } busy = false; decorate();
+  }
+  function uState(u){ var ls = btns().filter(function(b){ return unitOf(b) === u; }), on = ls.filter(isOn).length; return on === 0 ? 0 : (on === ls.length ? 2 : 1); }
+  function decorate(){
+    if(busy){ return; }
+    busy = true;
+    [].forEach.call(seg.children, function(b){ b.classList.toggle('on', b.getAttribute('data-v') === mode); });
+    extra.innerHTML = '';
+    list.classList.toggle('jsc-hide', mode !== 'pick'); list.classList.toggle('jsc-pick', mode === 'pick');
+    if(mode === 'all'){
+      var n = btns().filter(function(b){ return unitOf(b) !== 'g'; }).length;
+      extra.innerHTML = '<div class="jsc-sum">✓ كل دروس الفصل الدراسي الأول — <b>' + ar(n) + '</b> درسًا</div>';
+    } else if(mode === 'unit'){
+      var c = document.createElement('div'); c.className = 'jsc-chips';
+      units().forEach(function(u){
+        var st = uState(u), n2 = btns().filter(function(b){ return unitOf(b) === u; }).length;
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'jsc-chip' + (st === 2 ? ' on' : (st === 1 ? ' part' : ''));
+        b.innerHTML = '<b>' + uName(u) + '</b><small>' + (u === 'g' ? 'من عدة وحدات' : ar(n2) + ' دروس') + '</small>';
+        b.onclick = function(){ var to = uState(u) !== 2; var keep = {}; btns().forEach(function(x){ keep[(x.querySelector('b') || x).textContent] = unitOf(x) === u ? to : isOn(x); }); setSel(function(x){ return keep[(x.querySelector('b') || x).textContent]; }); };
+        c.appendChild(b);
+      });
+      extra.appendChild(c);
+    } else {
+      var bs = btns(), groups = {};
+      Array.prototype.slice.call(list.children).forEach(function(ch){ if(!ch.classList.contains('les')){ list.removeChild(ch); } });
+      bs.forEach(function(b){ list.appendChild(b); });
+      var US = units();
+      US.forEach(function(u){
+        var ls = bs.filter(function(b){ return unitOf(b) === u; }), on = ls.filter(isOn).length, st = uState(u);
+        var box = document.createElement('div'); box.className = 'jsc-acc' + (openU === u ? ' open' : '');
+        var h = document.createElement('button'); h.type = 'button'; h.className = 'jsc-acc-h';
+        h.innerHTML = '<span class="jsc-ck' + (st === 2 ? ' on' : (st === 1 ? ' part' : '')) + '">' + (st === 2 ? '✓' : (st === 1 ? '–' : '')) + '</span><b>' + uName(u) + '</b><small>' + ar(on) + ' من ' + ar(ls.length) + '</small><i>⌄</i>';
+        h.onclick = function(e){
+          if(e.target.closest('.jsc-ck')){ var to = uState(u) !== 2, keep = {}; btns().forEach(function(x){ keep[(x.querySelector('b') || x).textContent] = unitOf(x) === u ? to : isOn(x); }); setSel(function(x){ return keep[(x.querySelector('b') || x).textContent]; }); }
+          else { openU = openU === u ? null : u; busy = false; decorate(); }
+        };
+        box.appendChild(h);
+        var inner = document.createElement('div'); inner.className = 'jsc-acc-b'; if(openU !== u){ inner.hidden = true; }
+        ls.forEach(function(b){ inner.appendChild(b); });
+        box.appendChild(inner); groups[u] = box;
+      });
+      US.forEach(function(u){ list.appendChild(groups[u]); });
+    }
+    if(mo){ mo.takeRecords(); }
+    busy = false;
+  }
+  seg.onclick = function(e){
+    var b = e.target.closest('button'); if(!b){ return; } mode = b.getAttribute('data-v');
+    if(mode === 'all'){ setSel(function(){ return true; }); }
+    else if(mode === 'unit'){ var u0 = units()[0]; setSel(function(x){ return unitOf(x) === u0; }); }
+    else { openU = units()[0]; setSel(function(){ return false; }); }
+  };
+  var mo = new MutationObserver(function(){ if(!busy){ decorate(); } }); mo.observe(list, { childList:true });
+  setSel(function(){ return true; });
+})();
+</script>
 </body>
 </html>
