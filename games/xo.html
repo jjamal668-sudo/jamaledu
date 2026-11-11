@@ -404,6 +404,40 @@ html[data-theme="dark"] .backrow a{ color:var(--jm-ink) !important; }
 .ck{ text-shadow:0 0 3px rgba(0,0,0,.55); font-weight:900; }
 
 </style>
+<style id="jm-xo-up">
+/* ===== إكس أو: لوح خشبي بخطوط محفورة + علامات ترسم نفسها + خط الفوز ===== */
+html .xoboard{ position:relative; gap:0 !important; padding:16px !important; border-radius:26px !important;
+  background:repeating-linear-gradient(92deg,rgba(255,255,255,.035) 0 2px,transparent 2px 9px),repeating-linear-gradient(88deg,rgba(0,0,0,.06) 0 1px,transparent 1px 13px),linear-gradient(135deg,#94602F,#7A4A22 45%,#5C3416) !important;
+  box-shadow:inset 0 0 0 2px rgba(245,183,46,.55), inset 0 2px 0 rgba(255,255,255,.22), inset 0 -6px 12px rgba(0,0,0,.35), 0 30px 50px -28px rgba(30,14,2,.75), 0 8px 0 -2px #3E220C !important; }
+html .xoboard::before{ content:""; position:absolute; inset:16px; border-radius:14px; pointer-events:none;
+  background:radial-gradient(120% 120% at 30% 20%,rgba(255,255,255,.4),transparent 55%), #F7ECD3; box-shadow:inset 0 2px 8px rgba(60,30,8,.25); }
+html .xoboard .cell, html[data-theme="dark"] .xoboard .cell{ background:transparent !important; border-radius:0 !important; box-shadow:none !important; z-index:3; }
+html .xoboard .cell:nth-child(3n+1), html .xoboard .cell:nth-child(3n+2){ border-left:0; }
+html .xoboard .cell:nth-child(-n+6){ box-shadow:inset 0 -3px 0 -0px rgba(92,52,22,.0) !important; }
+.xogrid{ position:absolute; inset:16px; z-index:2; pointer-events:none; } .xogrid line{ stroke:#7A4A22; stroke-width:5; stroke-linecap:round; filter:drop-shadow(0 1px 0 rgba(255,255,255,.6)); }
+html .xoboard .cell .mk{ width:70%; height:70%; position:relative; z-index:3; filter:drop-shadow(0 3px 2px rgba(0,0,0,.25)); }
+html .xoboard .cell .mk.x{ stroke:#C2410C; } html .xoboard .cell .mk.o{ stroke:#0F766E; }
+.cell .mk .s1,.cell .mk .s2{ stroke-dasharray:1; stroke-dashoffset:0; }
+.cell.fresh .mk{ animation:none !important; }
+.cell.fresh .mk .s1{ animation:xoDraw .28s ease-out both; } .cell.fresh .mk .s2{ animation:xoDraw .24s .2s ease-out both; }
+.cell.fresh .mk.o .s1{ animation-duration:.42s; }
+@keyframes xoDraw{ from{ stroke-dashoffset:1; } to{ stroke-dashoffset:0; } }
+html .xoboard .cell.pick{ cursor:pointer; }
+html .xoboard .cell.pick::before{ content:""; position:absolute; inset:22%; border-radius:50%; background:rgba(15,118,110,.16); box-shadow:0 0 0 2px rgba(15,118,110,.35); animation:xoPulse 1.3s ease-in-out infinite; }
+@keyframes xoPulse{ 0%,100%{ transform:scale(.85); opacity:.7; } 50%{ transform:scale(1); opacity:1; } }
+html .xoboard .cell.last:not(.win)::after{ content:""; position:absolute; inset:12%; border-radius:12px; background:rgba(245,183,46,.22); z-index:0; }
+html .xoboard .cell.win::after{ content:""; position:absolute; inset:8%; border-radius:14px; background:rgba(245,183,46,.35); box-shadow:0 0 22px rgba(245,183,46,.7); z-index:0; animation:xoGlow 1s ease-in-out infinite alternate; }
+@keyframes xoGlow{ to{ background:rgba(245,183,46,.55); } }
+.xowin{ position:absolute; inset:16px; z-index:30; pointer-events:none; overflow:visible; }
+.xowin line{ stroke:#F5B72E; stroke-width:2.6; stroke-linecap:round; stroke-dasharray:1; stroke-dashoffset:1; animation:xoDraw .5s .15s ease-out forwards; filter:drop-shadow(0 0 6px rgba(245,183,46,.9)) drop-shadow(0 2px 0 rgba(90,50,10,.6)); }
+@media (max-width:560px){
+  .app > .top{ gap:8px !important; row-gap:8px !important; justify-content:flex-start; }
+  .app > .top .help{ padding:6px 9px !important; min-height:36px !important; font-size:.76rem !important; }
+  .app > .top .help:first-of-type{ margin-inline-start:0 !important; }
+}
+@media (max-width:380px){ .app > .top .help{ padding:5px 7px !important; font-size:.72rem !important; } .app > .top{ gap:6px !important; } }
+@media (prefers-reduced-motion:reduce){ .cell.fresh .mk .s1,.cell.fresh .mk .s2,.xowin line,html .xoboard .cell.pick::before,html .xoboard .cell.win::after{ animation:none !important; stroke-dashoffset:0; } }
+</style>
 </head>
 <body>
 <div class="gp-aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -530,8 +564,8 @@ function show(id){ ['vRules','vSetup','vPlay','vEnd'].forEach(function(v){ $(v).
 /* ---------- العلامات ---------- */
 function markSVG(side){
   return side===1
-   ? '<svg class="mk x" viewBox="0 0 100 100" aria-hidden="true"><path d="M22 22 L78 78 M78 22 L22 78" stroke-width="13" stroke-linecap="round" fill="none"/></svg>'
-   : '<svg class="mk o" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="29" stroke-width="12" fill="none"/></svg>';
+   ? '<svg class="mk x" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" pathLength="1" d="M24 24 L76 76" stroke-width="13" stroke-linecap="round" fill="none"/><path class="s2" pathLength="1" d="M76 24 L24 76" stroke-width="13" stroke-linecap="round" fill="none"/></svg>'
+   : '<svg class="mk o" viewBox="0 0 100 100" aria-hidden="true"><circle class="s1" pathLength="1" cx="50" cy="50" r="28" stroke-width="12" fill="none" transform="rotate(-90 50 50)"/></svg>';
 }
 function miniGrid(cells,line){
   var s='<svg viewBox="0 0 150 150" width="170" height="170" role="img" aria-label="مخطط إكس أو"><rect x="3" y="3" width="144" height="144" rx="14" fill="#FBF4E2" stroke="rgba(27,36,48,.18)"/><path d="M51 12V138M99 12V138M12 51H138M12 99H138" stroke="rgba(27,36,48,.28)" stroke-width="3" stroke-linecap="round"/>';
@@ -789,6 +823,25 @@ function quitGame(){
   var b=document.getElementById('btnVoice');
   function paint(){ if(!b){ return; } b.textContent=on?'🗣️ التشجيع':'🔇 التشجيع'; b.setAttribute('aria-pressed',on?'true':'false'); b.title=on?'التشجيع الصوتي: مفعّل (اضغط للإيقاف)':'التشجيع الصوتي: متوقف (اضغط للتشغيل)'; }
   if(b){ paint(); b.addEventListener('click',function(){ on=!on; try{ window.localStorage.setItem(KEY,on?'1':'0'); }catch(e){} paint(); if(on){ window.voiceSay(true,true); } else { window.voiceStop(); } }); }
+})();
+</script>
+<script id="jm-xo-anim">
+(function(){
+  if(typeof render!=='function'){ return; }
+  var orig=render, prevSt=null, prevLine=null;
+  window.render=function(){
+    orig();
+    if(!G){ return; }
+    var b=document.getElementById('xoBoard'), old=b.querySelector('.xowin');
+    if(!b.querySelector('.xogrid')){ b.insertAdjacentHTML('afterbegin','<svg class="xogrid" viewBox="0 0 300 300" preserveAspectRatio="none" aria-hidden="true"><line x1="100" y1="14" x2="100" y2="286" vector-effect="non-scaling-stroke"/><line x1="200" y1="14" x2="200" y2="286" vector-effect="non-scaling-stroke"/><line x1="14" y1="100" x2="286" y2="100" vector-effect="non-scaling-stroke"/><line x1="14" y1="200" x2="286" y2="200" vector-effect="non-scaling-stroke"/></svg>'); }
+    var key=G.winLine?G.winLine.join(','):null;
+    if(key!==prevLine){ if(old){ old.remove(); } prevLine=key;
+      if(G.winLine){ var a=G.winLine[0], c=G.winLine[2], cx=function(i){ return (i%3)*100/3+100/6; }, cy=function(i){ return Math.floor(i/3)*100/3+100/6; };
+        var dx=cx(c)-cx(a), dy=cy(c)-cy(a), L=Math.hypot(dx,dy), ex=dx/L*9, ey=dy/L*9;
+        var svg='<svg class="xowin" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line pathLength="1" x1="'+(cx(a)-ex)+'" y1="'+(cy(a)-ey)+'" x2="'+(cx(c)+ex)+'" y2="'+(cy(c)+ey)+'"/></svg>';
+        b.insertAdjacentHTML('beforeend',svg); } }
+    if(G.state!==prevSt){ if(G.state==='pick'&&window.innerWidth<900){ setTimeout(function(){ try{ b.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){} },420); } prevSt=G.state; }
+  };
 })();
 </script>
 </body>
