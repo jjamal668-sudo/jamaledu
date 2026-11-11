@@ -730,6 +730,16 @@ html[data-theme="dark"] #view-home .hx .gp-results{ background:#121B36 !importan
   html header.site .gp-switch{ transform:scale(.84); transform-origin:left center; margin-inline-end:-10px; }
 }
 @media (max-width:340px){ html header.site .brand h1{ font-size:.74rem !important; } html header.site .gp-switch{ transform:scale(.76); margin-inline-end:-14px; } }
+/* ===== حذف الشريط السفلي على الجوال والآيباد، والتذييل يلتصق بأسفل الشاشة ===== */
+@media (max-width:1060px){
+  html .hdr-tools{ display:none !important; }
+  html main{ padding-bottom:12px !important; }
+  html footer.site{ padding-bottom:calc(18px + env(safe-area-inset-bottom,0px)) !important; }
+  html .qz-cta{ bottom:calc(12px + env(safe-area-inset-bottom,0px)) !important; }
+  html body{ display:flex; flex-direction:column; min-height:100vh; min-height:100dvh; }
+  html body > main{ flex:1 0 auto; width:100%; }
+  html body > footer.site{ flex:none; width:100%; }
+}
 /* ===== ضغط المقدمة ورؤوس الصفحات والتذييل على الجوال ===== */
 .unit-tabs,.qz-scroll{ -webkit-mask-image:linear-gradient(to right,transparent 0,#000 30px); mask-image:linear-gradient(to right,transparent 0,#000 30px); padding-inline-end:30px; }
 @media (max-width:760px){
