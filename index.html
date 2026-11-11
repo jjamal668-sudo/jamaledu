@@ -624,6 +624,21 @@ html[data-theme="dark"] .hm4-units > li:nth-child(5n+5) .hm4-unit{ --uc:#C99AD8;
 }
 @media (prefers-reduced-motion:reduce){ .hdr-tools{ transition:none; } }
 
+/* ===== الرئيسية: أربع بطاقات بلغة بطاقات الدروس ===== */
+#view-home .hm5{ position:relative; z-index:1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; max-width:920px; margin:0 auto; }
+#view-home .hm5-c{ text-decoration:none; animation:gpRise .85s cubic-bezier(.2,.9,.25,1) backwards; animation-delay:calc(var(--i,0) * 85ms + 120ms); }
+#view-home .hm5-c .tag, #view-home .hm5-c .go{ color:var(--bc); }
+html[data-theme="dark"] #view-home .hm5-c .tag, html[data-theme="dark"] #view-home .hm5-c .go{ color:var(--bcl) !important; }
+.hm5-ic{ width:50px; height:50px; border-radius:16px; display:grid; place-items:center; color:var(--bc); background:color-mix(in srgb,var(--bc) 12%,var(--card)); }
+html[data-theme="dark"] .hm5-ic{ color:var(--bcl); background:rgba(255,255,255,.07); }
+.hm5-ic svg{ width:26px; height:26px; }
+@media (max-width:640px){
+  #view-home .hm5{ grid-template-columns:1fr; gap:12px; }
+  #view-home .hm5-c > .hm5-ic{ grid-row:1/3; width:44px; height:44px; border-radius:14px; }
+  #view-home .hm5-c > .hm5-ic svg{ width:23px; height:23px; }
+}
+@media (prefers-reduced-motion:reduce){ #view-home .hm5-c{ animation:none; } }
+
 /* بطاقات الدروس أصغر على الجوال + شريط سفلي أوضح */
 @media (max-width:1060px){
   html .hdr-tools{ background:color-mix(in srgb,var(--card) 95%,transparent) !important; -webkit-backdrop-filter:blur(14px) saturate(1.2); backdrop-filter:blur(14px) saturate(1.2); }
@@ -1592,74 +1607,27 @@ html[data-theme="dark"] #view-home .ask-cta i{ color:#F5B72E; }
           <div class="gp-gem"><i></i><i></i><u><svg class="gp-lg" viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="jg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101B33"/><stop offset="1" stop-color="#1D3585"/></linearGradient></defs><rect width="120" height="120" rx="30" fill="url(#jg2)"/><rect x=".75" y=".75" width="118.5" height="118.5" rx="29.5" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/><g transform="translate(24.44,64.56) scale(0.106,-0.106)"><path d="M528 -319Q441 -375 331 -375Q211 -375 139 -299Q70 -226 70 -107Q70 18 143 89Q175 120 212.5 136.0Q250 152 346 175Q433 196 469 224Q400 345 303 345Q221 345 128 258V369Q211 461 317 461Q396 461 470.0 404.0Q544 347 601 242V192Q571 140 524.5 113.0Q478 86 377 62Q270 37 234 5Q191 -35 191 -108Q191 -254 344 -254Q442 -254 528 -200Z" fill="#fff"/></g><g transform="translate(60.90,75.48) scale(1.3)"><circle r="8.4" fill="none" stroke="#F5B72E" stroke-width="2.6"/><path d="M0 -7.6 L2.9 0 L0 7.6 L-2.9 0Z" fill="#F5B72E"/><path d="M-7.6 0 L0 -1.9 L7.6 0 L0 1.9Z" fill="#F5B72E" opacity=".6"/><circle r="1.6" fill="#101B33"/></g></svg></u></div>
         </div></div></div>
       </section>
-      <div class="bento">
-
-        <button class="card dark w3" onclick="showView('presentations')">
-          <svg class="compass" style="width:14rem;height:14rem;left:-1.5rem;bottom:-2.5rem;color:var(--gold);" viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.2"/>
-            <circle cx="50" cy="50" r="32" stroke="currentColor" stroke-width="1"/>
-            <path d="M50 8 L54 46 L50 50 L46 46 Z" fill="currentColor"/>
-          </svg>
-          <div style="position:relative;">
-            <h2 class="cairo">عروضي التقديمية</h2>
-            <p>دروس تفاعلية مصنّفة حسب الصف — العاشر، الحادي عشر، والثاني عشر</p>
-          </div>
-          <div class="pills" style="position:relative;">
-            <span class="pill">الصف العاشر</span>
-            <span class="pill">الحادي عشر</span>
-            <span class="pill">الثاني عشر</span>
-          </div>
-        </button>
-
-        <button class="card coral w2" onclick="showView('quiz')">
-          <svg class="compass" style="width:12rem;height:12rem;right:-2.5rem;bottom:-2.5rem;color:#fff;" viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="8" fill="currentColor"/>
-            <circle cx="50" cy="50" r="24" stroke="currentColor" stroke-width="1.2"/>
-            <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="1.2"/>
-          </svg>
-          <div style="position:relative;">
-            <h2 class="cairo" style="font-size:1.25rem;">اختبر نفسك</h2>
-            <p>اختر الفصل والوحدة والدروس، وأجب عن أسئلة متنوعة، ثم اكتشف مواطن الضعف لتراجعها</p>
-          </div>
-          <span class="cta" style="position:relative;color:#fff;">ابدأ التحدي ←</span>
-        </button>
-
-        <button class="card teal-grad w2" onclick="showView('skills')">
-          <svg class="compass" style="width:13rem;height:13rem;left:-1rem;top:-2.5rem;color:#fff;" viewBox="0 0 100 100" fill="none">
-            <path d="M15 70 Q35 20 55 55 T90 30" stroke="currentColor" stroke-width="1.4" fill="none"/>
-            <circle cx="15" cy="70" r="3" fill="currentColor"/>
-            <circle cx="55" cy="55" r="3" fill="currentColor"/>
-            <circle cx="90" cy="30" r="3" fill="currentColor"/>
-          </svg>
-          <div style="position:relative;">
-            <h2 class="cairo">ركن المهارات والخرائط الذهنية</h2>
-            <p>مسارات زمنية تفاعلية لتاريخ الكويت، وخريطة تفاعلية تعرض معلومات جغرافية وتاريخية عند اللمس</p>
-          </div>
-          <div class="pills" style="position:relative;">
-            <span class="pill">الخط الزمني</span>
-            <span class="pill">خريطة الكويت</span>
-          </div>
-        </button>
-
-        <button class="card games w3" onclick="showView('games')">
-          <svg class="compass" style="width:12rem;height:12rem;right:-2rem;bottom:-3.5rem;color:#fff;" viewBox="0 0 100 100" fill="none">
-            <rect x="12" y="12" width="76" height="76" rx="6" stroke="currentColor" stroke-width="1.4"/>
-            <path d="M12 38h76M12 62h76M38 12v76M62 12v76" stroke="currentColor" stroke-width="1"/>
-            <circle cx="25" cy="25" r="8" fill="currentColor"/><circle cx="75" cy="75" r="8" fill="currentColor"/>
-          </svg>
-          <div style="position:relative;">
-            <h2 class="cairo">الألعاب</h2>
-            <p>العب وتعلّم: ست ألعاب تفاعلية تربط دروسك بالتسلية، من الدامة وإكس أو والسباق وتحدّي المجموعات ولعبة المزاد إلى استكشاف الكويت بين الماضي والحاضر</p>
-          </div>
-          <div class="pills" style="position:relative;">
-            <span class="pill">لعبة الدامة</span>
-            <span class="pill">سباق النيترو</span>
-            <span class="pill">لعبة إكس أو</span>
-            <span class="pill">مستكشف الكويت</span>
-            <span class="pill">تحدّي المجموعات</span>
-            <span class="pill">لعبة المزاد</span>
-          </div>
-        </button>
+      <div class="hm5">
+        <a class="lesson-card hm5-c" href="#presentations" onclick="showView('presentations');return false" style="--bc:#9A5B13;--bcl:#F0B56A;--i:3">
+          <span class="hm5-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5C9.5 5 6.5 4.8 3.5 5.5v12c3-.7 6-.5 8.5 1 2.5-1.5 5.5-1.7 8.5-1v-12c-3-.7-6-.5-8.5 1z"/><path d="M12 6.5v12"/></svg></span>
+          <div><div class="tag">دروس الكتاب</div><h3>العروض التقديمية</h3><p>دروس تفاعلية مرتبة حسب الوحدات، مع الممارسات والتقويم</p></div>
+          <span class="go">افتح الدروس ←</span>
+        </a>
+        <a class="lesson-card hm5-c" href="#quiz" onclick="showView('quiz');return false" style="--bc:#2A55D4;--bcl:#8FAAFF;--i:4">
+          <span class="hm5-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.8M12 17h.01"/></svg></span>
+          <div><div class="tag">قياس المستوى</div><h3>اختبر نفسك</h3><p>اختر الوحدة والدروس، واكتشف مواطن قوتك وضعفك</p></div>
+          <span class="go">ابدأ الاختبار ←</span>
+        </a>
+        <a class="lesson-card hm5-c" href="#skills" onclick="showView('skills');return false" style="--bc:#0F766E;--bcl:#5EEAD4;--i:5">
+          <span class="hm5-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <div><div class="tag">خرائط ومهارات</div><h3>الخرائط والمهارات</h3><p>خط زمني وخرائط تفاعلية تعرض معلومات الكتاب عند اللمس</p></div>
+          <span class="go">افتح الخرائط ←</span>
+        </a>
+        <a class="lesson-card hm5-c" href="#games" onclick="showView('games');return false" style="--bc:#C2410C;--bcl:#FF9F7A;--i:6">
+          <span class="hm5-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8.5 8.5h.01M15.5 8.5h.01M12 12h.01M8.5 15.5h.01M15.5 15.5h.01"/></svg></span>
+          <div><div class="tag">العب وتعلّم</div><h3>الألعاب</h3><p>ست ألعاب بأسئلة من دروسك: السباق والدامة والمزاد وغيرها</p></div>
+          <span class="go">العب الآن ←</span>
+        </a>
       </div>
       <p class="gp-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C9.5 5 6.5 4.8 3.5 5.5v12c3-.7 6-.5 8.5 1 2.5-1.5 5.5-1.7 8.5-1v-12c-3-.7-6-.5-8.5 1z"/><path d="M12 6.5v12"/></svg><span>المنصة رفيقك في المراجعة والتدريب، <b>ولا تغني عن دراسة الكتاب المدرسي</b>، فهو الأساس.</span></p>
     </section>
