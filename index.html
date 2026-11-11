@@ -714,6 +714,14 @@ html[data-theme="dark"] #view-home .hx{ box-shadow:none; }
   body:has(#view-home.active) #view-home .hx{ margin-top:-140px; padding-top:calc(150px + env(safe-area-inset-top,0px)); }
 } }
 @media (prefers-reduced-motion:no-preference){ #view-home .hx{ animation:none; } }
+/* إصلاح: القناع كان يقص قائمة نتائج البحث — نقلنا الخلفية والموج إلى طبقة الخلفية فقط */
+html #view-home .hx, html[data-theme="dark"] #view-home .hx{ -webkit-mask:none !important; mask:none !important; background:none !important; box-shadow:none !important; }
+html #view-home .hx-bg{ border-radius:0; background:radial-gradient(520px 300px at 0% 0%,rgba(245,183,46,.20),transparent 62%), radial-gradient(460px 320px at 100% 100%,rgba(108,90,224,.42),transparent 65%), linear-gradient(140deg,#0D152C 0%,#16255A 58%,#22308A 100%);
+  -webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 40px) no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1200V30C1100 52 1000 56 900 44S700 12 600 22 400 58 300 50 100 18 0 34Z'/%3E%3C/svg%3E") bottom/100% 41px no-repeat;
+  mask:linear-gradient(#000,#000) top/100% calc(100% - 40px) no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1200V30C1100 52 1000 56 900 44S700 12 600 22 400 58 300 50 100 18 0 34Z'/%3E%3C/svg%3E") bottom/100% 41px no-repeat; }
+html[data-theme="dark"] #view-home .hx-bg{ background:radial-gradient(520px 300px at 0% 0%,rgba(245,183,46,.22),transparent 62%), radial-gradient(460px 320px at 100% 100%,rgba(140,110,255,.5),transparent 65%), linear-gradient(140deg,#17245A 0%,#27308F 55%,#4532B4 100%); }
+html #view-home .hx .gp-results{ background:#fff !important; -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
+html[data-theme="dark"] #view-home .hx .gp-results{ background:#121B36 !important; border:1px solid rgba(255,255,255,.16) !important; }
 /* ===== ضغط المقدمة ورؤوس الصفحات والتذييل على الجوال ===== */
 .unit-tabs,.qz-scroll{ -webkit-mask-image:linear-gradient(to right,transparent 0,#000 30px); mask-image:linear-gradient(to right,transparent 0,#000 30px); padding-inline-end:30px; }
 @media (max-width:760px){
