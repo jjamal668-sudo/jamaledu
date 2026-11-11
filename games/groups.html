@@ -466,6 +466,37 @@ html[data-theme="dark"] .backrow a{ color:var(--jm-ink) !important; }
 .ck{ text-shadow:0 0 3px rgba(0,0,0,.55); font-weight:900; }
 
 </style>
+<style id="jm-groups-setup">
+.nmrow input, html .nmrow input{ background:#fff !important; border:1.5px solid rgba(16,27,51,.2) !important; color:#101B33 !important; box-shadow:0 6px 14px -10px rgba(16,27,51,.35) !important; }
+.nmrow input::placeholder{ color:#7A849B; font-weight:600; }
+.nmrow input:focus{ outline:0; border-color:var(--gc,#3355D6) !important; box-shadow:0 0 0 3px color-mix(in srgb,var(--gc,#3355D6) 25%,transparent) !important; }
+.nmrow label:has(input:focus) input, .nmrow label input:focus{ border-color:#3355D6 !important; }
+html[data-theme="dark"] .nmrow input{ background:#101823 !important; border-color:rgba(255,255,255,.24) !important; color:#EDEAE0 !important; }
+html[data-theme="dark"] .nmrow input::placeholder{ color:rgba(237,234,224,.55); }
+.seg.scope{ margin-bottom:10px; }
+.scope-sum{ padding:12px 14px; border-radius:14px; background:rgba(30,122,85,.1); color:#1E6B4C; font-weight:800; font-size:.92rem; }
+html[data-theme="dark"] .scope-sum{ background:rgba(95,211,160,.12); color:#7FE0B5; }
+.uchips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:6px; }
+.uchip{ display:flex; flex-direction:column; align-items:center; gap:1px; min-width:calc(33.333% - 6px); flex:1 1 calc(33.333% - 6px); padding:10px 8px; border-radius:14px; cursor:pointer; font:inherit; background:#fff; border:1.5px solid rgba(16,27,51,.14); color:#101B33; }
+.uchip b{ font-family:'Cairo',Tajawal,Arial,sans-serif; font-size:.88rem; font-weight:800; } .uchip small{ font-size:.72rem; color:#5B6680; font-weight:700; }
+.uchip.on{ background:#3355D6; border-color:#3355D6; color:#fff; } .uchip.on small{ color:rgba(255,255,255,.85); }
+.uchip.part{ border-color:#3355D6; }
+html[data-theme="dark"] .uchip{ background:#141F39; border-color:rgba(255,255,255,.18); color:#EDEAE0; } html[data-theme="dark"] .uchip small{ color:rgba(237,234,224,.7); }
+html[data-theme="dark"] .uchip.on{ background:#F5B72E; border-color:#F5B72E; color:#14181F; } html[data-theme="dark"] .uchip.on small{ color:rgba(20,24,31,.75); }
+.uacc{ border-radius:16px; border:1.5px solid rgba(16,27,51,.12); background:#fff; overflow:hidden; }
+.uacc + .uacc{ margin-top:8px; }
+.uacc-h{ width:100%; display:flex; align-items:center; gap:10px; padding:12px 14px; border:0; background:none; cursor:pointer; font:inherit; color:#101B33; text-align:right; }
+.uacc-h b{ flex:1; font-family:'Cairo',Tajawal,Arial,sans-serif; font-weight:800; font-size:.95rem; } .uacc-h small{ color:#5B6680; font-weight:700; font-size:.78rem; }
+.uacc-h i{ font-style:normal; font-size:1.1rem; transition:transform .2s; color:#5B6680; } .uacc.open .uacc-h i{ transform:rotate(180deg); }
+.uacc-ck{ width:24px; height:24px; flex:none; border-radius:7px; border:2px solid rgba(16,27,51,.25); display:grid; place-items:center; font-weight:900; font-size:.8rem; color:#fff; }
+.uacc-ck.on{ background:#3355D6; border-color:#3355D6; } .uacc-ck.part{ background:#3355D6; border-color:#3355D6; }
+.uacc-b{ display:grid; gap:7px; padding:0 10px 10px; }
+html[data-theme="dark"] .uacc{ background:#141F39; border-color:rgba(255,255,255,.16); } html[data-theme="dark"] .uacc-h{ color:#EDEAE0; } html[data-theme="dark"] .uacc-h small, html[data-theme="dark"] .uacc-h i{ color:rgba(237,234,224,.7); }
+html[data-theme="dark"] .uacc-ck{ border-color:rgba(255,255,255,.35); } html[data-theme="dark"] .uacc-ck.on, html[data-theme="dark"] .uacc-ck.part{ background:#F5B72E; border-color:#F5B72E; color:#14181F; }
+#lessonList.lessons:has(.uacc){ display:block; }
+@media (min-width:700px){ .uchip{ flex:0 1 auto; min-width:150px; } .uacc-b{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:600px){ #segR{ display:grid; grid-template-columns:repeat(4,1fr); width:100%; } #segR button, #segT button, #segS button, #segN button{ padding:9px 10px; font-size:.86rem; } #segS, #segN, #segT{ display:grid; grid-template-columns:repeat(3,1fr); width:100%; } }
+</style>
 </head>
 <body>
 <div class="gp-aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -483,8 +514,11 @@ html[data-theme="dark"] .backrow a{ color:var(--jm-ink) !important; }
     <div class="seg" id="segN"><button type="button" data-v="2">مجموعتان</button><button type="button" data-v="3">٣ مجموعات</button><button type="button" data-v="4">٤ مجموعات</button></div>
     <div class="step"><span class="n">٢</span>أسماء المجموعات</div>
     <div class="nmrow" id="nmWrap"></div>
-    <div class="step"><span class="n">٣</span>الدروس التي تريد الأسئلة منها<span class="tools"><button id="qAll" type="button">كل الدروس</button><button id="qU1" type="button">الوحدة الأولى</button><button id="qU2" type="button">الوحدة الثانية</button></span></div>
+    <div class="step"><span class="n">٣</span>الدروس التي تريد الأسئلة منها</div>
+    <div class="seg scope" id="segS"><button type="button" data-v="all">الفصل كامل</button><button type="button" data-v="unit">وحدة</button><button type="button" data-v="pick">دروس محددة</button></div>
+    <div class="uchips" id="uChips"></div>
     <div class="lessons" id="lessonList"></div>
+    <span id="qAll" hidden></span><span id="qU1" hidden></span><span id="qU2" hidden></span>
     <div class="step"><span class="n">٤</span>عدد الأسئلة لكل مجموعة</div>
     <div class="seg" id="segR"><button type="button" data-v="3">٣ جولات</button><button type="button" data-v="5">٥ جولات</button><button type="button" data-v="8">٨ جولات</button><button type="button" data-v="10">١٠ جولات</button></div>
     <div class="step"><span class="n">٥</span>مؤقت الإجابة</div>
@@ -557,8 +591,7 @@ if(!SOUNDS.start){ SOUNDS.start=function(c,t){ [392,523,659].forEach(function(f,
   function drawNames(){ var w=$('nmWrap'); w.innerHTML=''; for(var i=0;i<cfg.n;i++){ (function(i){ var lab=el('label'); lab.style.setProperty('--gc',COL[i][0]); lab.innerHTML='<i></i>'; var inp=el('input'); inp.type='text'; inp.maxLength=20; inp.autocomplete='off'; inp.placeholder=DEF[i]; inp.value=cfg.names[i]===DEF[i]?'':cfg.names[i]; inp.id='gn'+i; inp.oninput=function(){ cfg.names[i]=inp.value.trim()||DEF[i]; }; lab.appendChild(inp); w.appendChild(lab); })(i); } }
   function mark(id,val){ [].forEach.call($(id).children,function(b){ b.classList.toggle('on',b.getAttribute('data-v')===String(val)); }); }
   function drawSetup(){
-    var w=$('lessonList'); w.innerHTML='';
-    LESSONS.forEach(function(l){ var b=el('button','les'+(sel[l.id]?' on':''),'<span class="ic">'+l.icon+'</span><span class="t"><b>'+esc(l.title)+'</b><small>الأسئلة المتاحة: '+ar(l.n)+'</small></span><span class="ck">✓</span>'); b.type='button'; b.style.setProperty('--c',l.color); b.onclick=function(){ sel[l.id]=!sel[l.id]; drawSetup(); }; w.appendChild(b); });
+    drawScope();
     var pool=poolOf().length, maxR=Math.floor(pool/cfg.n), R=Math.min(cfg.rounds,maxR), total=R*cfg.n;
     mark('segN',cfg.n); mark('segR',cfg.rounds); mark('segT',cfg.timer);
     var mins=Math.round(total*(cfg.timer?(cfg.timer*0.7/60+0.4):0.8));
@@ -568,6 +601,35 @@ if(!SOUNDS.start){ SOUNDS.start=function(c,t){ [392,523,659].forEach(function(f,
   function seg(id,key,conv){ $(id).onclick=function(e){ var b=e.target.closest('button'); if(!b){ return; } cfg[key]=conv(b.getAttribute('data-v')); saveCfg(); if(key==='n'){ drawNames(); } drawSetup(); snd('sel'); }; }
   seg('segN','n',Number); seg('segR','rounds',Number); seg('segT','timer',Number);
   $('qAll').onclick=function(){ LESSONS.forEach(function(l){ sel[l.id]=true; }); drawSetup(); }; $('qU1').onclick=function(){ LESSONS.forEach(function(l){ sel[l.id]=/^u1/.test(l.keys[0]); }); drawSetup(); }; $('qU2').onclick=function(){ LESSONS.forEach(function(l){ sel[l.id]=/^u2/.test(l.keys[0]); }); drawSetup(); };
+
+  /* ---------- اختيار النطاق: الفصل كامل / وحدة / دروس محددة ---------- */
+  var UN=['','الوحدة الأولى','الوحدة الثانية','الوحدة الثالثة','الوحدة الرابعة','الوحدة الخامسة'], scope='all', openU=1;
+  function unitOf(l){ return /g$/.test(l.keys[0])&&l.keys.length>1?'g':Number(l.keys[0].charAt(1)); }
+  function unitsList(){ var u=[]; LESSONS.forEach(function(l){ var x=unitOf(l); if(u.indexOf(x)<0){ u.push(x); } }); return u; }
+  function uName(u){ return u==='g'?'أسئلة عامة':UN[u]; }
+  function uState(u){ var ls=LESSONS.filter(function(l){ return unitOf(l)===u; }), on=ls.filter(function(l){ return sel[l.id]; }).length; return on===0?0:(on===ls.length?2:1); }
+  function lesBtn(l){ var b=el('button','les'+(sel[l.id]?' on':''),'<span class="ic">'+l.icon+'</span><span class="t"><b>'+esc(l.title)+'</b><small>الأسئلة: '+ar(l.n)+'</small></span><span class="ck">✓</span>'); b.type='button'; b.style.setProperty('--c',l.color); b.onclick=function(){ sel[l.id]=!sel[l.id]; drawSetup(); }; return b; }
+  function drawScope(){
+    mark('segS',scope); var uc=$('uChips'), w=$('lessonList'); uc.innerHTML=''; w.innerHTML='';
+    var nSel=LESSONS.filter(function(l){ return sel[l.id]; }).length;
+    if(scope==='all'){
+      var nl=LESSONS.filter(function(l){ return sel[l.id]&&unitOf(l)!=='g'; }).length; uc.innerHTML='<div class="scope-sum">✓ كل دروس الفصل الدراسي الأول — <b>'+ar(nl)+'</b> درسًا</div>';
+    } else if(scope==='unit'){
+      unitsList().forEach(function(u){ var st=uState(u), n=LESSONS.filter(function(l){ return unitOf(l)===u; }).length;
+        var b=el('button','uchip'+(st===2?' on':(st===1?' part':'')),'<b>'+uName(u)+'</b><small>'+ar(n)+(u==='g'?'أسئلة متنوعة':' دروس')+'</small>'); b.type='button';
+        b.onclick=function(){ var to=uState(u)!==2; LESSONS.forEach(function(l){ if(unitOf(l)===u){ sel[l.id]=to; } }); drawSetup(); snd('sel'); }; uc.appendChild(b); });
+    } else {
+      unitsList().forEach(function(u){ var st=uState(u), ls=LESSONS.filter(function(l){ return unitOf(l)===u; }), on=ls.filter(function(l){ return sel[l.id]; }).length;
+        var box=el('div','uacc'+(openU===u?' open':'')); var h=el('button','uacc-h','<span class="uacc-ck'+(st===2?' on':(st===1?' part':''))+'">'+(st===2?'✓':(st===1?'–':''))+'</span><b>'+uName(u)+'</b><small>'+ar(on)+' من '+ar(ls.length)+'</small><i>⌄</i>'); h.type='button';
+        h.onclick=function(e){ if(e.target.closest('.uacc-ck')){ var to=uState(u)!==2; ls.forEach(function(l){ sel[l.id]=to; }); } else { openU=openU===u?null:u; } drawSetup(); };
+        box.appendChild(h); if(openU===u){ var inner=el('div','uacc-b'); ls.forEach(function(l){ inner.appendChild(lesBtn(l)); }); box.appendChild(inner); } w.appendChild(box); });
+    }
+  }
+  $('segS').onclick=function(e){ var b=e.target.closest('button'); if(!b){ return; } scope=b.getAttribute('data-v');
+    if(scope==='all'){ LESSONS.forEach(function(l){ sel[l.id]=true; }); }
+    else if(scope==='unit'){ var u=unitsList()[0]; LESSONS.forEach(function(l){ sel[l.id]=unitOf(l)===u; }); }
+    else { var first=unitsList()[0]; openU=first; }
+    drawSetup(); snd('sel'); };
   /* ---------- بناء الأدوار ---------- */
   function prep(q){ var idx=q.opts.map(function(_,i){ return i; }), sh=shuffle(idx), o={id:q.id,type:q.type,q:q.q,lesson:q.lesson,d:q.d,hints:q.hints||null,opts:sh.map(function(i){ return q.opts[i]; }),a:sh.indexOf(q.a)}; return o; }
   function lessonTitle(k){ for(var i=0;i<BANK.lessons.length;i++){ if(BANK.lessons[i].key===k){ return BANK.lessons[i].title; } } return ''; }
