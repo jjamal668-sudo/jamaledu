@@ -198,21 +198,22 @@ function answerLocal(q,scope){
   if(false&&others.length){ h+='<div class="more"><small style="color:var(--ink2);font-weight:800;font-size:.78rem">قد يفيدك أيضًا</small>'+others.map(function(d){ var pp=P[d.i]; return '<button type="button" class="it" data-p="'+d.i+'"><small>'+lessonTag(pp.l,pp.p)+'</small>'+esc(bestSentences(pp.x,qt,r.it).slice(0,160))+'…</button>'; }).join('')+'</div>'; }
   var el=add(h,'a'); bindA(el,qt);
 }
+function dbg(m){ if(/dbg/.test(location.hash)){ add('<p class="ans" style="font-size:.85rem">🔧 '+esc(String(m))+'</p>','a'); } }
 function answer(q,scope){
-  var r=search(q,scope), top=r.res.filter(function(d){ return d.k==='p'; }).slice(0,4);
+  var r=search(q,scope), top=r.res.filter(function(d){ return d.k==='p'; }).slice(0,6);
   if(!top.length||top[0]._s<1.4||!window.fetch||location.protocol==='file:'){ return answerLocal(q,scope); }
   var wait=add('<span class="typing"><i></i><i></i><i></i></span>','a'); var done=false;
   var ctl=window.AbortController?new AbortController():null; var tm=setTimeout(function(){ if(ctl){ ctl.abort(); } },16000);
   var pas=top.map(function(d){ var p=P[d.i]; return {x:p.x,tag:lessonTag(p.l,p.p)}; });
   fetch('/.netlify/functions/ask',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({q:q,passages:pas}),signal:ctl?ctl.signal:undefined})
-   .then(function(x){ if(!x.ok){ throw 0; } return x.json(); })
-   .then(function(j){ clearTimeout(tm); wait.remove(); var t=String(j.answer||''); if(!t||/لم أجد الجواب في الفقرات/.test(t)){ return answerLocal(q,scope); }
+   .then(function(x){ if(!x.ok){ throw ('HTTP '+x.status); } return x.json(); })
+   .then(function(j){ clearTimeout(tm); wait.remove(); var t=String(j.answer||''); if(!t||/لم أجد الجواب في الفقرات/.test(t)){ dbg(t?'AI: not in passages':'AI: empty'); return answerLocal(q,scope); }
      var m=t.match(/\[المصدر:\s*([\d٠-٩]+)\]/), n=m?parseInt(m[1].replace(/[٠-٩]/g,function(c){ return '٠١٢٣٤٥٦٧٨٩'.indexOf(c); }),10):1; if(!(n>=1&&n<=top.length)){ n=1; }
      var clean=t.replace(/\s*\[المصدر:[^\]]*\]/g,'').trim(), p=P[top[n-1].i], l=L[p.l];
      var h='<div class="lab">✨ جواب مصاغ من كتابك بالذكاء الاصطناعي</div><p class="ans" data-say="'+esc(clean)+'">'+esc(clean)+'</p>'+
        '<div class="src"><span class="tag">📘 '+lessonTag(p.l,p.p)+'</span><a class="go" href="lessons/'+l.f[0]+'.html">افتح عرض الدرس ←</a><button type="button" class="mini say" data-act="say">'+SPK+'استمع</button><button type="button" class="mini" data-act="full">الفقرة كاملة</button></div><div class="full" hidden>'+esc(p.x)+'</div>';
      var el=add(h,'a'); bindA(el,r.qt); })
-   .catch(function(){ clearTimeout(tm); wait.remove(); answerLocal(q,scope); });
+   .catch(function(e){ clearTimeout(tm); wait.remove(); dbg('AI error: '+e); answerLocal(q,scope); });
 }
 function qaBox(d,qt){ var q=Q[d.i]; var a=q.t==='tf'?(q.a==='صح'||q.a==='صحيحة'?'العبارة صحيحة':'العبارة خاطئة'):q.a; return '<div class="qa"><span class="k">سؤال مشابه من بنك أسئلة المنصة · '+lessonTag(q.l)+'</span>'+hl(q.q,qt)+'<br><b>الجواب: '+esc(a)+'</b></div>'; }
 function bindA(el,qt){
