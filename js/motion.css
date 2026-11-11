@@ -1,0 +1,9 @@
+html.gm-pre .bento .card, html.gm-pre .lesson-card, html.gm-pre .gcard{ opacity:0; }
+.gm-pre-el{ opacity:0; }
+html.gm-on .view.active .bento .card, html.gm-on .view.active .gp-hero-text > *, html.gm-on .view.active .gp-scene{ animation:none !important; }
+.gm-w{ display:inline-block; will-change:transform,opacity,filter; }
+.gp-hero h2 em.gm-split{ background:none !important; -webkit-background-clip:border-box !important; background-clip:border-box !important; color:inherit; }
+.gm-em-w{ background:linear-gradient(90deg,#4B2FBF,#7A5AE0); -webkit-background-clip:text; background-clip:text; color:transparent; }
+html[data-theme="dark"] .gm-em-w{ background:linear-gradient(90deg,var(--accent2),#FFB86B); -webkit-background-clip:text; background-clip:text; }
+.gm-progress{ position:fixed; top:0; right:0; left:0; height:3px; z-index:9999; transform-origin:100% 50%; pointer-events:none; background:linear-gradient(270deg,#C9A227,#E8664A,#7A5AE0); }
+html.gm-on .gp-aurora{ top:-10vh; bottom:-10vh; }
