@@ -2,8 +2,16 @@
 const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 const J = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { "content-type": "application/json; charset=utf-8" } });
 export default async (req) => {
-  if (req.method !== "POST") return J({ error: "method" }, 405);
   const key = process.env.GEMINI_API_KEY || process.env.GEMENI_API_KEY;
+  if (req.method === "GET") { // فحص سريع: افتح الرابط في المتصفح
+    if (!key) return J({ function: "ok", key: "missing" });
+    try {
+      const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, { method: "POST", headers: { "content-type": "application/json", "x-goog-api-key": key }, body: JSON.stringify({ contents: [{ parts: [{ text: "قل: تم" }] }] }), signal: AbortSignal.timeout(15000) });
+      const t = await r.text();
+      return J({ function: "ok", key: "present", keyLen: key.length, model: MODEL, googleStatus: r.status, googleReply: t.slice(0, 400) });
+    } catch (e) { return J({ function: "ok", key: "present", fetchError: String(e).slice(0, 200) }); }
+  }
+  if (req.method !== "POST") return J({ error: "method" }, 405);
   if (!key) return J({ error: "nokey" }, 503);
   let b; try { b = await req.json(); } catch { return J({ error: "bad" }, 400); }
   const q = String(b.q || "").slice(0, 300).trim();
