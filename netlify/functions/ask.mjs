@@ -1,5 +1,5 @@
 // يستقبل السؤال + فقرات الكتاب، ويطلب من Gemini صياغة الجواب منها فقط.
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.8-flash";
 const J = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { "content-type": "application/json; charset=utf-8" } });
 export default async (req) => {
   const key = process.env.GEMINI_API_KEY || process.env.GEMENI_API_KEY;
@@ -21,7 +21,7 @@ export default async (req) => {
   const body = {
     systemInstruction: { parts: [{ text: sys }] },
     contents: [{ role: "user", parts: [{ text: `الفقرات:\n${ps.join("\n\n")}\n\nالسؤال: ${q}` }] }],
-    generationConfig: { temperature: 0.2, maxOutputTokens: 500, thinkingConfig: { thinkingBudget: 0 } },
+    generationConfig: { temperature: 0.2, maxOutputTokens: 1500 },
   };
   try {
     const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, {
