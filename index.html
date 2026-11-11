@@ -879,6 +879,27 @@ html .pb-all b{ color:#101B33 !important; -webkit-text-fill-color:#101B33 !impor
   html #view-skills .lesson-card.vcard p{ font-size:.74rem !important; line-height:1.55; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin:0; }
   html #view-skills .lesson-card.vcard .go{ padding:2px 12px 10px !important; font-size:.76rem !important; }
 }
+/* ===== اختبر نفسك: اختيار النطاق (الفصل كامل / وحدة / دروس محددة) ===== */
+#view-quiz .qz-scope3{ margin-bottom:10px; }
+#view-quiz .qz-scope-sum{ padding:12px 14px; border-radius:14px; background:rgba(30,122,85,.1); color:#1E6B4C; font-weight:800; font-size:.92rem; }
+html[data-theme="dark"] #view-quiz .qz-scope-sum{ background:rgba(95,211,160,.12); color:#7FE0B5; }
+#view-quiz .qz-uchips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:4px; }
+#view-quiz .qz-uchip{ display:flex; flex-direction:column; align-items:center; gap:2px; flex:1 1 calc(33.333% - 6px); min-width:calc(33.333% - 6px); padding:10px 8px; border-radius:14px; cursor:pointer; font:inherit; background:var(--card); border:1.5px solid var(--line); color:var(--ink); }
+#view-quiz .qz-uchip b{ font-family:var(--f-d); font-size:.9rem; font-weight:800; } #view-quiz .qz-uchip small{ font-size:.72rem; color:var(--mut); font-weight:700; text-align:center; }
+#view-quiz .qz-uchip.on{ background:#C7364C; border-color:#C7364C; color:#fff; } #view-quiz .qz-uchip.on small{ color:rgba(255,255,255,.88); }
+#view-quiz .qz-uchip.part{ border-color:#C7364C; }
+html[data-theme="dark"] #view-quiz .qz-uchip.on{ background:#F5B72E; border-color:#F5B72E; color:#14181F; } html[data-theme="dark"] #view-quiz .qz-uchip.on small{ color:rgba(20,24,31,.75); }
+#view-quiz .qz-lessons:has(.qz-acc){ display:block !important; }
+#view-quiz .qz-acc{ border-radius:16px; border:1.5px solid var(--line); background:var(--card); overflow:hidden; } #view-quiz .qz-acc + .qz-acc{ margin-top:8px; }
+#view-quiz .qz-acc-h{ width:100%; display:flex; align-items:center; gap:10px; padding:12px 14px; border:0; background:none; cursor:pointer; font:inherit; color:var(--ink); text-align:right; }
+#view-quiz .qz-acc-h b{ flex:1; font-family:var(--f-d); font-weight:800; font-size:.95rem; } #view-quiz .qz-acc-h small{ color:var(--mut); font-weight:700; font-size:.78rem; }
+#view-quiz .qz-acc-h i{ font-style:normal; color:var(--mut); transition:transform .2s; } #view-quiz .qz-acc.open .qz-acc-h i{ transform:rotate(180deg); }
+#view-quiz .qz-acc-ck{ width:24px; height:24px; flex:none; border-radius:7px; border:2px solid var(--line); display:grid; place-items:center; font-weight:900; font-size:.8rem; color:#fff; }
+#view-quiz .qz-acc-ck.on, #view-quiz .qz-acc-ck.part{ background:#C7364C; border-color:#C7364C; }
+html[data-theme="dark"] #view-quiz .qz-acc-ck.on, html[data-theme="dark"] #view-quiz .qz-acc-ck.part{ background:#F5B72E; border-color:#F5B72E; color:#14181F; }
+#view-quiz .qz-acc-b{ display:grid; gap:7px; padding:0 10px 10px; }
+@media (min-width:700px){ #view-quiz .qz-uchip{ flex:0 1 auto; min-width:160px; } #view-quiz .qz-acc-b{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:600px){ html #view-quiz .qz-scope3{ display:grid !important; grid-template-columns:repeat(3,1fr); width:100%; } html #view-quiz .qz-scope3 button{ padding:8px 6px !important; font-size:.84rem !important; } }
 /* ===== ضغط المقدمة ورؤوس الصفحات والتذييل على الجوال ===== */
 .unit-tabs,.qz-scroll{ -webkit-mask-image:linear-gradient(to right,transparent 0,#000 30px); mask-image:linear-gradient(to right,transparent 0,#000 30px); padding-inline-end:30px; }
 @media (max-width:760px){
@@ -2088,26 +2109,20 @@ html[data-theme="dark"] #view-home .ask-cta i{ color:#F5B72E; }
 
       <!-- ===== 1) الإعداد ===== -->
       <div id="qz-setup" class="qz-wrap">
-        <div class="pband" style="--g:linear-gradient(135deg,#C7364C,#E26D33)"><button class="back-btn" onclick="showView('home')">→ الرئيسية</button><div class="pg-head"><span class="pg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.8M12 17h.01"/></svg></span><div class="pg-tx"><span class="pg-eye">قياس المستوى</span><h2>اختبر نفسك</h2><p>اختر الفصل والوحدة والدروس، وأجب عن أسئلة متنوعة، وسنكشف لك مواطن قوتك ومواطن الضعف لتراجعها.</p></div></div><button type="button" class="pb-all" onclick="qzSelectAll();var c=document.getElementById('qz-cta');if(c)c.scrollIntoView({behavior:'smooth',block:'center'});"><span class="pb-all-ic" aria-hidden="true">★</span><span class="pb-all-tx"><b>اختبار شامل للفصل كامل</b><small>كل دروس الفصل في اختبار واحد</small></span><i aria-hidden="true">←</i></button></div>
+        <div class="pband" style="--g:linear-gradient(135deg,#C7364C,#E26D33)"><button class="back-btn" onclick="showView('home')">→ الرئيسية</button><div class="pg-head"><span class="pg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.8M12 17h.01"/></svg></span><div class="pg-tx"><span class="pg-eye">قياس المستوى</span><h2>اختبر نفسك</h2><p>اختر الفصل والوحدة والدروس، وأجب عن أسئلة متنوعة، وسنكشف لك مواطن قوتك ومواطن الضعف لتراجعها.</p></div></div></div>
 
         <div id="qz-insight" class="qz-insight hidden"></div>
 
         <div class="qz-step"><span class="qz-n">١</span><b>الفصل الدراسي</b></div>
         <div id="qz-sem" class="qz-pills"></div>
 
-        <div class="qz-step"><span class="qz-n">٢</span><b>الوحدة</b></div>
-        <div id="qz-units" class="qz-pills qz-scroll"></div>
-
-        <div class="qz-step">
-          <span class="qz-n">٣</span><b>الدروس</b>
-          <span class="qz-step-tools">
-            <button type="button" class="qz-link" id="qz-unit-all" onclick="qzToggleUnit()">تحديد كل دروس الوحدة</button>
-            <button type="button" class="qz-link" onclick="qzSelectAll()">اختبار شامل للفصل</button>
-          </span>
-        </div>
+        <div class="qz-step"><span class="qz-n">٢</span><b>الأسئلة من</b></div>
+        <div id="qz-scope" class="qz-seg qz-scope3"><button type="button" data-v="all">الفصل كامل</button><button type="button" data-v="unit">وحدة</button><button type="button" data-v="pick">دروس محددة</button></div>
+        <div id="qz-units" class="qz-uchips"></div>
         <div id="qz-lessons" class="qz-lessons"></div>
+        <span id="qz-unit-all" hidden></span>
 
-        <div class="qz-step"><span class="qz-n">٤</span><b>عدد الأسئلة</b></div>
+        <div class="qz-step"><span class="qz-n">٣</span><b>عدد الأسئلة</b></div>
         <div id="qz-count" class="qz-seg"></div>
 
         <div class="qz-cta" id="qz-cta">
@@ -3482,7 +3497,7 @@ function ccDark(hex){ try{ var c=parseInt(String(hex).replace('#',''),16), r=c>>
   function qzLv(p){ return p >= 80 ? 'good' : (p >= 50 ? 'mid' : 'low'); }
 
   /* ---------- شاشة الاختيار ---------- */
-  var qzSel = { sem:1, unit:1, keys:{}, count:10 };
+  var qzSel = { sem:1, unit:1, keys:{}, count:10, scope:'all', open:1 };
   var qz = { list:[], i:0, res:[], streak:0, retry:false, done:false, wrong:[] };
 
   function qzPanel(name){
@@ -3490,6 +3505,7 @@ function ccDark(hex){ try{ var c=parseInt(String(hex).replace('#',''),16), r=c>>
   }
   function qzShowSetup(){
     qzPanel('setup');
+    if(qzSel.scope === 'all'){ QZ_LESSONS.forEach(function(l){ qzSel.keys[l.key] = true; }); }
     qzRenderInsight(); qzRenderSem(); qzRenderUnits(); qzRenderLessons(); qzRenderCount(); qzUpdateCta();
   }
   function qzSelectedKeys(){
@@ -3527,42 +3543,59 @@ function ccDark(hex){ try{ var c=parseInt(String(hex).replace('#',''),16), r=c>>
       w.appendChild(b);
     });
   }
+  function qzUnitLessons(uid){ return QZ_LESSONS.filter(function(l){ return l.unit === uid; }); }
+  function qzUnitState(uid){ var ls=qzUnitLessons(uid), on=ls.filter(function(l){ return qzSel.keys[l.key]; }).length; return on===0?0:(on===ls.length?2:1); }
+  function qzUnitAvg(uid){ var ls=qzUnitLessons(uid), a=[]; ls.forEach(function(l){ var m=qzMem.lessons[l.key]; if(m&&typeof m.best==='number'){ a.push(m.best); } }); return a.length?Math.round(a.reduce(function(x,y){return x+y;},0)/a.length):null; }
+  function qzLessonBtn(l){
+    var info = qzInfo(l.key), cnt = qzCountOf(l.key), m = qzMem.lessons[l.key];
+    var b = qEl('button', 'qz-lesson' + (qzSel.keys[l.key] ? ' sel' : '')); b.type = 'button';
+    b.style.setProperty('--c', info.color);
+    var meta = 'الأسئلة: ' + arn(cnt) + ' · ', lv = '';
+    if(m && typeof m.best === 'number'){ meta += 'أفضل نتيجة: ' + arn(m.best) + '٪' + (m.best >= 80 ? ' ⭐' : ''); lv = qzLv(m.best); }
+    else { meta += 'لم تختبر بعد'; }
+    b.innerHTML = '<span class="qz-l-ic">' + info.icon + '</span>' +
+      '<span class="qz-l-body"><b class="qz-l-t">' + qEsc(info.title) + '</b><span class="qz-l-m">' + meta + '</span>' +
+      '<span class="qz-l-bar"><i class="' + (lv ? 'lv-' + lv : '') + '" style="width:' + (m && typeof m.best === 'number' ? m.best : 0) + '%"></i></span></span>' +
+      '<span class="qz-l-check">✓</span>';
+    b.onclick = function(){ qzSel.keys[l.key] = !qzSel.keys[l.key]; qzRenderLessons(); qzUpdateCta(); };
+    return b;
+  }
   function qzRenderUnits(){
-    var w = $q('qz-units'); w.innerHTML = '';
-    UNITS.forEach(function(u){
-      var total = 0, chosen = 0;
-      QZ_LESSONS.forEach(function(l){ if(l.unit === u.id){ total += qzCountOf(l.key); if(qzSel.keys[l.key]){ chosen++; } } });
-      var b = qEl('button', 'qz-pill' + (u.id === qzSel.unit ? ' active' : ''));
-      b.type = 'button'; b.appendChild(document.createTextNode(u.name));
-      b.appendChild(qEl('small', '', '(' + arn(total) + ')'));
-      if(chosen){ b.appendChild(qEl('span', 'qz-dot', arn(chosen))); }
-      b.onclick = function(){ qzSel.unit = u.id; qzRenderUnits(); qzRenderLessons(); };
-      w.appendChild(b);
-    });
+    var sc = $q('qz-scope'); [].forEach.call(sc.children, function(b){ b.classList.toggle('active', b.getAttribute('data-v') === qzSel.scope); });
+    sc.onclick = function(e){ var b = e.target.closest('button'); if(!b){ return; } var v = b.getAttribute('data-v'); qzSel.scope = v; qzSel.keys = {};
+      if(v === 'all'){ QZ_LESSONS.forEach(function(l){ qzSel.keys[l.key] = true; }); }
+      else if(v === 'unit'){ qzUnitLessons(UNITS[0].id).forEach(function(l){ qzSel.keys[l.key] = true; }); }
+      else { qzSel.open = UNITS[0].id; }
+      qzRenderLessons(); qzUpdateCta(); };
   }
   function qzRenderLessons(){
-    var w = $q('qz-lessons'); w.innerHTML = '';
-    var list = QZ_LESSONS.filter(function(l){ return l.unit === qzSel.unit; });
-    var allOn = list.length > 0 && list.every(function(l){ return qzSel.keys[l.key]; });
-    $q('qz-unit-all').textContent = allOn ? 'إلغاء تحديد الوحدة' : 'تحديد كل دروس الوحدة';
-    if(list.length && list[0].general){
-      w.appendChild(qEl('div', 'qz-general-note', 'عروض دروس هذه الوحدة قيد الإعداد، وتتوفر حاليًا أسئلة عامة عنها.'));
+    qzRenderUnits();
+    var uc = $q('qz-units'), w = $q('qz-lessons'); uc.innerHTML = ''; w.innerHTML = '';
+    if(qzSel.scope === 'all'){
+      var tq = 0; QZ_LESSONS.forEach(function(l){ tq += qzCountOf(l.key); });
+      uc.innerHTML = '<div class="qz-scope-sum">✓ اختبار شامل لكل دروس الفصل الدراسي الأول — من بين <b>' + arn(tq) + '</b> سؤالًا</div>';
+      return;
     }
-    list.forEach(function(l){
-      var info = qzInfo(l.key), cnt = qzCountOf(l.key), m = qzMem.lessons[l.key];
-      var b = qEl('button', 'qz-lesson' + (qzSel.keys[l.key] ? ' sel' : '')); b.type = 'button';
-      b.style.setProperty('--c', info.color);
-      var meta = 'الأسئلة: ' + arn(cnt) + ' · ';
-      var lv = '';
-      if(m && typeof m.best === 'number'){ meta += 'أفضل نتيجة: ' + arn(m.best) + '٪' + (m.best >= 80 ? ' ⭐' : ''); lv = qzLv(m.best); }
-      else { meta += 'لم تختبر بعد'; }
-      b.innerHTML = '<span class="qz-l-ic">' + info.icon + '</span>' +
-        '<span class="qz-l-body"><b class="qz-l-t">' + qEsc(info.title) + '</b><span class="qz-l-m">' + meta + '</span>' +
-        '<span class="qz-l-bar"><i class="' + (lv ? 'lv-' + lv : '') + '" style="width:' + (m && typeof m.best === 'number' ? m.best : 0) + '%"></i></span></span>' +
-        '<span class="qz-l-check">✓</span>';
-      b.onclick = function(){ qzSel.keys[l.key] = !qzSel.keys[l.key]; qzRenderUnits(); qzRenderLessons(); qzUpdateCta(); };
-      w.appendChild(b);
-    });
+    if(qzSel.scope === 'unit'){
+      UNITS.forEach(function(u){ if(!qzUnitLessons(u.id).length){ return; }
+        var st = qzUnitState(u.id), avg = qzUnitAvg(u.id), tot = 0; qzUnitLessons(u.id).forEach(function(l){ tot += qzCountOf(l.key); });
+        var b = qEl('button', 'qz-uchip' + (st === 2 ? ' on' : (st === 1 ? ' part' : ''))); b.type = 'button';
+        b.innerHTML = '<b>' + qEsc(u.name) + '</b><small>' + arn(tot) + ' سؤالًا' + (avg !== null ? ' · مستواك ' + arn(avg) + '٪' : '') + '</small>';
+        b.onclick = function(){ var to = qzUnitState(u.id) !== 2; qzUnitLessons(u.id).forEach(function(l){ qzSel.keys[l.key] = to; }); qzRenderLessons(); qzUpdateCta(); };
+        uc.appendChild(b); });
+      return;
+    }
+    UNITS.forEach(function(u){ var ls = qzUnitLessons(u.id); if(!ls.length){ return; }
+      var st = qzUnitState(u.id), on = ls.filter(function(l){ return qzSel.keys[l.key]; }).length;
+      var box = qEl('div', 'qz-acc' + (qzSel.open === u.id ? ' open' : ''));
+      var h = qEl('button', 'qz-acc-h'); h.type = 'button';
+      h.innerHTML = '<span class="qz-acc-ck' + (st === 2 ? ' on' : (st === 1 ? ' part' : '')) + '">' + (st === 2 ? '✓' : (st === 1 ? '–' : '')) + '</span><b>' + qEsc(u.name) + '</b><small>' + arn(on) + ' من ' + arn(ls.length) + '</small><i>⌄</i>';
+      h.onclick = function(e){ if(e.target.closest('.qz-acc-ck')){ var to = qzUnitState(u.id) !== 2; ls.forEach(function(l){ qzSel.keys[l.key] = to; }); qzUpdateCta(); } else { qzSel.open = qzSel.open === u.id ? null : u.id; } qzRenderLessons(); };
+      box.appendChild(h);
+      if(qzSel.open === u.id){ var inner = qEl('div', 'qz-acc-b');
+        if(ls[0].general){ inner.appendChild(qEl('div', 'qz-general-note', 'عروض دروس هذه الوحدة قيد الإعداد، وتتوفر حاليًا أسئلة عامة عنها.')); }
+        ls.forEach(function(l){ inner.appendChild(qzLessonBtn(l)); }); box.appendChild(inner); }
+      w.appendChild(box); });
   }
   function qzToggleUnit(){
     var list = QZ_LESSONS.filter(function(l){ return l.unit === qzSel.unit; });
@@ -3618,7 +3651,7 @@ function ccDark(hex){ try{ var c=parseInt(String(hex).replace('#',''),16), r=c>>
     qzBegin(false);
   }
   function qzPractice(key){
-    qzSel.keys = {}; qzSel.keys[key] = true; qzSel.unit = qzLesson(key).unit;
+    qzSel.keys = {}; qzSel.keys[key] = true; qzSel.unit = qzLesson(key).unit; qzSel.scope = 'pick'; qzSel.open = qzSel.unit;
     qz.list = qzBuild([key], 10);
     qzBegin(false);
   }
