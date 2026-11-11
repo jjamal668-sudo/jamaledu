@@ -829,6 +829,23 @@ html .pb-all b{ color:#101B33 !important; -webkit-text-fill-color:#101B33 !impor
   html #view-quiz .qz-cta-info{ font-size:.8rem !important; }
   html #view-quiz .qz-go{ padding:10px 18px !important; min-height:42px !important; font-size:.9rem !important; }
 }
+/* ===== الكمبيوتر والآيباد العريض: الهيدر يندمج داخل الشريط الملوّن ===== */
+@supports selector(:has(*)){ @media (min-width:1061px){
+  html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site{ position:relative !important; top:auto !important; z-index:20; background:none !important; border:0 !important; border-image:none !important; box-shadow:none !important; -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
+  html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site::before, html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site::after{ display:none !important; }
+  html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site .brand h1{ color:#fff !important; -webkit-text-fill-color:#fff !important; background:none !important; }
+  html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site .brand h1 *{ color:#fff !important; -webkit-text-fill-color:#fff !important; }
+  html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site .brand p{ color:#F8D27A !important; }
+  html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site .hdr-tools{ background:rgba(255,255,255,.12) !important; border:1px solid rgba(255,255,255,.22) !important; box-shadow:inset 0 1px 0 rgba(255,255,255,.18) !important; -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
+  html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site .hbtn{ color:rgba(255,255,255,.9) !important; }
+  html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site .hbtn svg{ stroke:currentColor !important; color:#F8D27A; }
+  html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site .hbtn:hover{ background:rgba(255,255,255,.14) !important; }
+  html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site .hbtn.on{ background:#fff !important; color:#101B33 !important; box-shadow:0 8px 18px -10px rgba(0,0,0,.5) !important; }
+  html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site .hbtn.on svg{ stroke:#101B33 !important; color:#101B33; }
+  html body:has(#view-home.active, .view.active > .pband, .view.active > :not(.hidden) > .pband) header.site .share-btn{ color:#fff !important; background:rgba(255,255,255,.12) !important; border:1px solid rgba(255,255,255,.22) !important; }
+  html body:has(#view-home.active) #view-home .hx{ margin-top:-104px !important; padding-top:150px !important; }
+  html body:has(.view.active > .pband, .view.active > :not(.hidden) > .pband) .view.active .pband{ margin-top:-104px !important; padding-top:140px !important; }
+} }
 /* ===== ضغط المقدمة ورؤوس الصفحات والتذييل على الجوال ===== */
 .unit-tabs,.qz-scroll{ -webkit-mask-image:linear-gradient(to right,transparent 0,#000 30px); mask-image:linear-gradient(to right,transparent 0,#000 30px); padding-inline-end:30px; }
 @media (max-width:760px){
