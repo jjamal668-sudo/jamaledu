@@ -198,7 +198,7 @@ function answerLocal(q,scope,nf){
   if(false&&others.length){ h+='<div class="more"><small style="color:var(--ink2);font-weight:800;font-size:.78rem">قد يفيدك أيضًا</small>'+others.map(function(d){ var pp=P[d.i]; return '<button type="button" class="it" data-p="'+d.i+'"><small>'+lessonTag(pp.l,pp.p)+'</small>'+esc(bestSentences(pp.x,qt,r.it).slice(0,160))+'…</button>'; }).join('')+'</div>'; }
   var el=add(h,'a'); bindA(el,qt);
 }
-function dbg(m){ if(/dbg/.test(location.hash)){ add('<p class="ans" style="font-size:.85rem">🔧 '+esc(String(m))+'</p>','a'); } }
+function dbg(){}
 function answer(q,scope){
   var r=search(q,scope), top=r.res.filter(function(d){ return d.k==='p'; }).slice(0,6);
   if(!top.length||top[0]._s<1.4||!window.fetch||location.protocol==='file:'){ return answerLocal(q,scope); }
