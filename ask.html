@@ -71,7 +71,7 @@ html[data-theme="dark"] .qa .k{ color:var(--gold); }
 .typing{ display:inline-flex; gap:4px; padding:4px 2px; } .typing i{ width:7px; height:7px; border-radius:50%; background:var(--ink2); opacity:.5; animation:bl 1s infinite; } .typing i:nth-child(2){ animation-delay:.15s; } .typing i:nth-child(3){ animation-delay:.3s; }
 @keyframes bl{ 50%{ opacity:1; transform:translateY(-3px); } }
 :focus-visible{ outline:3px solid var(--blue); outline-offset:2px; }
-@media (max-width:560px){ .top p{ display:none; } .box select{ display:none; } .hero{ padding-top:22px; } }
+@media (max-width:560px){ .top h1{ white-space:nowrap; font-size:1.05rem; } .top{ gap:9px; padding:8px 10px; } .top .back{ padding:8px 6px; font-size:.85rem; } .top p{ display:none; } .box select{ display:none; } .hero{ padding-top:22px; } }
 @media (prefers-reduced-motion:reduce){ *{ animation:none!important; transition:none!important; } }
 </style>
 </head>
@@ -94,7 +94,7 @@ html[data-theme="dark"] .qa .k{ color:var(--gold); }
 <div class="bar">
   <form class="box" id="form" autocomplete="off">
     <select id="scope" aria-label="نطاق البحث"><option value="">كل الكتاب</option></select>
-    <textarea id="qin" rows="1" placeholder="اكتب سؤالك… مثل: ما المقصود بالحضارة؟" aria-label="سؤالك"></textarea>
+    <textarea id="qin" rows="1" placeholder="اكتب سؤالك هنا…" aria-label="سؤالك"></textarea>
     <button class="mic" id="mic" type="button" aria-label="اسأل بصوتك" title="اسأل بصوتك" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
     <button class="send" type="submit" aria-label="إرسال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button>
   </form>
