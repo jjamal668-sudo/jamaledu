@@ -3,7 +3,7 @@ const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 const J = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { "content-type": "application/json; charset=utf-8" } });
 export default async (req) => {
   if (req.method !== "POST") return J({ error: "method" }, 405);
-  const key = process.env.GEMINI_API_KEY;
+  const key = process.env.GEMINI_API_KEY || process.env.GEMENI_API_KEY;
   if (!key) return J({ error: "nokey" }, 503);
   let b; try { b = await req.json(); } catch { return J({ error: "bad" }, 400); }
   const q = String(b.q || "").slice(0, 300).trim();
