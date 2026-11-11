@@ -846,6 +846,38 @@ html .pb-all b{ color:#101B33 !important; -webkit-text-fill-color:#101B33 !impor
   html body:has(#view-home.active) #view-home .hx{ margin-top:-104px !important; padding-top:150px !important; }
   html body:has(.view.active > .pband, .view.active > :not(.hidden) > .pband) .view.active .pband{ margin-top:-104px !important; padding-top:140px !important; }
 } }
+/* ===== الجوال فقط: الألعاب شبكة عمودين، والخرائط مجموعات بصفوف مرتبة ===== */
+.sk-h{ display:none; }
+@media (max-width:600px){
+  /* الألعاب */
+  html #view-games .vgrid{ grid-template-columns:1fr 1fr !important; gap:10px !important; }
+  html #view-games .lesson-card.vcard{ border-radius:16px; }
+  html #view-games .vc-th{ aspect-ratio:1/1; }
+  html #view-games .vc-th img{ width:100%; height:100%; object-fit:cover; }
+  html #view-games .vc-badge{ top:7px; inset-inline-start:7px; padding:2px 8px; font-size:.64rem; }
+  html #view-games .vc-bd{ padding:9px 10px 10px; gap:2px; }
+  html #view-games .vc-meta{ font-size:.66rem !important; line-height:1.45; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  html #view-games .lesson-card.vcard h3{ font-size:.95rem !important; line-height:1.4; margin:0; }
+  html #view-games .lesson-card.vcard p{ font-size:.72rem !important; line-height:1.55; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; margin:0; }
+  html #view-games .lesson-card.vcard .go{ display:none; }
+
+  /* الخرائط والمهارات */
+  html #view-skills .vgrid{ grid-template-columns:1fr !important; gap:8px !important; }
+  html #view-skills .sk-h{ display:flex; align-items:center; gap:8px; margin:12px 2px 2px; font-weight:900; font-size:.95rem; color:var(--ink); }
+  html[data-theme="dark"] #view-skills .sk-h{ color:#F1EEE4; }
+  html #view-skills .sk-h span{ font-size:1rem; }
+  html #view-skills .sk-h[data-grp="m"]{ order:0; margin-top:0; } html #view-skills [data-grp="m"].lesson-card{ order:1; }
+  html #view-skills .sk-h[data-grp="t"]{ order:2; } html #view-skills [data-grp="t"].lesson-card{ order:3; }
+  html #view-skills .sk-h[data-grp="s"]{ order:4; } html #view-skills [data-grp="s"].lesson-card{ order:5; }
+  html #view-skills .lesson-card.vcard{ display:grid; grid-template-columns:96px minmax(0,1fr); align-items:center; border-radius:16px; min-height:0; }
+  html #view-skills .vc-th{ grid-row:1/3; aspect-ratio:auto; height:100%; min-height:78px; border-bottom:0 !important; border-inline-end:1px solid var(--line); }
+  html #view-skills .vc-th img{ width:100%; height:100%; object-fit:cover; }
+  html #view-skills .vc-badge{ display:none; }
+  html #view-skills .vc-bd{ padding:10px 12px 0; gap:2px; }
+  html #view-skills .lesson-card.vcard h3{ font-size:.95rem !important; line-height:1.4; margin:0; }
+  html #view-skills .lesson-card.vcard p{ font-size:.74rem !important; line-height:1.55; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin:0; }
+  html #view-skills .lesson-card.vcard .go{ padding:2px 12px 10px !important; font-size:.76rem !important; }
+}
 /* ===== ضغط المقدمة ورؤوس الصفحات والتذييل على الجوال ===== */
 .unit-tabs,.qz-scroll{ -webkit-mask-image:linear-gradient(to right,transparent 0,#000 30px); mask-image:linear-gradient(to right,transparent 0,#000 30px); padding-inline-end:30px; }
 @media (max-width:760px){
@@ -1911,62 +1943,63 @@ html[data-theme="dark"] #view-home .ask-cta i{ color:#F5B72E; }
       <div class="pband" style="--g:linear-gradient(135deg,#0F6F68,#2560A6)"><button class="back-btn" onclick="showView('home')">→ الرئيسية</button>
       <header class="pg-head"><span class="pg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div class="pg-tx"><span class="pg-eye">خرائط ومهارات</span><h2>الخرائط والمهارات</h2><p>مسارات زمنية وخرائط تعرض معلومات الكتاب عند اللمس</p></div></header></div>
       <div class="grade-grid vgrid">
-        <a class="lesson-card vcard" href="skills/surface_map.html" style="--bc:#0F766E;--bcl:#5EEAD4">
+        <div class="sk-h" data-grp="m"><span>🗺️</span>خرائط تفاعلية</div><div class="sk-h" data-grp="t"><span>⏳</span>مسارات وتاريخ</div><div class="sk-h" data-grp="s"><span>📊</span>مهارات إحصائية</div>
+        <a class="lesson-card vcard" data-grp="m" href="skills/surface_map.html" style="--bc:#0F766E;--bcl:#5EEAD4">
           <span class="vc-th"><img src="img/th/surface_map.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">خريطة تفاعلية</b></span>
           <div class="vc-bd"><h3>خريطة مظاهر سطح الكويت</h3><p>الهضاب والتلال والسهول والأودية والكثبان والجزر والرؤوس والخلجان — كل معلم في موضعه الصحيح كما في الكتاب</p></div>
           <span class="go">افتح الخريطة ←</span>
         </a>
-        <a class="lesson-card vcard" href="skills/winds_map.html" style="--bc:#0F766E;--bcl:#5EEAD4">
+        <a class="lesson-card vcard" data-grp="m" href="skills/winds_map.html" style="--bc:#0F766E;--bcl:#5EEAD4">
           <span class="vc-th"><img src="img/th/winds_map.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">خريطة تفاعلية</b></span>
           <div class="vc-bd"><h3>خريطة الرياح في الكويت</h3><p>الشمالية الغربية والشمالية الشرقية والجنوبية الشرقية — مع السموم والكوس والسرايات</p></div>
           <span class="go">افتح الخريطة ←</span>
         </a>
-        <a class="lesson-card vcard" href="skills/kuwait_map.html" style="--bc:#0F766E;--bcl:#5EEAD4">
+        <a class="lesson-card vcard" data-grp="m" href="skills/kuwait_map.html" style="--bc:#0F766E;--bcl:#5EEAD4">
           <span class="vc-th"><img src="img/th/kuwait_map.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">خريطة تفاعلية</b></span>
           <div class="vc-bd"><div class="vc-meta">خريطة واختبار</div><h3>الموقع النسبي لدولة الكويت</h3><p>العراق شمالًا وشمالًا غربًا، السعودية جنوبًا وجنوبًا غربًا، والخليج العربي شرقًا — اكتشفها ثم اختبر نفسك</p></div>
           <span class="go">افتح الخريطة ←</span>
         </a>
-        <a class="lesson-card vcard" href="skills/kuwait_map_grid.html" style="--bc:#0F766E;--bcl:#5EEAD4">
+        <a class="lesson-card vcard" data-grp="m" href="skills/kuwait_map_grid.html" style="--bc:#0F766E;--bcl:#5EEAD4">
           <span class="vc-th"><img src="img/th/kuwait_map_grid.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">خريطة تفاعلية</b></span>
           <div class="vc-bd"><h3>الموقع الفلكي لدولة الكويت</h3><p>خطوط الطول ودوائر العرض — اضغط على أي خط لتكتشف قيمته بالضبط</p></div>
           <span class="go">افتح الخريطة ←</span>
         </a>
-        <a class="lesson-card vcard" href="skills/migration_skill.html" style="--bc:#0F766E;--bcl:#5EEAD4">
+        <a class="lesson-card vcard" data-grp="m" href="skills/migration_skill.html" style="--bc:#0F766E;--bcl:#5EEAD4">
           <span class="vc-th"><img src="img/th/migration_skill.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">خريطة تفاعلية</b></span>
           <div class="vc-bd"><h3>خط سير هجرة العتوب</h3><p>حدد محطات الرحلة الأربع بالترتيب على الخريطة الأصلية من كتابكم</p></div>
           <span class="go">افتح النشاط ←</span>
         </a>
-        <a class="lesson-card vcard" href="skills/atoub_film.html" style="--bc:#0F766E;--bcl:#5EEAD4">
+        <a class="lesson-card vcard" data-grp="t" href="skills/atoub_film.html" style="--bc:#0F766E;--bcl:#5EEAD4">
           <span class="vc-th"><img src="img/th/atoub_film.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">عرض سينمائي</b></span>
           <div class="vc-bd"><h3>رحلة العتوب سينمائية</h3><p>كاميرا تتبع مسار الهجرة على خريطة الكتاب، وتقف عند كل محطة بنص الكتاب</p></div>
           <span class="go">ابدأ العرض ←</span>
         </a>
-        <a class="lesson-card vcard" href="skills/archaeo_map.html" style="--bc:#0F766E;--bcl:#5EEAD4">
+        <a class="lesson-card vcard" data-grp="m" href="skills/archaeo_map.html" style="--bc:#0F766E;--bcl:#5EEAD4">
           <span class="vc-th"><img src="img/th/archaeo_map.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">خريطة تفاعلية</b></span>
           <div class="vc-bd"><h3>المناطق الأثرية والتاريخية</h3><p>الصبية وفيلكا ووارة وكاظمة وغيرها — كل موقع على خريطة الكتاب كما هي</p></div>
           <span class="go">افتح الخريطة ←</span>
         </a>
-        <a class="lesson-card vcard" href="skills/borders_map.html" style="--bc:#0F766E;--bcl:#5EEAD4">
+        <a class="lesson-card vcard" data-grp="m" href="skills/borders_map.html" style="--bc:#0F766E;--bcl:#5EEAD4">
           <span class="vc-th"><img src="img/th/borders_map.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">خريطة تفاعلية</b></span>
           <div class="vc-bd"><h3>حدود الكويت والمنافذ البرية</h3><p>العبدلي والسالمي والنويصيب، مع الجارتين والحدود البحرية على الخليج العربي</p></div>
           <span class="go">افتح الخريطة ←</span>
         </a>
-        <a class="lesson-card vcard" href="skills/timeline_order.html" style="--bc:#4F46E5;--bcl:#A5B4FC">
+        <a class="lesson-card vcard" data-grp="t" href="skills/timeline_order.html" style="--bc:#4F46E5;--bcl:#A5B4FC">
           <span class="vc-th"><img src="img/th/timeline_order.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">تحدٍّ فردي</b></span>
           <div class="vc-bd"><div class="vc-meta">خط زمني تفاعلي</div><h3>مسيرة دولة الكويت</h3><p>رتّب ٦ أحداث تاريخية من الأقدم إلى الأحدث، ثم تحقق من ترتيبك</p></div>
           <span class="go">افتح النشاط ←</span>
         </a>
-        <a class="lesson-card vcard" href="skills/rulers_tree.html" style="--bc:#15803D;--bcl:#86EFAC">
+        <a class="lesson-card vcard" data-grp="t" href="skills/rulers_tree.html" style="--bc:#15803D;--bcl:#86EFAC">
           <span class="vc-th"><img src="img/th/rulers_tree.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">شجرة تفاعلية</b></span>
           <div class="vc-bd"><h3>شجرة حكام دولة الكويت</h3><p>من الحاكم الأول إلى الأمير الحالي — بصورهم الحقيقية من الكتاب</p></div>
           <span class="go">افتح الشجرة ←</span>
         </a>
-        <a class="lesson-card vcard" href="skills/pie_population.html" style="--bc:#1D4ED8;--bcl:#93C5FD">
+        <a class="lesson-card vcard" data-grp="s" href="skills/pie_population.html" style="--bc:#1D4ED8;--bcl:#93C5FD">
           <span class="vc-th"><img src="img/th/pie_population.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">مهارة إحصائية</b></span>
           <div class="vc-bd"><h3>قراءة الدائرة البيانية</h3><p>التركيب السكاني للكويت قبيل ١٩٩٠م — اضغط على كل قسم لتكتشف نسبته</p></div>
           <span class="go">افتح النشاط ←</span>
         </a>
-        <a class="lesson-card vcard" href="skills/pie_bubiyan.html" style="--bc:#1D4ED8;--bcl:#93C5FD">
+        <a class="lesson-card vcard" data-grp="s" href="skills/pie_bubiyan.html" style="--bc:#1D4ED8;--bcl:#93C5FD">
           <span class="vc-th"><img src="img/th/pie_bubiyan.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">مهارة إحصائية</b></span>
           <div class="vc-bd"><h3>مساحة جزيرة بوبيان</h3><p>دائرة بيانية توضح ٥٪ من مساحة الكويت — ارسمها بنفسك ثم تحقق من إجابتك</p></div>
           <span class="go">افتح النشاط ←</span>
