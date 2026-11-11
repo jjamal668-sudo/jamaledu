@@ -637,6 +637,62 @@ html[data-theme="dark"] .hm4-units > li:nth-child(5n+5) .hm4-unit{ --uc:#C99AD8;
 }
 @media (prefers-reduced-motion:reduce){ #view-home .hm5-c{ animation:none; } }
 
+/* ===== الواجهة الجديدة: لوحة كحلية ذهبية تضم الترويسة والبحث ===== */
+#view-home .hx{ position:relative; z-index:6; margin:4px 0 20px; padding:22px 20px 20px; border-radius:30px; color:#fff; background:radial-gradient(520px 300px at 0% 0%,rgba(245,183,46,.20),transparent 62%), radial-gradient(460px 320px at 100% 100%,rgba(108,90,224,.42),transparent 65%), linear-gradient(140deg,#0D152C 0%,#16255A 58%,#22308A 100%); box-shadow:0 30px 60px -34px rgba(16,27,51,.75), inset 0 1px 0 rgba(255,255,255,.14); animation:gpRise .8s cubic-bezier(.2,.9,.25,1) backwards; }
+html[data-theme="dark"] #view-home .hx{ background:radial-gradient(520px 300px at 0% 0%,rgba(245,183,46,.22),transparent 62%), radial-gradient(460px 320px at 100% 100%,rgba(140,110,255,.5),transparent 65%), linear-gradient(140deg,#17245A 0%,#27308F 55%,#4532B4 100%); box-shadow:0 0 0 1px rgba(255,255,255,.14), 0 30px 60px -30px rgba(0,0,0,.8); }
+#view-home .hx-bg{ position:absolute; inset:0; overflow:hidden; border-radius:inherit; pointer-events:none; }
+#view-home .hx-bg::after{ content:""; position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,.10) 1px,transparent 1.4px); background-size:22px 22px; -webkit-mask-image:linear-gradient(to left,#000,transparent 70%); mask-image:linear-gradient(to left,#000,transparent 70%); }
+#view-home .hx-art{ position:absolute; left:-6px; top:50%; height:118%; width:auto; max-width:62%; transform:translateY(-52%); opacity:.9; -webkit-mask-image:linear-gradient(to right,#000 55%,transparent 98%); mask-image:linear-gradient(to right,#000 55%,transparent 98%); }
+#view-home .hx-ring{ transform-origin:122px 104px; animation:hxSpin 80s linear infinite; }
+#view-home .hx-stars circle{ animation:hxTw 3.4s ease-in-out infinite; } #view-home .hx-stars circle:nth-child(2n){ animation-delay:1.2s; } #view-home .hx-stars circle:nth-child(3n){ animation-delay:2.1s; }
+#view-home .hx-dhow{ animation:hxBob 5.5s ease-in-out infinite; transform-origin:250px 180px; }
+@keyframes hxSpin{ to{ transform:rotate(360deg); } } @keyframes hxTw{ 50%{ opacity:.25; } } @keyframes hxBob{ 50%{ transform:translateY(-3px) rotate(-1.4deg); } }
+#view-home .hx-tx{ position:relative; max-width:560px; }
+#view-home .hx-hi{ display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:.84rem; color:#F8D27A; }
+#view-home .hx-hi i{ width:7px; height:7px; border-radius:50%; background:#F5B72E; box-shadow:0 0 0 4px rgba(245,183,46,.22); }
+html #view-home .hx h2{ margin:8px 0 0; font-family:'Cairo','Segoe UI','Noto Sans Arabic','Geeza Pro',Arial,sans-serif; font-weight:900; font-size:clamp(1.5rem,6.4vw,2.9rem); line-height:1.3; color:#fff !important; text-wrap:balance; max-width:11em; }
+html #view-home .hx h2 em{ font-style:normal; display:block; background:linear-gradient(90deg,#FFD66B,#F5B72E 45%,#FF9E6B); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+html #view-home .hx .gp-search{ position:relative; z-index:20; max-width:620px; margin:18px 0 0; }
+html #view-home .hx .gp-field{ height:56px; gap:8px; padding:0 14px 0 7px; border-radius:99px; background:#fff; border:0; -webkit-backdrop-filter:none; backdrop-filter:none; color:#3355D6; box-shadow:0 18px 34px -18px rgba(0,0,0,.6); transform:none; }
+html #view-home .hx .gp-field:focus-within{ box-shadow:0 0 0 4px rgba(245,183,46,.55), 0 18px 34px -18px rgba(0,0,0,.6); }
+html #view-home .hx .gp-field input{ color:#101B33; font-size:max(1rem,16px); min-width:0; }
+html #view-home .hx .gp-field input::placeholder{ color:#5B6680; }
+html #view-home .hx .gp-clear{ background:#EEF1FB; color:#101B33; }
+#view-home .hx-ask{ flex:none; display:inline-flex; align-items:center; gap:7px; height:42px; padding:0 15px; border-radius:99px; background:linear-gradient(135deg,#F7C548,#F09A2E); color:#1A1405; text-decoration:none; font-weight:900; font-size:.86rem; white-space:nowrap; box-shadow:0 8px 16px -8px rgba(240,154,46,.9); transition:transform .2s, filter .2s; }
+html #view-home .hx .hx-ask svg{ width:18px; height:18px; flex:none; stroke:#1A1405; fill:none; stroke-width:2; }
+#view-home .hx-ask:active{ transform:scale(.95); } @media (hover:hover){ #view-home .hx-ask:hover{ filter:brightness(1.07); } }
+#view-home .hx-ask .sm{ display:none; }
+@media (max-width:389px){ #view-home .hx-ask .lg{ display:none; } #view-home .hx-ask .sm{ display:inline; } #view-home .hx-ask{ padding:0 13px; } }
+@media (min-width:1061px){ #view-home .hx{ padding:46px 52px 44px; border-radius:36px; margin-top:10px; } #view-home .hx-art{ left:3%; max-width:46%; height:112%; } html #view-home .hx .gp-field{ height:62px; } #view-home .hx-ask{ height:46px; padding:0 20px; font-size:.95rem; } #view-home .hx-hi{ font-size:.95rem; } }
+@media (prefers-reduced-motion:reduce){ #view-home .hx, #view-home .hx-ring, #view-home .hx-stars circle, #view-home .hx-dhow{ animation:none; } }
+/* على الجوال والآيباد: الترويسة تندمج داخل اللوحة في الرئيسية */
+@supports selector(:has(*)){ @media (max-width:1060px){
+  body:has(#view-home.active) header.site{ position:relative; top:auto; z-index:8; background:none !important; border:0 !important; border-image:none !important; box-shadow:none !important; -webkit-backdrop-filter:none !important; backdrop-filter:none !important; margin-bottom:0; }
+  body:has(#view-home.active) header.site .brand h1{ color:#fff !important; background:none !important; -webkit-text-fill-color:#fff !important; }
+  body:has(#view-home.active) header.site .brand h1 *{ color:#fff !important; -webkit-text-fill-color:#fff !important; }
+  body:has(#view-home.active) header.site .brand p{ color:#F8D27A !important; }
+  body:has(#view-home.active) header.site .share-btn{ color:#fff !important; background:rgba(255,255,255,.12) !important; border-color:rgba(255,255,255,.2) !important; }
+  body:has(#view-home.active) #view-home .hx{ margin-top:-78px; padding-top:92px; }
+} }
+@media (min-width:1061px){ #view-home .hx{ max-width:920px; margin-inline:auto; padding:40px 44px 38px; } }
+@media (max-width:1060px){ #view-home .hx-art{ max-width:46%; height:auto; width:46%; top:auto; bottom:64px; transform:none; opacity:.62; } }
+html[data-theme="dark"] #view-home .hx .gp-field{ background:#fff; border:0; box-shadow:0 18px 34px -18px rgba(0,0,0,.6); }
+html[data-theme="dark"] #view-home .hx .gp-field:focus-within{ border:0; box-shadow:0 0 0 4px rgba(245,183,46,.55), 0 18px 34px -18px rgba(0,0,0,.6); }
+html[data-theme="dark"] #view-home .hx .gp-field input{ color:#101B33; } html[data-theme="dark"] #view-home .hx .gp-field input::placeholder{ color:#5B6680; }
+html[data-theme="dark"] #view-home .hx .gp-field > svg{ color:#3355D6; stroke:#3355D6; }
+@supports selector(:has(*)){ @media (max-width:1060px){
+  html[data-theme] body:has(#view-home.active) header.site, html body:has(#view-home.active) header.site{ background:none !important; border:0 !important; border-image:none !important; box-shadow:none !important; outline:0 !important; }
+  body:has(#view-home.active) header.site::before, body:has(#view-home.active) header.site::after{ display:none !important; }
+  body:has(#view-home.active) header.site .brand{ min-width:0; }
+  body:has(#view-home.active) header.site .brand h1{ font-size:clamp(.92rem,4.3vw,1.15rem) !important; white-space:nowrap; }
+} }
+html #view-home .hx .gp-field{ background:#fff !important; border:0 !important; -webkit-backdrop-filter:none !important; backdrop-filter:none !important; box-shadow:0 18px 34px -18px rgba(0,0,0,.6) !important; }
+html #view-home .hx .gp-field:focus-within{ box-shadow:0 0 0 4px rgba(245,183,46,.55), 0 18px 34px -18px rgba(0,0,0,.6) !important; }
+html #view-home .hx .gp-field input{ color:#101B33 !important; } html #view-home .hx .gp-field input::placeholder{ color:#5B6680 !important; }
+html #view-home .hx .gp-field > svg{ color:#3355D6 !important; }
+html #view-home .hx .hx-ask svg{ color:#1A1405 !important; }
+@media (max-width:1060px){ #view-home .hx-art{ width:56%; max-width:56%; bottom:64px; opacity:.78; } }
+@supports selector(:has(*)){ @media (max-width:1060px){ body:has(#view-home.active) header.site .brand h1{ font-size:clamp(.74rem,3.8vw,1.15rem) !important; } body:has(#view-home.active) header.site .hdr-in{ gap:8px; } } }
 /* ===== ضغط المقدمة ورؤوس الصفحات والتذييل على الجوال ===== */
 .unit-tabs,.qz-scroll{ -webkit-mask-image:linear-gradient(to right,transparent 0,#000 30px); mask-image:linear-gradient(to right,transparent 0,#000 30px); padding-inline-end:30px; }
 @media (max-width:760px){
@@ -1618,26 +1674,30 @@ html[data-theme="dark"] #view-home .ask-cta i{ color:#F5B72E; }
   <main>
 
     <section id="view-home" class="view active"><div class="gp-aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      <section class="gp-hero" aria-label="مقدمة">
-        <div class="gp-hero-text">
-          <span class="gp-eyebrow">الاجتماعيات · المرحلة الثانوية</span>
-          <h2>تعلّم الاجتماعيات <em>بطريقة تفاعلية</em></h2>
-          <form class="gp-search" role="search" onsubmit="return false" autocomplete="off">
-            <div class="gp-field">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
-              <input id="gpQ" type="search" inputmode="search" enterkeyhint="search" placeholder="ابحث عن درس… مثل: العتوب" aria-label="ابحث في الدروس والمفاهيم" aria-expanded="false" aria-controls="gpRes">
-              <button type="button" class="gp-clear" aria-label="مسح البحث">×</button>
-            </div>
-            <div class="gp-results" id="gpRes" role="listbox" hidden></div>
-          </form>
-          <a class="ask-cta" href="ask.html"><span class="ask-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4.6 9.3 4.8 12 6.5c2.7-1.7 5.5-1.9 8-1v13c-2.5-.9-5.3-.7-8 1-2.7-1.7-5.5-1.9-8-1z"/><path d="M12 6.5v13"/></svg></span><span><b>عندك سؤال؟ اسأل الكتاب</b><small>جواب من كتابك مع رقم الصفحة</small></span><i aria-hidden="true">←</i></a>
+      <section class="hx" aria-label="مقدمة">
+        <div class="hx-bg" aria-hidden="true">
+          <svg class="hx-art" viewBox="0 0 320 210" fill="none" stroke="#F5B72E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <g class="hx-ring"><circle cx="122" cy="104" r="84" stroke-dasharray="2 9" opacity=".55"/><circle cx="122" cy="104" r="62" opacity=".18"/><path d="M122 12v12M122 184v12M30 104h12M202 104h12" opacity=".6"/></g>
+            <g class="hx-stars" fill="#F5B72E" stroke="none"><circle cx="52" cy="40" r="1.6"/><circle cx="196" cy="30" r="1.3"/><circle cx="232" cy="66" r="1.7"/><circle cx="28" cy="92" r="1.2"/><circle cx="268" cy="34" r="1.2"/><path d="M286 78a11 11 0 1 1-9-17 8.5 8.5 0 0 0 9 17z" opacity=".9"/></g>
+            <g><path d="M80 192L84.5 96 89 192" /><path d="M112 192L122 30 132 192" fill="rgba(245,183,46,.10)"/><ellipse cx="122" cy="128" rx="27" ry="22" fill="rgba(16,27,51,.92)"/><ellipse cx="122" cy="128" rx="27" ry="22" fill="rgba(245,183,46,.16)"/><path d="M96 124q26 9 52 0M99 138q23 7 46 0M110 108q-7 20 0 40M134 108q7 20 0 40" opacity=".6"/><ellipse cx="122" cy="82" rx="13.5" ry="11" fill="rgba(16,27,51,.92)"/><ellipse cx="122" cy="82" rx="13.5" ry="11" fill="rgba(245,183,46,.16)"/><path d="M109 80q13 5 26 0" opacity=".6"/>
+            <path d="M160 192L167 66 174 192" fill="rgba(245,183,46,.08)"/><ellipse cx="167" cy="134" rx="19" ry="16" fill="rgba(16,27,51,.92)"/><ellipse cx="167" cy="134" rx="19" ry="16" fill="rgba(245,183,46,.16)"/><path d="M149 131q18 7 36 0M152 142q15 5 30 0" opacity=".6"/></g>
+            <g class="hx-dhow"><path d="M212 170q34 13 78 -3l-9 17q-30 9 -58 0z" fill="rgba(245,183,46,.16)"/><path d="M248 172V112"/><path d="M250 114q34 12 36 50l-36 5z" fill="rgba(245,183,46,.12)"/><path d="M246 120q-20 14 -24 44l24 4z" opacity=".7"/></g>
+            <path d="M8 192h304" opacity=".5"/><path d="M14 201q10-5 20 0t20 0 20 0 20 0 20 0 20 0 20 0 20 0 20 0 20 0 20 0 20 0 20 0 20 0" opacity=".35"/>
+          </svg>
         </div>
-        <div class="gp-scene" aria-hidden="true"><div class="gp-stage"><div class="gp-float">
-          <div class="gp-sl s3"><span class="t"></span><span></span><span class="w"></span></div>
-          <div class="gp-sl s2"><span class="t"></span><span class="w"></span><span></span></div>
-          <div class="gp-sl s1"><div class="rg"></div><span class="t"></span><span></span><span class="w"></span></div>
-          <div class="gp-gem"><i></i><i></i><u><svg class="gp-lg" viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="jg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101B33"/><stop offset="1" stop-color="#1D3585"/></linearGradient></defs><rect width="120" height="120" rx="30" fill="url(#jg2)"/><rect x=".75" y=".75" width="118.5" height="118.5" rx="29.5" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/><g transform="translate(24.44,64.56) scale(0.106,-0.106)"><path d="M528 -319Q441 -375 331 -375Q211 -375 139 -299Q70 -226 70 -107Q70 18 143 89Q175 120 212.5 136.0Q250 152 346 175Q433 196 469 224Q400 345 303 345Q221 345 128 258V369Q211 461 317 461Q396 461 470.0 404.0Q544 347 601 242V192Q571 140 524.5 113.0Q478 86 377 62Q270 37 234 5Q191 -35 191 -108Q191 -254 344 -254Q442 -254 528 -200Z" fill="#fff"/></g><g transform="translate(60.90,75.48) scale(1.3)"><circle r="8.4" fill="none" stroke="#F5B72E" stroke-width="2.6"/><path d="M0 -7.6 L2.9 0 L0 7.6 L-2.9 0Z" fill="#F5B72E"/><path d="M-7.6 0 L0 -1.9 L7.6 0 L0 1.9Z" fill="#F5B72E" opacity=".6"/><circle r="1.6" fill="#101B33"/></g></svg></u></div>
-        </div></div></div>
+        <div class="hx-tx">
+          <span class="hx-hi"><i aria-hidden="true"></i><span id="hxHi">أهلًا بك</span></span>
+          <h2>تعلّم الاجتماعيات <em>بطريقة تفاعلية</em></h2>
+        </div>
+        <form class="gp-search" role="search" onsubmit="return false" autocomplete="off">
+          <div class="gp-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+            <input id="gpQ" type="search" inputmode="search" enterkeyhint="search" placeholder="ابحث عن درس…" aria-label="ابحث في الدروس والمفاهيم أو اكتب سؤالك" aria-expanded="false" aria-controls="gpRes">
+            <button type="button" class="gp-clear" aria-label="مسح البحث">×</button>
+            <a class="hx-ask" id="gpAsk" href="ask.html" title="اسأل الكتاب: جواب من كتابك مع رقم الصفحة" aria-label="اسأل الكتاب"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5C6.5 4.6 9.3 4.8 12 6.5c2.7-1.7 5.5-1.9 8-1v13c-2.5-.9-5.3-.7-8 1-2.7-1.7-5.5-1.9-8-1z"/><path d="M12 6.5v13"/></svg><span class="lg">اسأل الكتاب</span><span class="sm">اسأل</span></a>
+          </div>
+          <div class="gp-results" id="gpRes" role="listbox" hidden></div>
+        </form>
       </section>
       <div class="hm5">
         <a class="lesson-card hm5-c" href="#presentations" onclick="showView('presentations');return false" style="--g:linear-gradient(135deg,#4257D6,#6C5AE0);--bc:#9A5B13;--bcl:#F0B56A;--i:3">
@@ -4217,4 +4277,5 @@ function ccDark(hex){ try{ var c=parseInt(String(hex).replace('#',''),16), r=c>>
 </html>
 
 <script>(function(){var t=document.querySelector('.hdr-tools');if(!t)return;var y=window.scrollY,tk=false;function f(){tk=false;var n=window.scrollY,d=n-y;if(n<80||d<-6){t.classList.remove('tools-hide');}else if(d>8){t.classList.add('tools-hide');}if(Math.abs(d)>6)y=n;}window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(f);}},{passive:true});t.addEventListener('focusin',function(){t.classList.remove('tools-hide');});})();</script>
+<script>(function(){var h=document.getElementById('hxHi');if(h){var t=new Date().getHours();h.textContent=(t>=4&&t<12?'صباح الخير':'مساء الخير')+'، شنو بنراجع اليوم؟';}var a=document.getElementById('gpAsk'),q=document.getElementById('gpQ');if(a&&q){a.addEventListener('click',function(){var v=(q.value||'').trim();a.href=v?('ask.html#q='+encodeURIComponent(v)):'ask.html';});}})();</script>
 </body></html>
