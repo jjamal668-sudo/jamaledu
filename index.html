@@ -662,22 +662,6 @@ html[data-theme="dark"] .hm4-units > li:nth-child(5n+5) .hm4-unit{ --uc:#C99AD8;
   html footer.site{ padding-top:14px; font-size:.82rem; line-height:1.8; }
 }
 
-/* ===== مقدمة الرئيسية: سطر عنوان + خانة واحدة للبحث وسؤال الكتاب ===== */
-html #view-home .gp-field{ padding-inline-end:8px; }
-html #view-home .gp-ask{ flex:none; display:inline-flex; align-items:center; gap:7px; height:42px; padding:0 15px; border-radius:99px; background:linear-gradient(135deg,#4257D6,#6C5AE0); color:#fff; text-decoration:none; font-weight:800; font-size:.86rem; white-space:nowrap; box-shadow:0 8px 18px -10px #4257D6; transition:transform .2s, filter .2s; }
-html #view-home .gp-ask svg{ width:18px; height:18px; flex:none; stroke:#fff; }
-html #view-home .gp-ask:active{ transform:scale(.96); }
-@media (hover:hover){ html #view-home .gp-ask:hover{ filter:brightness(1.1); } }
-html #view-home .gp-search.has-q .gp-ask{ box-shadow:0 0 0 3px rgba(108,90,224,.28), 0 8px 18px -10px #4257D6; }
-@media (max-width:360px){ html #view-home .gp-ask span{ display:none; } html #view-home .gp-ask{ padding:0 12px; } }
-@media (max-width:760px){
-  html #view-home .gp-eyebrow{ display:none; }
-  html #view-home .gp-hero{ padding-top:2px; margin-bottom:14px; }
-  html #view-home .gp-hero h2{ font-size:clamp(1.05rem,5vw,1.3rem); margin:6px 0 0; white-space:nowrap; }
-  html #view-home .gp-search{ margin-top:10px; }
-  html #view-home .gp-field{ height:56px; }
-}
-
 /* بطاقات الرئيسية ملوّنة بألوان الأقسام */
 html #view-home .hm5-c{ background:var(--g) !important; border:1px solid rgba(255,255,255,.22) !important; color:#fff !important; box-shadow:0 18px 34px -20px color-mix(in srgb,var(--bc) 80%,#000) !important; }
 html #view-home .hm5-c h3{ color:#fff !important; }
@@ -1641,12 +1625,12 @@ html[data-theme="dark"] #view-home .ask-cta i{ color:#F5B72E; }
           <form class="gp-search" role="search" onsubmit="return false" autocomplete="off">
             <div class="gp-field">
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
-              <input id="gpQ" type="search" inputmode="search" enterkeyhint="search" placeholder="ابحث أو اكتب سؤالك…" aria-label="ابحث في الدروس والمفاهيم" aria-expanded="false" aria-controls="gpRes">
+              <input id="gpQ" type="search" inputmode="search" enterkeyhint="search" placeholder="ابحث عن درس… مثل: العتوب" aria-label="ابحث في الدروس والمفاهيم" aria-expanded="false" aria-controls="gpRes">
               <button type="button" class="gp-clear" aria-label="مسح البحث">×</button>
-              <a class="gp-ask" id="gpAsk" href="ask.html" title="اسأل الكتاب: جواب من كتابك مع رقم الصفحة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5C6.5 4.6 9.3 4.8 12 6.5c2.7-1.7 5.5-1.9 8-1v13c-2.5-.9-5.3-.7-8 1-2.7-1.7-5.5-1.9-8-1z"/><path d="M12 6.5v13"/></svg><span>اسأل الكتاب</span></a>
             </div>
             <div class="gp-results" id="gpRes" role="listbox" hidden></div>
           </form>
+          <a class="ask-cta" href="ask.html"><span class="ask-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4.6 9.3 4.8 12 6.5c2.7-1.7 5.5-1.9 8-1v13c-2.5-.9-5.3-.7-8 1-2.7-1.7-5.5-1.9-8-1z"/><path d="M12 6.5v13"/></svg></span><span><b>عندك سؤال؟ اسأل الكتاب</b><small>جواب من كتابك مع رقم الصفحة</small></span><i aria-hidden="true">←</i></a>
         </div>
         <div class="gp-scene" aria-hidden="true"><div class="gp-stage"><div class="gp-float">
           <div class="gp-sl s3"><span class="t"></span><span></span><span class="w"></span></div>
@@ -4233,5 +4217,4 @@ function ccDark(hex){ try{ var c=parseInt(String(hex).replace('#',''),16), r=c>>
 </html>
 
 <script>(function(){var t=document.querySelector('.hdr-tools');if(!t)return;var y=window.scrollY,tk=false;function f(){tk=false;var n=window.scrollY,d=n-y;if(n<80||d<-6){t.classList.remove('tools-hide');}else if(d>8){t.classList.add('tools-hide');}if(Math.abs(d)>6)y=n;}window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(f);}},{passive:true});t.addEventListener('focusin',function(){t.classList.remove('tools-hide');});})();</script>
-<script>(function(){var a=document.getElementById('gpAsk'),q=document.getElementById('gpQ');if(!a||!q)return;a.addEventListener('click',function(){var v=(q.value||'').trim();a.href=v?('ask.html#q='+encodeURIComponent(v)):'ask.html';});})();</script>
 </body></html>
