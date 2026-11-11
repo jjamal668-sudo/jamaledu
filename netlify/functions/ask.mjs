@@ -29,7 +29,7 @@ export default async (req) => {
     });
     if (!r.ok) return J({ error: "upstream", status: r.status }, 502);
     const d = await r.json();
-    const t = (d.candidates?.[0]?.content?.parts || []).map((p) => p.text || "").join("").trim();
+    const t = (d.candidates?.[0]?.content?.parts || []).filter((p) => !p.thought).map((p) => p.text || "").join("").trim();
     if (!t) return J({ error: "nothing" }, 502);
     return J({ answer: t });
   } catch { return J({ error: "fail" }, 502); }
