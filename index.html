@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -904,6 +903,10 @@ footer.site .ft-links a, #view-contact a[href^="mailto"]{ display:inline-block; 
 /* إخفاء وصف الدروس تحت العناوين في العروض التقديمية (يبقى للبحث) */
 html #view-presentations .lesson-card:not(.vcard) p{ display:none !important; }
 html #view-presentations .lesson-card:not(.vcard) h3{ margin-bottom:0 !important; }
+/* سفاري آيباد/آيفون الحديث: المحتوى يمتد تحت شريط المتصفح؛ ننزل الرأس فقط والخلفية الكحلية تغطي الأعلى */
+header.site{ margin-top:env(safe-area-inset-top,0px); }
+.pband::before{ top:calc(-1 * env(safe-area-inset-top,0px)) !important; }
+.hx-bg{ top:calc(-1 * env(safe-area-inset-top,0px)) !important; }
 /* ===== ضغط المقدمة ورؤوس الصفحات والتذييل على الجوال ===== */
 .unit-tabs,.qz-scroll{ -webkit-mask-image:linear-gradient(to right,transparent 0,#000 30px); mask-image:linear-gradient(to right,transparent 0,#000 30px); padding-inline-end:30px; }
 @media (max-width:760px){
