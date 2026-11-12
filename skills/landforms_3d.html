@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>المظاهر التضاريسية ثلاثية الأبعاد — منصة جمال التعليمية</title>
+<script>(function(){try{if(localStorage.getItem("jamalTheme")==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F2EC; --card:#FFFFFF; --ink:#101B33; --sub:#3E4A63; --mut:#5B6680; --edge:rgba(16,27,51,.12);
+  --gold:#C9971C; --goldL:#F5B72E; --navy:#14245A;
+  --g1:#B8740F; --g2:#C2410C; --g3:#0E7490;
+  --stage1:#E9F1F7; --stage2:#F8EEDC;
+}
+html[data-theme="dark"]{
+  --paper:#0A1022; --card:#131D38; --ink:#EEF2FA; --sub:#C3CCE0; --mut:#9AA8C6; --edge:rgba(255,255,255,.14);
+  --stage1:#16264D; --stage2:#2A2436;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Tajawal',system-ui,sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;
+  background-image:radial-gradient(rgba(16,27,51,.06) 1.2px,transparent 1.3px),radial-gradient(800px 520px at 95% -8%,rgba(245,183,46,.20),transparent 62%),radial-gradient(800px 600px at -10% 20%,rgba(66,87,214,.14),transparent 62%);
+  background-size:24px 24px,auto,auto}
+html[data-theme="dark"] body{background-image:radial-gradient(rgba(255,255,255,.05) 1.2px,transparent 1.3px),radial-gradient(800px 520px at 95% -8%,rgba(255,170,90,.18),transparent 62%),radial-gradient(800px 600px at -10% 20%,rgba(110,130,255,.22),transparent 62%)}
+.page{max-width:1240px;margin:0 auto;padding:max(14px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 40px max(16px,env(safe-area-inset-left))}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:6px 0 14px}
+header h1{font-family:'Cairo',Tajawal,sans-serif;font-weight:900;font-size:clamp(1.15rem,2.6vw,1.6rem);margin:0;line-height:1.35}
+header p{margin:.2rem 0 0;font-size:.86rem;color:var(--mut)}
+.hbtns{display:flex;gap:8px;align-items:center}
+.back,.tg{font-family:inherit;font-weight:800;font-size:.86rem;color:var(--ink);text-decoration:none;background:var(--card);border:1.5px solid var(--edge);padding:.5em 1.05em;border-radius:999px;cursor:pointer}
+.tg{padding:.45em .8em}
+.tabs{display:flex;gap:8px;margin:0 0 14px}
+.tab{font-family:'Cairo',Tajawal,sans-serif;font-weight:800;font-size:.98rem;padding:.55em 1.3em;border-radius:999px;border:1.5px solid var(--edge);background:var(--card);color:var(--mut);cursor:pointer}
+.tab.on{background:var(--goldL);border-color:var(--goldL);color:#101B33}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:18px;align-items:start}
+.stage{position:relative;border-radius:26px;overflow:hidden;min-height:420px;aspect-ratio:4/3.1;max-width:100%;
+  background:linear-gradient(180deg,var(--stage1),var(--stage2));border:1.5px solid var(--edge);box-shadow:0 30px 60px -30px rgba(16,27,51,.45);touch-action:none;cursor:grab}
+.stage:active{cursor:grabbing}
+.stage canvas{display:block;width:100%;height:100%}
+.lbl{position:absolute;left:0;top:0;transform:translate(-50%,-100%);pointer-events:none;transition:opacity .3s}
+.lbl span{display:block;font-family:'Cairo',Tajawal,sans-serif;font-weight:800;font-size:.95rem;color:#fff;background:#101B33;padding:.25em .85em;border-radius:999px;white-space:nowrap;box-shadow:0 8px 20px -6px rgba(0,0,0,.45)}
+.lbl i{display:block;width:2px;height:26px;margin:0 auto;background:#101B33}
+.hud{position:absolute;inset:auto 12px 12px auto;display:flex;gap:6px}
+.hud button{width:40px;height:40px;border-radius:12px;border:1.5px solid var(--edge);background:var(--card);color:var(--ink);font-size:1.1rem;font-weight:800;cursor:pointer}
+.hint{position:absolute;top:12px;right:12px;font-size:.8rem;font-weight:700;color:var(--sub);background:color-mix(in srgb,var(--card) 82%,transparent);border:1px solid var(--edge);padding:.35em .8em;border-radius:999px}
+.big{position:absolute;top:12px;left:12px;font-family:'Cairo',Tajawal,sans-serif;font-weight:900;font-size:clamp(1.2rem,3vw,1.8rem);color:var(--ink);text-shadow:0 2px 0 color-mix(in srgb,var(--card) 70%,transparent)}
+.side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.card{background:var(--card);border:1.5px solid var(--edge);border-radius:22px;padding:16px 18px;box-shadow:0 20px 44px -26px rgba(16,27,51,.4)}
+.card h3{font-family:'Cairo',Tajawal,sans-serif;font-weight:800;font-size:1.02rem;margin:0 0 10px}
+.grp{margin:0 0 12px}
+.grp:last-child{margin:0}
+.grp-h{display:flex;align-items:center;gap:8px;font-weight:800;font-size:.84rem;color:var(--mut);margin:0 0 7px}
+.grp-h i{width:10px;height:10px;border-radius:3px;background:var(--c)}
+.words{display:flex;flex-wrap:wrap;gap:7px}
+.w{font-family:'Cairo',Tajawal,sans-serif;font-weight:800;font-size:.95rem;padding:.42em 1em;border-radius:999px;border:2px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 9%,var(--card));color:var(--ink);cursor:pointer;transition:transform .15s}
+.w:hover{transform:translateY(-2px)}
+.w.on{background:var(--c);border-color:var(--c);color:#fff}
+.info .tagx{display:inline-block;font-size:.78rem;font-weight:800;color:#fff;background:var(--c);padding:.2em .8em;border-radius:999px}
+.info h2{font-family:'Cairo',Tajawal,sans-serif;font-weight:900;font-size:1.45rem;margin:.35rem 0 .4rem}
+.info p{margin:0 0 .6rem;font-size:1rem;line-height:1.85;color:var(--sub)}
+.info p b{color:var(--ink)}
+.info .ex-h{font-weight:800;font-size:.86rem;margin:.6rem 0 .4rem;color:var(--ink)}
+.ex{display:flex;flex-wrap:wrap;gap:6px}
+.ex span{font-size:.86rem;font-weight:700;background:color-mix(in srgb,var(--c) 12%,var(--card));border:1px solid color-mix(in srgb,var(--c) 35%,transparent);padding:.25em .75em;border-radius:999px}
+.src{margin-top:.8rem;font-size:.78rem;color:var(--mut)}
+.pop{animation:pop .35s cubic-bezier(.3,1.4,.5,1) both}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.q h2{font-family:'Cairo',Tajawal,sans-serif;font-weight:900;font-size:1.2rem;margin:0 0 .3rem}
+.q p{margin:0 0 .8rem;color:var(--sub)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{font-family:'Cairo',Tajawal,sans-serif;font-weight:800;font-size:1rem;padding:.7em .6em;border-radius:14px;border:2px solid var(--edge);background:var(--card);color:var(--ink);cursor:pointer}
+.opt.ok{background:#15803D;border-color:#15803D;color:#fff}
+.opt.no{background:#B91C1C;border-color:#B91C1C;color:#fff}
+.opt:disabled{cursor:default}
+.qbar{display:flex;justify-content:space-between;align-items:center;margin:.9rem 0 0;font-weight:800;color:var(--sub)}
+.next{font-family:'Cairo',Tajawal,sans-serif;font-weight:900;font-size:1rem;padding:.55em 1.4em;border-radius:999px;border:0;background:var(--goldL);color:#101B33;cursor:pointer}
+.fb{margin:.7rem 0 0;font-size:.95rem;line-height:1.8;color:var(--sub)}
+.foot{margin-top:18px;text-align:center;font-size:.8rem;color:var(--mut)}
+[hidden]{display:none!important}
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .stage{aspect-ratio:auto;height:min(62vh,520px);min-height:340px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div>
+      <h1>المظاهر التضاريسية بالأبعاد الثلاثة</h1>
+      <p>الدرس الثاني: مظاهر سطح الأرض في دولة الكويت · الوحدة الرابعة · من صفحات ٩٥–٩٨ في الكتاب</p>
+    </div>
+    <div class="hbtns">
+      <button class="tg" id="tg" type="button" aria-label="تبديل الوضع الليلي"></button>
+      <a class="back" href="../index.html#skills">← المنصة</a>
+    </div>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button class="tab on" id="tabE" type="button">استكشف</button>
+    <button class="tab" id="tabQ" type="button">اختبر نفسك</button>
+  </div>
+
+  <div class="grid">
+    <div class="stage" id="stage">
+      <div class="hint" id="hint">اسحب لتدوير المجسّم</div>
+      <div class="big" id="big"></div>
+      <div class="lbl" id="lbl"><span id="lblT"></span><i></i></div>
+      <div class="hud">
+        <button type="button" id="zin" aria-label="تكبير">+</button>
+        <button type="button" id="zout" aria-label="تصغير">−</button>
+        <button type="button" id="spin" aria-label="إيقاف الدوران أو تشغيله">⟳</button>
+      </div>
+    </div>
+
+    <div class="side">
+      <div id="explore">
+        <div class="card" style="margin-bottom:12px">
+          <h3>اضغط على أي مظهر لتراه بالأبعاد الثلاثة</h3>
+          <div id="groups"></div>
+        </div>
+        <div class="card info" id="info"></div>
+      </div>
+      <div id="quiz" hidden>
+        <div class="card q" id="qcard"></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">المصدر: كتاب الاجتماعيات للصف العاشر — الوحدة الرابعة، الدرس الثاني (ص ٩٥–٩٨). المجسّمات توضيحية لشكل كل مظهر.</div>
+</div>
+
+<script src="../js/three.min.js"></script>
+<script>
+(function(){
+'use strict';
+/* ===== المحتوى: من الكتاب ص ٩٥–٩٨ ===== */
+var GROUPS=[
+  {id:'s',name:'مظاهر السطح',c:'#B8740F'},
+  {id:'d',name:'أشكال صحراوية',c:'#C2410C'},
+  {id:'c',name:'أشكال ساحلية',c:'#0E7490'}
+];
+var F=[
+ {id:'plateau',g:'s',name:'الهضاب',one:'هضبة',page:'٩٥',
+  def:'هي <b>أرض مرتفعة عن سطح البحر</b> تتميز <b>بسطحها المنبسط أو المستوي نسبيًا</b>، وتمتد لمساحة واسعة.',
+  more:'ومن أمثلتها هضبة الأحمدي في جنوب دولة الكويت، ويبلغ ارتفاعها ما بين (١٢٥–١٣٧ مترًا تقريبًا) عن سطح البحر.',
+  ex:['هضبة الأحمدي']},
+ {id:'hills',g:'s',name:'التلال',one:'تلال',page:'٩٦',
+  def:'هي <b>أراضٍ مرتفعة عمّا يحيط بها</b>، لكنها <b>أقل ارتفاعًا من الجبال</b>، وتظهر في دولة الكويت مجموعة من التلال قليلة الارتفاع.',
+  more:'<b>التلال الشمالية:</b> من أبرزها تلال جال الزور، وهو حافة صخرية تمتد بمحاذاة الساحل الشمالي الغربي لجون الكويت، وتلال كراع المرو والليّاح.<br><b>التلال الجنوبية:</b> من أبرزها تل وارة وتلال برقان.',
+  ex:['جال الزور','كراع المرو','الليّاح','تل وارة','تلال برقان']},
+ {id:'plains',g:'s',name:'السهول',one:'سهل',page:'٩٦',
+  def:'<b>مساحة واسعة من الأراضي المنبسطة أو المستوية</b> قليلة الارتفاع.',
+  more:'ومنها سهل الدبدبة الذي يقع في الجزء الغربي والجنوبي من دولة الكويت، وسهل العدان جنوب الكويت.',
+  ex:['سهل الدبدبة','سهل العدان']},
+ {id:'wadis',g:'s',name:'الوديان',one:'وادٍ',page:'٩٦',
+  def:'هي <b>مجارٍ مائية قديمة</b> نشأت بفعل جريان مياه الأمطار الغزيرة، <b>ثم جفّت مع مرور الزمن</b>.',
+  more:'ومن أبرزها وادي الباطن الذي يمتد بمحاذاة الحدود الغربية لدولة الكويت باتجاه شمال شرقي وجنوب غربي. كما توجد بعض المنخفضات الصحراوية ومنها منخفض أم الرمم في شمال شرق الكويت.',
+  ex:['وادي الباطن','منخفض أم الرمم']},
+ {id:'dunes',g:'d',name:'الكثبان الرملية',one:'كثبان',page:'٩٧',
+  def:'هي <b>تجمعات رملية تتكوّن بفعل الرياح</b>، وتظهر على شكل <b>تلال منفردة أو سلاسل من التلال الرملية</b>.',
+  more:'ومن أمثلتها كثبان الهويملية وأم نقا والصقيهية.',
+  ex:['الهويملية','أم نقا','الصقيهية']},
+ {id:'khabari',g:'d',name:'الخباري',one:'خبرة',page:'٩٧',
+  def:'هي <b>منخفضات صحراوية تتجمع فيها مياه الأمطار والسيول بصورة مؤقتة</b>، ثم تتناقص مياهها تدريجيًا بفعل التبخر والتسرب إلى التربة.',
+  more:'ومن أمثلتها في دولة الكويت: خباري أم العيش والروضتين.',
+  ex:['أم العيش','الروضتين']},
+ {id:'islands',g:'c',name:'الجزر',one:'جزيرة',page:'٩٧',
+  def:'تُعد جزر دولة الكويت من <b>أشكال السطح الساحلية البارزة</b>، ويبلغ عددها <b>تسع جزر</b>.',
+  more:'تُعد جزيرة بوبيان أكبر الجزر الكويتية مساحة (حوالي ٥٪ من مساحة دولة الكويت)، وفيها يُنفَّذ مشروع ميناء مبارك الكبير، بينما تُعد جزيرة قاروه أصغرها. وقد أسهم موقعها في دعم النشاط البحري والتجاري والملاحة والصيد.',
+  ex:['بوبيان','وربة','فيلكا','مسكان','عوهة','أم النمل','أم المرادم','كبر','قاروه']},
+ {id:'bays',g:'c',name:'الخلجان',one:'خليج',page:'٩٨',
+  def:'يتكوّن الساحل الكويتي من عدد من الخلجان، ويُعد <b>جون الكويت</b> أكبرها وأبرزها، وهو <b>مسطح مائي ضحل يمتد داخل اليابسة</b> في منتصف الشريط الساحلي.',
+  more:'ويتفرع منه خليج كاظمة غربًا وخليج الصليبخات جنوب غرب، كما يُعد موطنًا طبيعيًا للعديد من الكائنات البحرية والطيور.',
+  ex:['جون الكويت','خليج كاظمة','خليج الصليبخات']},
+ {id:'capes',g:'c',name:'الرؤوس',one:'رأس',page:'٩٨',
+  def:'هي <b>أجزاء من اليابس تمتد داخل البحر</b>.',
+  more:'ومن أمثلتها في الكويت: رأس الأرض، ورأس عجوزة بالقرب من أبراج الكويت، ورأس كاظمة، ورأس الصبية، ورأس عشيرج، ورأس الجليعة، ورأس الزور، وتسهم في تنوع شكل الساحل الكويتي.',
+  ex:['رأس الأرض','رأس عجوزة','رأس كاظمة','رأس الصبية','رأس عشيرج','رأس الجليعة','رأس الزور']},
+ {id:'khors',g:'c',name:'الأخوار',one:'خور',page:'٩٨',
+  def:'هي <b>ممرات مائية ضيقة تمتد من البحر إلى داخل اليابسة</b>.',
+  more:'ومن أمثلتها: خور عبدالله وهو من أكبر الأخوار في دولة الكويت، وخور الصبية، وخور بوبيان، وخور المفتح، وخور العمي. وتكمن أهميتها في دعم تنوع الحياة البحرية والفطرية، والملاحة والمشاريع السياحية والترفيهية مثل منتزه الخيران.',
+  ex:['خور عبدالله','خور الصبية','خور بوبيان','خور المفتح','خور العمي']}
+];
+var GC={};GROUPS.forEach(function(g){GC[g.id]=g;});
+
+/* ===== التضاريس ===== */
+var N=150,S=10,H=S/2,SEA=-0.55,BASE=-1.25;
+function hash(x,y){var s=Math.sin(x*127.1+y*311.7)*43758.5453;return s-Math.floor(s);}
+function vnoise(x,y){var xi=Math.floor(x),yi=Math.floor(y),xf=x-xi,yf=y-yi;var u=xf*xf*(3-2*xf),v=yf*yf*(3-2*yf);
+  var a=hash(xi,yi),b=hash(xi+1,yi),c=hash(xi,yi+1),d=hash(xi+1,yi+1);return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v;}
+function fbm(x,y){return vnoise(x,y)*.6+vnoise(x*2.1,y*2.1)*.28+vnoise(x*4.3,y*4.3)*.12;}
+function ss(a,b,x){var t=Math.min(1,Math.max(0,(x-a)/(b-a)));return t*t*(3-2*t);}
+function g2(x,z,cx,cz,sx,sz){var dx=(x-cx)/sx,dz=(z-cz)/sz;return Math.exp(-(dx*dx+dz*dz));}
+/* كل دالة ترجع [الارتفاع, نوع اللون]  نوع: 0 رمل 1 صخر/حافة 2 رمل ذهبي 3 قاع 4 طين/سبخة */
+var SHAPE={
+ plateau:function(x,z){var d=Math.pow(Math.pow(Math.abs(x/3.1),4)+Math.pow(Math.abs(z/2.3),4),.25);
+   var top=ss(1.08,.86,d);var h=.08+fbm(x*.8,z*.8)*.12+top*1.55+ (top>.98?fbm(x*2,z*2)*.03:0);return [h,top>.05&&top<.97?1:0];},
+ hills:function(x,z){var h=.08+fbm(x*.7,z*.7)*.12;
+   h+=1.5*g2(x,z,-1.5,-.5,1.45,1.3)+1.15*g2(x,z,1.5,-1.5,1.2,1.15)+.95*g2(x,z,.9,1.8,1.25,1.05)+.7*g2(x,z,-2.9,2.3,1.0,.95)+.65*g2(x,z,3.3,1.2,.95,1.0);
+   h+=fbm(x*1.6,z*1.6)*.08*Math.min(1,h);return [h,0];},
+ plains:function(x,z){return [.12+fbm(x*.5,z*.5)*.07,0];},
+ wadis:function(x,z){var cx=.9*Math.sin(z*.55)+.3*Math.sin(z*1.3);var d=Math.abs(x-cx);
+   var bank=ss(.3,1.25,d);return [.62*bank+.05+fbm(x*.9,z*.9)*.1,0];},
+ dunes:function(x,z){var t=x*.62+.55*Math.sin(z*.45)+.2*Math.sin(z*1.1+1);var f=t-Math.floor(t);
+   var prof=f<.72? Math.pow(ss(0,.72,f),1.3): 1-ss(.72,1,f); var mask=.45+.55*fbm(z*.35+3,x*.25);
+   return [.08+prof*.78*mask+fbm(x*1.2,z*1.2)*.06,2];},
+ khabari:function(x,z){var r2=(x*x)/7+(z*z)/4.5;var dep=Math.exp(-r2*1.2);var h=.28+fbm(x*.6,z*.6)*.12-.62*dep;return [h,dep>.45?4:0];},
+ islands:function(x,z){var h=SEA-.35+fbm(x*.5,z*.5)*.12;
+   h=Math.max(h,SEA-.4+ .95*g2(x,z,-.6,.2,2.0,1.4)+ .1*fbm(x*2,z*2));
+   h=Math.max(h,SEA-.4+ .7*g2(x,z,2.8,-2.3,.8,.65));
+   h=Math.max(h,SEA-.4+ .62*g2(x,z,2.6,2.6,.6,.55));return [h,0];},
+ bays:function(x,z){var coast=-2.2+3.6*Math.exp(-(z*z)/4.2); var land=ss(-.35,.35,x-coast);
+   var h=SEA-.35+land*(.75+fbm(x*.6,z*.6)*.15);return [h,0];},
+ capes:function(x,z){var coast=1.6; var u=ss(-3.4,coast,x); var w=.25+1.9*u*u; var pen=ss(.3,-.3,Math.abs(z+.25*Math.sin(x*.8))-w)*ss(-3.7,-3.1,x);
+   var land=Math.max(ss(-.3,.3,x-coast),pen);
+   var h=SEA-.35+land*(.62+.12*u+fbm(x*.6,z*.6)*.15);return [h,0];},
+ khors:function(x,z){var coast=-2.6; var land=ss(-.3,.3,x-coast);
+   var cz=.55*Math.sin(x*.9)+.2*Math.sin(x*2.1); var wdt=.55*(1-ss(-2.6,3.8,x))+.24; var ch=ss(wdt,wdt*.4,Math.abs(z-cz))*(x<3.8?1:0)*ss(4.2,3.4,x);
+   land=land*(1-ch);var h=SEA-.35+land*(.7+fbm(x*.6,z*.6)*.15);return [h,0];}
+};
+var WATER={plateau:null,hills:null,plains:null,wadis:null,dunes:null,khabari:.02,islands:SEA,bays:SEA,capes:SEA,khors:SEA};
+var ANCH={plateau:[0,1.75,0],hills:[-1.5,1.7,-.5],plains:[0,.22,0],wadis:[.0,.2,0],dunes:[-.4,.95,.2],khabari:[0,.1,0],islands:[-.6,.5,.2],bays:[-1.2,-.5,0],capes:[-1.6,.3,0],khors:[.6,-.5,.55]};
+var PAL=[[.91,.82,.62],[.69,.51,.33],[.93,.74,.42],[.62,.55,.45],[.72,.68,.58]];
+
+/* ===== المشهد ===== */
+var stage=document.getElementById('stage');
+var R=new THREE.WebGLRenderer({antialias:true,alpha:true});
+R.setPixelRatio(Math.min(2,window.devicePixelRatio||1));R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;
+stage.insertBefore(R.domElement,stage.firstChild);
+var scene=new THREE.Scene();
+var cam=new THREE.PerspectiveCamera(38,1,.1,100);
+scene.add(new THREE.HemisphereLight(0xFFF1DA,0x5A4A38,.5));
+var sun=new THREE.DirectionalLight(0xFFF6E8,1.05);sun.position.set(-6,9,5);sun.castShadow=true;
+sun.shadow.mapSize.set(1024,1024);var sc=sun.shadow.camera;sc.left=-7;sc.right=7;sc.top=7;sc.bottom=-7;sc.near=1;sc.far=30;sun.shadow.bias=-.0015;
+scene.add(sun);
+
+var geo=new THREE.PlaneGeometry(S,S,N,N);geo.rotateX(-Math.PI/2);
+var pos=geo.attributes.position, NV=pos.count;
+var cur=new Float32Array(NV), tgt=new Float32Array(NV), colC=new Float32Array(NV*3), colT=new Float32Array(NV*3);
+geo.setAttribute('color',new THREE.BufferAttribute(new Float32Array(NV*3),3));
+var mat=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.95,metalness:0,flatShading:false});
+var land=new THREE.Mesh(geo,mat);land.castShadow=true;land.receiveShadow=true;scene.add(land);
+
+/* جوانب المجسّم */
+var skG=new THREE.BufferGeometry(), SK=4*(N+1), skPos=new Float32Array(SK*2*3), skIdx=[];
+for(var e=0;e<4;e++){for(var i=0;i<N;i++){var a=(e*(N+1)+i)*2;skIdx.push(a,a+1,a+2,a+1,a+3,a+2);}}
+skG.setAttribute('position',new THREE.BufferAttribute(skPos,3));skG.setIndex(skIdx);
+var skin=new THREE.Mesh(skG,new THREE.MeshStandardMaterial({color:0xA27A52,roughness:1,side:THREE.DoubleSide}));scene.add(skin);
+var bottom=new THREE.Mesh(new THREE.BoxGeometry(S,.06,S),new THREE.MeshStandardMaterial({color:0x6E5235}));bottom.position.y=BASE-.03;scene.add(bottom);
+function edgeIndex(e,i){ // ترتيب حواف الشبكة
+  if(e===0)return i; if(e===1)return N*(N+1)+i; if(e===2)return i*(N+1); return i*(N+1)+N;}
+
+var wMat=new THREE.MeshStandardMaterial({color:0x1F7FAE,transparent:true,opacity:0,roughness:.25,metalness:.1,depthWrite:false});
+var water=new THREE.Mesh(new THREE.BoxGeometry(S-.002,1,S-.002),wMat);scene.add(water);
+var wTop={y:SEA,o:0},wGoal={y:SEA,o:0};
+
+function build(id){
+  var fn=SHAPE[id],k,x,z;
+  for(k=0;k<NV;k++){x=pos.getX(k);z=pos.getZ(k);tgt[k]=fn(x,z)[0];}
+  var sea=WATER[id]===SEA, gold=id==='dunes', step=S/N;
+  for(k=0;k<NV;k++){x=pos.getX(k);z=pos.getZ(k);var c=k%(N+1),r=(k-c)/(N+1);
+    var hx=tgt[r*(N+1)+Math.min(N,c+1)]-tgt[r*(N+1)+Math.max(0,c-1)], hz=tgt[Math.min(N,r+1)*(N+1)+c]-tgt[Math.max(0,r-1)*(N+1)+c];
+    var slope=Math.sqrt(hx*hx+hz*hz)/(2*step), h=tgt[k], n=fbm(x*2.6,z*2.6);
+    var base=gold?[.93,.70,.36]:[.87,.74,.52];
+    var rock=[.62,.44,.28], dark=[.74,.60,.42];
+    var t=ss(.35,1.1,slope); var col=[0,0,0];
+    for(var i=0;i<3;i++){col[i]=base[i]+(rock[i]-base[i])*t;}
+    if(id==='wadis'){var bed=ss(.22,.08,h);for(i=0;i<3;i++)col[i]+=(([.66,.6,.5])[i]-col[i])*bed;}
+    if(id==='khabari'){var mud=ss(.2,-.02,h);for(i=0;i<3;i++)col[i]+=(([.6,.55,.45])[i]-col[i])*mud;}
+    if(sea){var wet=ss(SEA+.12,SEA-.02,h);for(i=0;i<3;i++)col[i]+=(([.72,.66,.52])[i]-col[i])*wet;}
+    var sh=.9+n*.2;colT[k*3]=col[0]*sh;colT[k*3+1]=col[1]*sh;colT[k*3+2]=col[2]*sh;}
+  var w=WATER[id];if(w==null){wGoal.o=0;}else{wGoal.o=.72;wGoal.y=w;}
+}
+var first=true;
+function applyFrame(k){
+  var col=geo.attributes.color.array;
+  for(var i=0;i<NV;i++){cur[i]+=(tgt[i]-cur[i])*k;pos.setY(i,cur[i]);
+    col[i*3]+=(colT[i*3]-col[i*3])*k;col[i*3+1]+=(colT[i*3+1]-col[i*3+1])*k;col[i*3+2]+=(colT[i*3+2]-col[i*3+2])*k;}
+  pos.needsUpdate=true;geo.attributes.color.needsUpdate=true;geo.computeVertexNormals();
+  for(var e=0;e<4;e++){for(var j=0;j<=N;j++){var vi=edgeIndex(e,j),a=(e*(N+1)+j)*2*3;
+    skPos[a]=pos.getX(vi);skPos[a+1]=cur[vi];skPos[a+2]=pos.getZ(vi);skPos[a+3]=pos.getX(vi);skPos[a+4]=BASE;skPos[a+5]=pos.getZ(vi);}}
+  skG.attributes.position.needsUpdate=true;skG.computeVertexNormals();
+  wTop.y+=(wGoal.y-wTop.y)*k;wTop.o+=(wGoal.o-wTop.o)*k;
+  var hgt=Math.max(.01,wTop.y-BASE);water.scale.y=hgt;water.position.y=BASE+hgt/2;wMat.opacity=wTop.o;water.visible=wTop.o>.02;
+}
+
+/* ===== الكاميرا والتحكم ===== */
+var th=-.75,ph=.92,rad=18,autoSpin=true,idle=0,drag=null,pinch=null;
+function size(){var w=stage.clientWidth,h=stage.clientHeight;R.setSize(w,h,false);cam.aspect=w/h;
+  var need=w<h?19.5*Math.pow(h/w,.9):18;if(!size.done){rad=need;size.done=1;}cam.updateProjectionMatrix();}
+function placeCam(){cam.position.set(rad*Math.sin(ph)*Math.sin(th),rad*Math.cos(ph),rad*Math.sin(ph)*Math.cos(th));cam.lookAt(0,-.1,0);}
+stage.addEventListener('pointerdown',function(e){if(e.target.closest('button'))return;drag={x:e.clientX,y:e.clientY,id:e.pointerId};stage.setPointerCapture(e.pointerId);idle=0;hideHint();});
+stage.addEventListener('pointermove',function(e){if(!drag||e.pointerId!==drag.id||pinch)return;th-=(e.clientX-drag.x)*.008;ph=Math.min(1.35,Math.max(.35,ph-(e.clientY-drag.y)*.006));drag.x=e.clientX;drag.y=e.clientY;idle=0;});
+stage.addEventListener('pointerup',function(){drag=null;});stage.addEventListener('pointercancel',function(){drag=null;});
+stage.addEventListener('wheel',function(e){e.preventDefault();zoom(e.deltaY>0?1.08:.92);},{passive:false});
+stage.addEventListener('touchstart',function(e){if(e.touches.length===2){pinch=dist(e);drag=null;}},{passive:true});
+stage.addEventListener('touchmove',function(e){if(e.touches.length===2&&pinch){var d=dist(e);zoom(pinch/d);pinch=d;}},{passive:true});
+stage.addEventListener('touchend',function(e){if(e.touches.length<2)pinch=null;});
+function dist(e){var a=e.touches[0],b=e.touches[1];return Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY);}
+function zoom(f){rad=Math.min(32,Math.max(8,rad*f));idle=0;}
+document.getElementById('zin').onclick=function(){zoom(.86);};
+document.getElementById('zout').onclick=function(){zoom(1.16);};
+var spinB=document.getElementById('spin');spinB.onclick=function(){autoSpin=!autoSpin;spinB.style.opacity=autoSpin?1:.55;};
+var hintEl=document.getElementById('hint');function hideHint(){hintEl.style.opacity=0;}
+
+/* ===== الملصق ===== */
+var lbl=document.getElementById('lbl'),lblT=document.getElementById('lblT'),big=document.getElementById('big');
+var curId=null,showLabel=true;
+function updLabel(){if(!curId||!showLabel){lbl.style.opacity=0;return;}
+  var a=ANCH[curId],v=new THREE.Vector3(a[0],a[1],a[2]);
+  if(WATER[curId]===SEA&&a[1]<SEA)v.y=wTop.y; v.project(cam);
+  var w=stage.clientWidth,h=stage.clientHeight;lbl.style.left=((v.x+1)/2*w)+'px';lbl.style.top=((1-v.y)/2*h-4)+'px';lbl.style.opacity=1;}
+
+var last=performance.now();
+function loop(t){requestAnimationFrame(loop);var dt=Math.min(.05,(t-last)/1000);last=t;
+  var k=first?1:1-Math.exp(-dt*3.2);first=false;applyFrame(k);
+  idle+=dt;if(autoSpin&&!drag&&idle>1.2)th+=dt*.16;
+  placeCam();R.render(scene,cam);updLabel();}
+
+/* ===== الواجهة ===== */
+var groupsEl=document.getElementById('groups'),info=document.getElementById('info');
+GROUPS.forEach(function(g){var d=document.createElement('div');d.className='grp';d.style.setProperty('--c',g.c);
+  d.innerHTML='<div class="grp-h"><i></i>'+g.name+'</div><div class="words"></div>';
+  F.filter(function(f){return f.g===g.id;}).forEach(function(f){var b=document.createElement('button');b.type='button';b.className='w';b.textContent=f.name;b.dataset.id=f.id;b.onclick=function(){show(f.id);};d.querySelector('.words').appendChild(b);});
+  groupsEl.appendChild(d);});
+function byId(id){for(var i=0;i<F.length;i++)if(F[i].id===id)return F[i];}
+function show(id){var f=byId(id),g=GC[f.g];curId=id;build(id);showLabel=true;lblT.textContent=f.name;big.textContent='';
+  [].forEach.call(document.querySelectorAll('.w'),function(b){b.classList.toggle('on',b.dataset.id===id);});
+  info.style.setProperty('--c',g.c);
+  info.innerHTML='<div class="pop"><span class="tagx">'+g.name+'</span><h2>'+f.name+'</h2><p>'+f.def+'</p><p>'+f.more+'</p>'+
+    '<div class="ex-h">أمثلة من دولة الكويت</div><div class="ex">'+f.ex.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>'+
+    '<div class="src">المصدر: كتاب الاجتماعيات، ص '+f.page+'</div></div>';
+  idle=0;}
+
+/* ===== اختبر نفسك ===== */
+var qcard=document.getElementById('qcard'),Q={n:0,score:0,order:[],total:10};
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function qStart(){Q.n=0;Q.score=0;Q.order=shuffle(F.map(function(f){return f.id;}));qAsk();}
+function qAsk(){if(Q.n>=Q.total){qEnd();return;}
+  var id=Q.order[Q.n],f=byId(id);curId=id;build(id);showLabel=false;big.textContent='؟';
+  var opts=[f];var others=shuffle(F.filter(function(x){return x.id!==id;}));
+  var same=others.filter(function(x){return x.g===f.g;}),diff=others.filter(function(x){return x.g!==f.g;});
+  opts=opts.concat(same.slice(0,2)).concat(diff).slice(0,4);shuffle(opts);
+  qcard.innerHTML='<div class="pop"><h2>ما هذا المظهر؟</h2><p>دوّر المجسّم وتأمّل شكله، ثم اختر اسمه.</p><div class="opts">'+
+    opts.map(function(o){return '<button type="button" class="opt" data-id="'+o.id+'">'+o.name+'</button>';}).join('')+
+    '</div><div class="fb" id="fb"></div><div class="qbar"><span>السؤال '+ar(Q.n+1)+' من '+ar(Q.total)+'</span><span>النتيجة: '+ar(Q.score)+'</span></div></div>';
+  [].forEach.call(qcard.querySelectorAll('.opt'),function(b){b.onclick=function(){qAnswer(b,id);};});}
+function qAnswer(b,id){var f=byId(id),ok=b.dataset.id===id;if(ok)Q.score++;
+  [].forEach.call(qcard.querySelectorAll('.opt'),function(x){x.disabled=true;if(x.dataset.id===id)x.classList.add('ok');else if(x===b)x.classList.add('no');});
+  showLabel=true;lblT.textContent=f.name;big.textContent='';
+  document.getElementById('fb').innerHTML=(ok?'<b>إجابة صحيحة.</b> ':'<b>الإجابة الصحيحة: '+f.name+'.</b> ')+f.def+
+    '<div style="margin-top:.6rem;text-align:left"><button type="button" class="next" id="nx">'+(Q.n+1>=Q.total?'النتيجة':'التالي ←')+'</button></div>';
+  document.getElementById('nx').onclick=function(){Q.n++;qAsk();};
+  qcard.querySelector('.qbar span:last-child').textContent='النتيجة: '+ar(Q.score);}
+function qEnd(){big.textContent='';showLabel=true;
+  qcard.innerHTML='<div class="pop"><h2>انتهى الاختبار</h2><p style="font-size:1.15rem">نتيجتك: <b>'+ar(Q.score)+' من '+ar(Q.total)+'</b></p><p>'+(Q.score>=8?'ممتاز! تميّز بين المظاهر التضاريسية بثقة.':Q.score>=5?'جيد، راجع المظاهر التي أخطأت فيها من تبويب «استكشف».':'ارجع إلى تبويب «استكشف» وتأمّل كل مظهر مع تعريفه، ثم حاول مرة أخرى.')+'</p><button type="button" class="next" id="again">أعد الاختبار</button></div>';
+  document.getElementById('again').onclick=qStart;}
+function ar(n){return String(n).replace(/\d/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[d];});}
+
+var tabE=document.getElementById('tabE'),tabQ=document.getElementById('tabQ');
+tabE.onclick=function(){tabE.classList.add('on');tabQ.classList.remove('on');document.getElementById('explore').hidden=false;document.getElementById('quiz').hidden=true;show(curId&&byId(curId)?curId:'plateau');};
+tabQ.onclick=function(){tabQ.classList.add('on');tabE.classList.remove('on');document.getElementById('explore').hidden=true;document.getElementById('quiz').hidden=false;qStart();};
+
+/* الوضع الليلي */
+var tg=document.getElementById('tg'),root=document.documentElement;
+function syncT(){tg.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙';}
+tg.onclick=function(){var d=root.getAttribute('data-theme')!=='dark';if(d)root.setAttribute('data-theme','dark');else root.removeAttribute('data-theme');try{localStorage.setItem('jamalTheme',d?'dark':'light');}catch(e){}syncT();};
+syncT();
+
+window.addEventListener('resize',size);size();
+show('plateau');requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
