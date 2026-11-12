@@ -907,6 +907,12 @@ html #view-presentations .lesson-card:not(.vcard) h3{ margin-bottom:0 !important
 header.site{ margin-top:env(safe-area-inset-top,0px); }
 .pband::before{ top:calc(-1 * env(safe-area-inset-top,0px)) !important; }
 .hx-bg{ top:calc(-1 * env(safe-area-inset-top,0px)) !important; }
+.jm-topbar{ position:fixed; top:0; left:0; right:0; height:env(safe-area-inset-top,0px); z-index:9990; pointer-events:none; background:linear-gradient(to right,#1C2A6B,#121D45); }
+body:has(#view-presentations.active) .jm-topbar{ background:linear-gradient(to right,#3B4FCF,#5A55DC); }
+body:has(#view-quiz.active) .jm-topbar{ background:linear-gradient(to right,#C7364C,#D8553E); }
+body:has(#view-skills.active) .jm-topbar{ background:linear-gradient(to right,#0F6F68,#1C6788); }
+body:has(#view-games.active) .jm-topbar{ background:linear-gradient(to right,#B8740F,#9A6309); }
+body:has(#view-contact.active) .jm-topbar{ background:linear-gradient(to right,#0D152C,#16255A); }
 /* ===== ضغط المقدمة ورؤوس الصفحات والتذييل على الجوال ===== */
 .unit-tabs,.qz-scroll{ -webkit-mask-image:linear-gradient(to right,transparent 0,#000 30px); mask-image:linear-gradient(to right,transparent 0,#000 30px); padding-inline-end:30px; }
 @media (max-width:760px){
@@ -1862,7 +1868,8 @@ html[data-theme="dark"] #view-home .ask-cta i{ color:#F5B72E; }
 </head>
 <body>
 
-  <header class="site">
+  <div class="jm-topbar" aria-hidden="true"></div>
+<header class="site">
   <div class="hdr-in">
     <button class="brand" type="button" onclick="showView('home')" aria-label="منصة جمال التعليمية — الرئيسية">
       <svg class="logo" viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="jg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101B33"/><stop offset="1" stop-color="#1D3585"/></linearGradient></defs><rect width="120" height="120" rx="30" fill="url(#jg)"/><rect x=".75" y=".75" width="118.5" height="118.5" rx="29.5" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/><g transform="translate(24.44,64.56) scale(0.106,-0.106)"><path d="M528 -319Q441 -375 331 -375Q211 -375 139 -299Q70 -226 70 -107Q70 18 143 89Q175 120 212.5 136.0Q250 152 346 175Q433 196 469 224Q400 345 303 345Q221 345 128 258V369Q211 461 317 461Q396 461 470.0 404.0Q544 347 601 242V192Q571 140 524.5 113.0Q478 86 377 62Q270 37 234 5Q191 -35 191 -108Q191 -254 344 -254Q442 -254 528 -200Z" fill="#fff"/></g><g transform="translate(60.90,75.48) scale(1.3)"><circle r="8.4" fill="none" stroke="#F5B72E" stroke-width="2.6"/><path d="M0 -7.6 L2.9 0 L0 7.6 L-2.9 0Z" fill="#F5B72E"/><path d="M-7.6 0 L0 -1.9 L7.6 0 L0 1.9Z" fill="#F5B72E" opacity=".6"/><circle r="1.6" fill="#101B33"/></g></svg>
