@@ -94,6 +94,21 @@ html[data-theme="dark"] .chevron{ color:#8F6B0E !important; }
 </style>
 <script id="jm-skin-js">(function(){var r=document.documentElement;try{if(localStorage.getItem("jamalTheme")==="dark"){r.setAttribute("data-theme","dark");}}catch(e){}
 document.addEventListener("DOMContentLoaded",function(){var b=document.createElement("button");b.className="jm-tg";b.type="button";b.setAttribute("aria-label","تبديل الوضع الليلي");function sync(){b.textContent=r.getAttribute("data-theme")==="dark"?"☀️":"🌙";}sync();b.onclick=function(){var d=r.getAttribute("data-theme")!=="dark";if(d){r.setAttribute("data-theme","dark");}else{r.removeAttribute("data-theme");}try{localStorage.setItem("jamalTheme",d?"dark":"light");}catch(e){}sync();};document.body.appendChild(b);});})();</script>
+<style id="jm-contrast">
+/* وضوح النصوص */
+.ph{color:rgba(38,50,74,.72) !important}
+.center-hint{fill:rgba(255,255,255,.92) !important;font-weight:700}
+.btn.check:disabled{opacity:.6 !important}
+html[data-theme="dark"] .ph{color:#AEB9D2 !important}
+html[data-theme="dark"] .card :is(.facts li,.why,.sw label){color:#C9D3EA !important}
+html[data-theme="dark"] .card .why b{color:#FFFFFF !important}
+html[data-theme="dark"] .chip{background:rgba(255,255,255,.08) !important;color:#E6ECF8 !important;border-color:rgba(255,255,255,.22) !important}
+html[data-theme="dark"] .chip.off{opacity:.5 !important}
+html[data-theme="dark"] .grp{border-top-color:rgba(255,255,255,.16) !important}
+html[data-theme="dark"] .grp summary{color:#E6ECF8 !important}
+html[data-theme="dark"] .plist button{background:rgba(255,255,255,.08) !important;color:#E6ECF8 !important;border-color:rgba(255,255,255,.22) !important}
+html[data-theme="dark"] .placeholder{color:#AEB9D2 !important}
+</style>
 </head>
 <body>
 <div class="wrap">
