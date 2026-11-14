@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>المحقق القانوني — منصة جمال التعليمية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700;800&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+:root{
+  --desk:#0E1630; --desk2:#16224A; --ink:#1B1A17; --sub:#4A4436; --paper:#F6EBCF; --paper2:#EAD8AE; --edge:#C9AE74;
+  --gold:#F5B72E; --red:#B4232A; --green:#1E7D4F; --navy:#14245A; --mut:#B9C2DA;
+  --theft:#B4232A; --fraud:#7C3AED; --breach:#0E7490;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Tajawal',system-ui,sans-serif;color:#EEF2FA;min-height:100vh;background:var(--desk);
+  background-image:radial-gradient(900px 600px at 85% -10%,rgba(245,183,46,.16),transparent 60%),radial-gradient(800px 700px at -10% 110%,rgba(90,110,220,.22),transparent 60%),repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 2px,transparent 2px 120px);}
+button{font-family:inherit}
+.page{max-width:1100px;margin:0 auto;padding:max(12px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 32px max(16px,env(safe-area-inset-left))}
+.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:6px 0 14px}
+.top .ttl{flex:1;min-width:0}
+.top h1{margin:0;font-family:'Cairo',sans-serif;font-weight:900;font-size:clamp(1.1rem,2.6vw,1.5rem);color:#fff}
+.top p{margin:.1rem 0 0;font-size:.82rem;color:var(--mut)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:.86rem;color:#fff;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.16);padding:.45em .95em;border-radius:999px;text-decoration:none;cursor:pointer}
+.pill.gold{background:var(--gold);border-color:var(--gold);color:#14130F}
+.pill svg{width:18px;height:18px}
+.hud{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.score b{font-family:'Cairo',sans-serif;font-size:1.05rem;color:var(--gold)}
+[hidden]{display:none!important}
+
+/* شاشة البداية */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;margin-top:8px}
+.hero h2{font-family:'Lalezar',serif;font-weight:400;font-size:clamp(2.6rem,7vw,4.4rem);line-height:1.05;margin:0;color:var(--gold);text-shadow:0 6px 30px rgba(0,0,0,.4)}
+.hero .lead{font-size:1.12rem;line-height:1.9;color:#DCE3F5;margin:.6rem 0 1.2rem}
+.badge-art{position:relative;aspect-ratio:1;max-width:360px;margin:0 auto;width:100%}
+.modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 14px}
+.mode{all:unset;cursor:pointer;display:block;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.14);border-radius:18px;padding:12px 14px;transition:.2s}
+.mode b{display:block;font-family:'Cairo',sans-serif;font-weight:800;font-size:1rem;color:#fff}
+.mode span{display:block;font-size:.8rem;color:var(--mut);margin-top:2px}
+.mode.on{border-color:var(--gold);background:rgba(245,183,46,.14)}
+.mode:focus-visible{outline:3px solid var(--gold)}
+.start-row{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:900;font-size:1.1rem;padding:.7em 1.6em;border-radius:999px;background:var(--gold);color:#14130F;box-shadow:0 10px 26px -8px rgba(245,183,46,.6);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.3);box-shadow:none}
+
+/* ملف القضية */
+.board{display:flex;gap:6px;justify-content:center;margin:0 0 12px;flex-wrap:wrap}
+.board i{width:30px;height:8px;border-radius:99px;background:rgba(255,255,255,.14)}
+.board i.ok{background:#3BB273}.board i.half{background:var(--gold)}.board i.no{background:#E0525A}.board i.cur{background:#fff}
+.case{position:relative;background:var(--paper);color:var(--ink);border-radius:6px 22px 22px 22px;padding:30px clamp(18px,4vw,40px) 26px;transition:padding .3s;box-shadow:0 30px 60px -20px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.05);
+  background-image:linear-gradient(180deg,rgba(255,255,255,.35),transparent 30%),repeating-linear-gradient(0deg,transparent 0 37px,rgba(120,90,40,.10) 37px 38px);margin-top:26px}
+.case::before{content:"";position:absolute;top:-24px;right:0;width:200px;height:26px;background:var(--paper2);border-radius:14px 14px 0 0;box-shadow:inset 0 -2px 0 rgba(0,0,0,.05)}
+.case .tab{position:absolute;top:-20px;right:18px;font-family:'Cairo',sans-serif;font-weight:900;font-size:.9rem;color:#5B4A22}
+.case .secret{position:absolute;top:16px;left:18px;font-family:'Cairo',sans-serif;font-weight:900;font-size:.85rem;color:var(--red);border:2.5px solid var(--red);padding:.1em .7em;border-radius:6px;transform:rotate(-8deg);opacity:.75;letter-spacing:.05em}
+.case h2{font-family:'Cairo',sans-serif;font-weight:900;font-size:clamp(1.3rem,3vw,1.75rem);margin:0 0 .6rem;color:#2A2416}
+.story{font-size:clamp(1.12rem,2.4vw,1.38rem);line-height:2.15;font-weight:500;margin:0}
+.story .seg{border-radius:6px;transition:background .2s,box-shadow .2s}
+.clue-on .story .cand{cursor:zoom-in;background:rgba(245,183,46,.16);box-shadow:inset 0 -2px 0 rgba(160,110,10,.55);padding:.05em .15em}
+.clue-on .story .cand:hover{background:rgba(245,183,46,.38)}
+.story .cand.good{background:rgba(30,125,79,.20)!important;box-shadow:inset 0 -3px 0 var(--green)!important;font-weight:800}
+.story .cand.bad{background:rgba(180,35,42,.16)!important;box-shadow:inset 0 -3px 0 var(--red)!important;text-decoration:line-through rgba(180,35,42,.5)}
+.shake{animation:shk .4s}
+@keyframes shk{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(4px)}}
+.stamp{position:absolute;left:clamp(14px,4vw,40px);bottom:clamp(14px,3vw,26px);font-family:'Lalezar',serif;font-size:clamp(1.8rem,5vw,2.8rem);line-height:1;color:var(--sc,var(--red));border:5px solid var(--sc,var(--red));border-radius:12px;padding:.18em .45em .05em;transform:rotate(-11deg);opacity:0;pointer-events:none;background:rgba(246,235,207,.4);mix-blend-mode:multiply}
+.case.stamped{padding-bottom:clamp(84px,12vw,110px)}
+.task:empty{display:none}
+.story .seg{display:inline;animation:segin .5s ease both;animation-delay:calc(var(--d,0)*120ms)}
+@keyframes segin{from{opacity:0}to{opacity:1}}
+.stamp.slam{animation:slam .45s cubic-bezier(.2,1.6,.4,1) forwards}
+@keyframes slam{0%{opacity:0;transform:rotate(-11deg) scale(2.6)}60%{opacity:.95;transform:rotate(-11deg) scale(.92)}100%{opacity:.9;transform:rotate(-11deg) scale(1)}}
+
+.task{margin-top:16px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.12);border-radius:22px;padding:16px clamp(14px,3vw,22px)}
+.task h3{margin:0 0 .25rem;font-family:'Cairo',sans-serif;font-weight:800;font-size:1.12rem;color:#fff;display:flex;align-items:center;gap:8px}
+.task h3 .n{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--gold);color:#14130F;font-size:.9rem}
+.task p.hint{margin:.1rem 0 .8rem;color:var(--mut);font-size:.95rem}
+.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ch{cursor:pointer;border:2px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:#fff;border-radius:18px;padding:14px 10px;text-align:center;transition:transform .15s,background .2s,border-color .2s}
+.ch:hover{transform:translateY(-3px);border-color:var(--c,var(--gold))}
+.ch svg{width:40px;height:40px;stroke:var(--c,#fff);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 auto 6px}
+.ch b{display:block;font-family:'Cairo',sans-serif;font-weight:900;font-size:1.12rem}
+.ch small{display:block;color:var(--mut);font-size:.78rem;margin-top:2px;line-height:1.5}
+.ch.ok{background:var(--green);border-color:var(--green)}
+.ch.no{background:#8E1D23;border-color:#8E1D23}
+.ch:disabled{cursor:default;transform:none}
+.subs{display:flex;flex-wrap:wrap;gap:8px}
+.subs .ch{flex:1 1 160px;padding:12px}
+.subs .ch b{font-size:1rem}
+.msg{margin-top:10px;font-weight:700;line-height:1.8;min-height:1.6em}
+.msg.bad{color:#FF9EA3}.msg.good{color:#8EE6B5}
+
+.verdict{margin-top:16px;background:#FFFDF6;color:var(--ink);border-radius:22px;padding:18px clamp(16px,3vw,26px);box-shadow:0 24px 50px -24px rgba(0,0,0,.6);animation:up .45s ease both;border-top:8px solid var(--vc,var(--navy))}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.verdict h3{margin:0 0 .5rem;font-family:'Cairo',sans-serif;font-weight:900;font-size:1.25rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.verdict .tag{font-size:.82rem;color:#fff;background:var(--vc);padding:.15em .8em;border-radius:999px}
+.verdict .row{display:grid;grid-template-columns:120px minmax(0,1fr);gap:8px 14px;padding:.55rem 0;border-top:1px dashed rgba(0,0,0,.14);font-size:1.02rem;line-height:1.85}
+.verdict .row b{color:var(--sub);font-family:'Cairo',sans-serif;font-size:.92rem}
+.verdict .def{background:rgba(245,183,46,.14);border-radius:12px;padding:.6rem .9rem;margin-top:.4rem;line-height:1.9}
+.verdict .src{font-size:.8rem;color:#7A7262;margin-top:.5rem}
+.verdict .nx{display:flex;justify-content:flex-start;margin-top:12px}
+.pts{display:inline-block;font-family:'Cairo',sans-serif;font-weight:900;color:var(--green)}
+
+/* الدليل */
+.hb{position:fixed;inset:0;z-index:50;background:rgba(5,9,22,.72);display:grid;place-items:center;padding:16px}
+.hb .in{background:#FFFDF6;color:var(--ink);border-radius:24px;max-width:760px;width:100%;max-height:88vh;overflow:auto;padding:22px clamp(16px,3vw,28px);box-shadow:0 40px 80px -20px rgba(0,0,0,.7)}
+.hb h2{font-family:'Cairo',sans-serif;font-weight:900;margin:0 0 .3rem}
+.hb .q{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:start;padding:.8rem 0;border-top:1px dashed rgba(0,0,0,.14)}
+.hb .q i{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--c);color:#fff;font-style:normal;font-family:'Cairo',sans-serif;font-weight:900}
+.hb .q b{font-family:'Cairo',sans-serif}
+.hb .q p{margin:.15rem 0 0;line-height:1.9;color:#3A362C}
+.hb .key{background:rgba(245,183,46,.16);border-radius:14px;padding:.8rem 1rem;line-height:1.9;margin:.6rem 0}
+.hb .close{float:left}
+
+/* محل الجريمة */
+.items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.item{background:var(--paper);color:var(--ink);border-radius:18px;padding:16px;text-align:center;font-family:'Cairo',sans-serif;font-weight:900;font-size:1.2rem;position:relative}
+.item svg{width:54px;height:54px;stroke:#5B4A22;fill:none;stroke-width:1.7;display:block;margin:0 auto 6px}
+.item .b2{display:flex;gap:6px;margin-top:10px}
+.item .b2 button{flex:1;border:2px solid #C9AE74;background:#fff;border-radius:12px;padding:.45em .3em;font-family:'Cairo',sans-serif;font-weight:800;font-size:.86rem;cursor:pointer;color:var(--ink)}
+.item.ok{outline:4px solid #3BB273}.item.no{outline:4px solid #E0525A}
+.item .r{font-family:'Tajawal';font-weight:700;font-size:.85rem;margin-top:8px;color:#3A362C;line-height:1.6}
+
+/* النهاية */
+.end{text-align:center;padding:10px 0}
+.end h2{font-family:'Lalezar',serif;font-weight:400;font-size:clamp(2.2rem,6vw,3.4rem);color:var(--gold);margin:.2rem 0}
+.medal{width:150px;height:150px;margin:0 auto}
+.end .sc{font-family:'Cairo',sans-serif;font-weight:900;font-size:1.4rem}
+.rev{max-width:720px;margin:16px auto 0;text-align:right;display:grid;gap:8px}
+.rev div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:.6rem .9rem;display:flex;gap:10px;align-items:center}
+.rev div i{font-style:normal;font-weight:900;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex:none}
+.rev .y i{background:#3BB273}.rev .p i{background:var(--gold);color:#14130F}.rev .x i{background:#E0525A}
+.foot{margin-top:22px;text-align:center;font-size:.8rem;color:var(--mut)}
+@media (max-width:760px){
+  .top .ttl{flex:1 1 100%;order:-1}
+  .top{gap:8px}
+  .hero{grid-template-columns:1fr}.badge-art{max-width:200px;order:-1}
+  .choices{grid-template-columns:1fr}
+  .ch{display:flex;align-items:center;gap:12px;text-align:right;padding:12px 14px}
+  .ch svg{margin:0;width:34px;height:34px;flex:none}
+  .modes{grid-template-columns:1fr}
+  .items{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .verdict .row{grid-template-columns:1fr;gap:2px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <a class="pill" href="../index.html#skills">← المنصة</a>
+    <div class="ttl"><h1>المحقق القانوني</h1><p>الوحدة الخامسة · السرقة · النصب والاحتيال · خيانة الأمانة</p></div>
+    <div class="hud">
+      <span class="pill score" id="score" hidden>النقاط <b id="pts">٠</b></span>
+      <button class="pill" id="hbBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5.5C6.5 4.6 9.3 4.8 12 6.5c2.7-1.7 5.5-1.9 8-1v13c-2.5-.9-5.3-.7-8 1-2.7-1.7-5.5-1.9-8-1z"/><path d="M12 6.5v13"/></svg>دليل المحقق</button>
+      <button class="pill" id="snd" type="button" aria-label="الصوت"></button>
+    </div>
+  </div>
+
+  <!-- البداية -->
+  <section id="sStart">
+    <div class="hero">
+      <div>
+        <h2>المحقق القانوني</h2>
+        <p class="lead">على مكتبك ملفات قضايا حقيقية من الحياة اليومية. اقرأ كل قضية، و<b>اكتشف الدليل</b> الذي يكشف نوع الجريمة، ثم <b>اختم الملف</b> بالحكم الصحيح: سرقة؟ نصب واحتيال؟ أم خيانة أمانة؟</p>
+        <div class="modes" id="modes"></div>
+        <div class="start-row">
+          <button class="btn" id="go" type="button">افتح الملفات</button>
+          <button class="btn ghost" id="goItems" type="button">تحدّي: هل يُسرق؟</button>
+        </div>
+      </div>
+      <svg class="badge-art" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1C2A6B"/><stop offset="1" stop-color="#0E1630"/></linearGradient></defs>
+        <circle cx="100" cy="100" r="92" fill="url(#bg1)" stroke="#F5B72E" stroke-width="3"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#F5B72E" stroke-opacity=".35" stroke-dasharray="3 7"/>
+        <g transform="translate(46 44)" fill="none" stroke="#F6EBCF" stroke-width="5" stroke-linecap="round">
+          <circle cx="44" cy="44" r="34" fill="rgba(245,183,46,.12)"/><path d="M69 69l34 34"/>
+        </g>
+        <g transform="translate(78 70)" fill="#F5B72E"><path d="M12 4l3 8 8 .5-6 5.3 2 8-7-4.5-7 4.5 2-8L1 12.5 9 12z"/></g>
+        <text x="100" y="168" text-anchor="middle" font-family="Cairo" font-weight="900" font-size="15" fill="#F5B72E">ملفات القضايا</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- القضية -->
+  <section id="sCase" hidden>
+    <div class="board" id="board"></div>
+    <article class="case" id="case">
+      <span class="tab" id="cTab"></span>
+      <span class="secret">سرّي</span>
+      <h2 id="cTitle"></h2>
+      <p class="story" id="cStory"></p>
+      <div class="stamp" id="stamp"></div>
+    </article>
+    <div class="task" id="task"></div>
+    <div id="verdict"></div>
+  </section>
+
+  <!-- محل الجريمة -->
+  <section id="sItems" hidden>
+    <div class="task" style="margin-top:6px">
+      <h3>هل يصلح محلًّا لجريمة السرقة؟</h3>
+      <p class="hint">يشترط أن يكون المال <b>منقولًا</b> أو من الممتلكات التي لها قيمة ومملوكة للغير. صنّف كل شيء:</p>
+      <div class="items" id="items"></div>
+      <div class="msg" id="itemsMsg"></div>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn" id="itemsBack" type="button">العودة للملفات</button></div>
+    </div>
+  </section>
+
+  <!-- النهاية -->
+  <section id="sEnd" hidden>
+    <div class="end">
+      <svg class="medal" viewBox="0 0 200 200" aria-hidden="true"><path d="M70 10h60l-18 60H88z" fill="#B4232A"/><path d="M60 10h18l22 60H82z" fill="#14245A"/><circle cx="100" cy="122" r="62" fill="#F5B72E"/><circle cx="100" cy="122" r="50" fill="none" stroke="#14130F" stroke-opacity=".3" stroke-width="3" stroke-dasharray="4 6"/><g transform="translate(66 88)" fill="none" stroke="#14130F" stroke-width="7" stroke-linecap="round"><circle cx="30" cy="30" r="22"/><path d="M46 46l20 20"/></g></svg>
+      <div id="rank"></div>
+      <h2 id="rankName"></h2>
+      <div class="sc" id="final"></div>
+      <div class="rev" id="rev"></div>
+      <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn" id="again" type="button">تحقيق جديد</button>
+        <button class="btn ghost" id="home" type="button">قائمة الملفات</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">المصدر: كتاب الاجتماعيات للصف العاشر — الوحدة الخامسة، الدروس ٣–٥ (ص ١٢٤–١٣٣). القضايا مواقف تعليمية مبنية على أمثلة الكتاب وتعريفاته.</div>
+</div>
+
+<div class="hb" id="hb" hidden>
+  <div class="in">
+    <button class="btn ghost close" id="hbClose" type="button" style="color:#14245A;border-color:#14245A;padding:.35em 1em;font-size:.95rem">إغلاق</button>
+    <h2>دليل المحقق</h2>
+    <p style="margin:.2rem 0 .4rem;color:#4A4436">ثلاثة أسئلة تكشف لك نوع الجريمة:</p>
+    <div class="key"><b>الفرق بين النصب والسرقة (ص ١٢٨):</b> النصب والاحتيال يقومان على <b>الخداع والتضليل</b> لإقناع المجني عليه بتسليم المال أو المنفعة <b>بإرادته</b>، أما السرقة فتتم <b>بأخذ المال دون علم صاحبه أو رضاه</b>.</div>
+    <div class="q" style="--c:var(--theft)"><i>١</i><div><b>هل أُخذ المال دون علم صاحبه أو رضاه؟ ← سرقة</b><p>السرقة: كل من اختلس مالًا منقولًا مملوكًا لغيره بنية تملكه (المادة ٢١٧ من قانون الجزاء الكويتي). أنواعها: <b>البسيطة</b> (دون عنف أو ظروف مشددة)، <b>المشددة</b> (ليلًا أو بالكسر أو السلاح أو اشتراك عدة أشخاص)، <b>بالإكراه</b> (بالعنف أو التهديد) وهي أخطرها. — ص ١٢٤–١٢٥</p></div></div>
+    <div class="q" style="--c:var(--fraud)"><i>٢</i><div><b>هل سلّم صاحب المال ماله بإرادته لأنه خُدِع؟ ← نصب واحتيال</b><p>النصب والاحتيال: استعمال الخداع أو الكذب أو الطرق الاحتيالية بقصد الحصول على مال أو منفعة من شخص آخر. أشكاله: <b>الإلكتروني</b> (روابط وهمية، انتحال شخصية، منتجات غير حقيقية عبر الإنترنت)، <b>المالي</b> (استثمارات وهمية، طلب تحويل أموال بحجج كاذبة)، <b>في البيع والشراء</b> (سلعة غير مطابقة للوصف، أو استلام المال دون تسليم المنتج). — ص ١٢٧–١٢٩</p></div></div>
+    <div class="q" style="--c:var(--breach)"><i>٣</i><div><b>هل سُلِّم إليه المال على سبيل الأمانة ثم تصرّف فيه أو رفض إعادته؟ ← خيانة أمانة</b><p>خيانة الأمانة: الاستيلاء على مال أو شيء سُلّم إلى شخص على سبيل الأمانة، ثم التصرف فيه بغير حق أو الامتناع عن إعادته. صورها: <b>بين الأصدقاء</b>، <b>في العمل</b>، <b>في المعاملات</b>، <b>الإلكترونية</b>. — ص ١٣١–١٣٢</p></div></div>
+    <div class="key"><b>الأركان الثلاثة لكل جريمة:</b> الركن <b>المادي</b> (الفعل نفسه)، والركن <b>المعنوي</b> (القصد ونية الجاني)، والركن <b>الشرعي</b> (وجود نص قانوني يجرّم الفعل ويحدد عقوبته).</div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+var AR='٠١٢٣٤٥٦٧٨٩';function ar(n){return String(n).replace(/\d/g,function(d){return AR[d];});}
+function $(id){return document.getElementById(id);}
+
+/* ===== الجرائم كما في الكتاب ===== */
+var CR={
+ theft:{name:'سرقة',c:'#B4232A',page:'١٢٤–١٢٥',
+   def:'كل من اختلس مالًا منقولًا مملوكًا لغيره بنية تملكه.',
+   mat:'اختلاس المال أو الممتلكات ونقله من صاحبه دون رضاه.',
+   subs:{simple:['السرقة البسيطة','الاستيلاء على مال الغير دون وجه حق، ومن غير عنف أو ظروف مشددة.'],
+         aggr:['السرقة المشدّدة','السرقة التي تقترن بظروف تزيد من خطورتها، مثل وقوعها ليلًا أو باستخدام الكسر أو السلاح أو الاشتراك بين عدة أشخاص.'],
+         force:['السرقة بالإكراه','تتم بالعنف أو التهديد لتسهيل الاستيلاء على المال أو منع المجني عليه من المقاومة، وهي من أخطر أنواع السرقة.']},
+   icon:'<path d="M7 11V6.5a1.5 1.5 0 013 0V11m0-1V5a1.5 1.5 0 013 0v5m0-.5V6a1.5 1.5 0 013 0v6.5m0-2.5a1.5 1.5 0 013 0V15a7 7 0 01-7 7h-1.5a7 7 0 01-6-3.4L4 15.2a1.6 1.6 0 012.6-1.8L7 14"/>'},
+ fraud:{name:'نصب واحتيال',c:'#7C3AED',page:'١٢٧–١٢٩',
+   def:'استعمال الخداع أو الكذب أو الطرق الاحتيالية بقصد الحصول على مال أو منفعة من شخص آخر.',
+   mat:'استعمال وسائل احتيالية أو أكاذيب أو خداع تؤدي إلى تسليم المال أو المنفعة للجاني.',
+   subs:{elec:['الاحتيال الإلكتروني','مثل إرسال روابط وهمية لسرقة الحسابات أو الأموال، أو انتحال شخصية أفراد أو شركات معروفة، أو بيع منتجات غير حقيقية عبر الإنترنت.'],
+         fin:['الاحتيال المالي','مثل الترويج لاستثمارات وهمية أو طلب تحويل أموال بحجج كاذبة.'],
+         trade:['الاحتيال في البيع والشراء','ومنها بيع سلعة غير مطابقة للوصف، أو استلام المال دون تسليم المنتج.']},
+   icon:'<path d="M4 6c3 1 13 1 16 0v5c0 5-4 8-8 9-4-1-8-4-8-9z"/><path d="M8.5 11.5c.8-.7 2-.7 2.6 0M13 11.5c.8-.7 2-.7 2.6 0M9 15.5c1.8 1.4 4.2 1.4 6 0"/>'},
+ breach:{name:'خيانة أمانة',c:'#0E7490',page:'١٣١–١٣٢',
+   def:'الاستيلاء على مال أو شيء سُلّم إلى شخص على سبيل الأمانة، ثم التصرف فيه بغير حق أو الامتناع عن إعادته.',
+   mat:'قيام الجاني بالتصرف في المال أو الشيء المملوك بخلاف الاتفاق.',
+   subs:{friends:['بين الأصدقاء','استعارة غرض ثم إنكار استلامه أو رفض إعادته.'],
+         work:['في العمل','احتفاظ موظف بأموال أو ممتلكات سُلّمت إليه بحكم عمله.'],
+         deal:['في المعاملات','استلام أموال لتوصيلها إلى شخص آخر ثم الاستيلاء عليها.'],
+         elec:['الإلكترونية','استغلال حساب أو بيانات أُتيحت لشخص على سبيل الثقة.']},
+   icon:'<path d="M2 12l4-4 4 2 4-2 4 2 4 4"/><path d="M6 8l4 7a2 2 0 003 0l1-1M18 10l-4 6"/><path d="M8 14l2 2M10 12l3 3"/>'}
+};
+
+/* ===== القضايا: [نص, دليل?] ؛ الدليل الصحيح = 1 ، المضلِّل = 2 ===== */
+var CASES=[
+ {id:'t1',cr:'theft',sub:'simple',title:'الدرج المفتوح',src:'نشاط الكتاب ص ١٢٦',
+  s:[['قام طالب ',0],['بفتح درج زميله',2],[' ',0],['وأخذ منه مبلغًا ماليًا ووضعه في جيبه دون علم صاحبه',1],['.',0]],
+  why:'أُخذ المال <b>دون علم صاحبه</b> ولا رضاه، ومن غير عنف أو ظروف مشددة، فهي سرقة بسيطة. والنقود مال منقول يصلح محلًّا للسرقة.',
+  mat:'أخذ المبلغ من الدرج ووضعه في جيبه دون علم صاحبه.'},
+ {id:'t2',cr:'theft',sub:'simple',title:'الهاتف على الطاولة',src:'مثال الكتاب ص ١٢٨',
+  s:[['ترك شابٌّ هاتفه على طاولة في المكتبة، ',0],['فأخذه زميله خفيةً',1],[' و',0],['وضعه في حقيبته',2],[' دون أن يشعر به أحد.',0]],
+  why:'أخذ الزميل الهاتف <b>خفية</b> دون علم صاحبه أو رضاه، ولم يخدعه ليسلّمه إياه. ولم يقترن الأخذ بعنف أو ظروف مشددة، فهي سرقة بسيطة.',
+  mat:'أخذ الهاتف خفية ونقله إلى حقيبته.'},
+ {id:'t3',cr:'theft',sub:'aggr',title:'نافذة منتصف الليل',src:'مبني على مثال الكتاب ص ١٢٥',
+  s:[['في منتصف الليل ',0],['كسر رجلٌ نافذة منزل جاره',1],[' بينما كان أهل البيت نائمين، ثم ',0],['أخذ ساعة ثمينة',2],[' وخرج دون أن يعلم به أحد.',0]],
+  why:'أُخذ المال دون علم أصحابه فهي سرقة، واقترنت بظرفين يزيدان خطورتها: <b>وقوعها ليلًا</b> و<b>استخدام الكسر</b>، فهي سرقة مشدّدة.',
+  mat:'كسر النافذة وأخذ الساعة دون رضا أصحابها.'},
+ {id:'t4',cr:'theft',sub:'force',title:'صندوق المتجر',src:'مثال الكتاب ص ١٢٥',
+  s:[['دخل رجلٌ متجرًا ',0],['وهدّد صاحبه بسلاح',1],[' لإجباره على تسليم النقود التي في الصندوق، ',0],['فسلّمه صاحب المتجر المال',2],[' خوفًا على نفسه.',0]],
+  why:'صاحب المتجر سلّم المال <b>خوفًا وتحت التهديد</b> لا برضاه ولا لأنه خُدع، لذلك ليست نصبًا. هي سرقة تمّت بالتهديد بالسلاح، أي <b>سرقة بالإكراه</b>، وهي من أخطر أنواع السرقة.',
+  mat:'الاستيلاء على النقود بالتهديد بالسلاح ومنع المجني عليه من المقاومة.',trap:'انتبه: كلمة «فسلّمه» لا تعني أنه سلّم المال بإرادته.'},
+ {id:'t5',cr:'theft',sub:'aggr',title:'المخزن المغلق',src:'مبني على مثال الكتاب ص ١٢٥',
+  s:[['اتفق ثلاثة أشخاص على دخول مخزن، ',0],['واشتركوا في أخذ أجهزة حاسوب منه',1],[' دون علم صاحبه، ثم ',0],['باعوها في السوق',2],['.',0]],
+  why:'أُخذت الأجهزة دون علم صاحبها فهي سرقة، واقترنت بظرف يزيد خطورتها هو <b>الاشتراك بين عدة أشخاص</b>، فهي سرقة مشدّدة.',
+  mat:'اشتراك الثلاثة في أخذ الأجهزة من المخزن دون رضا صاحبه.'},
+ {id:'f1',cr:'fraud',sub:'trade',title:'الهاتف الذي لم يصل',src:'مثال الكتاب ص ١٢٨',
+  s:[['ادّعى شخصٌ أنه يبيع هاتفًا جديدًا',1],[' بسعر مناسب، ',0],['فاستلم المال من المشتري',2],[' ثم اختفى ولم يسلّمه شيئًا.',0]],
+  why:'المشتري سلّم ماله <b>بإرادته</b> لأنه <b>خُدع</b> بادعاء كاذب، وهذا هو الفرق عن السرقة. وصورته: استلام المال دون تسليم المنتج، أي احتيال في البيع والشراء.',
+  mat:'الادعاء الكاذب ببيع الهاتف، الذي أدى إلى تسليم المال للجاني.'},
+ {id:'f2',cr:'fraud',sub:null,title:'حساب الخير الوهمي',src:'نشاط الكتاب ص ١٣٠',
+  s:[['أنشأ شخصٌ حسابًا وهميًا مزيفًا',1],[' على وسائل التواصل، ',0],['وطلب من الناس تحويل أموال',2],[' بحجة تقديم المساعدة للمحتاجين.',0]],
+  why:'الناس حوّلوا أموالهم <b>بإرادتهم</b> بعد أن <b>خدعهم</b> بحساب مزيف وحجة كاذبة، فهو نصب واحتيال.',
+  mat:'إنشاء الحساب المزيف واستعمال حجة كاذبة لإقناع الناس بتحويل أموالهم.'},
+ {id:'f3',cr:'fraud',sub:'elec',title:'رابط تحديث البيانات',src:'مبني على مثال الكتاب ص ١٢٨',
+  s:[['وصلت إلى سيدة رسالة فيها ',0],['رابط وهمي يشبه موقع البنك',1],['، فأدخلت بياناتها، ثم اكتشفت أن ',0],['أموالها سُحبت من حسابها',2],['.',0]],
+  why:'الجاني لم يأخذ المال خفية من يدها، بل <b>خدعها برابط وهمي</b> حتى أعطته بياناتها بنفسها. لذلك هو نصب واحتيال، وصورته إرسال روابط وهمية لسرقة الحسابات، أي احتيال إلكتروني.',
+  mat:'إرسال الرابط الوهمي الذي خدعها حتى سلّمت بياناتها.',trap:'انتبه: «سُحبت أموالها» لا تعني أنها سرقة؛ ابحث عن الطريقة.'},
+ {id:'f4',cr:'fraud',sub:'fin',title:'أرباح مضمونة',src:'مبني على مثال الكتاب ص ١٢٩',
+  s:[['روّج رجلٌ لاستثمار وهمي يعد بأرباح مضمونة',1],['، ',0],['فسلّمه عدد من الناس أموالهم',2],[' وانتظروا الأرباح التي لم تأتِ أبدًا.',0]],
+  why:'سلّم الناس أموالهم <b>بإرادتهم</b> لأنهم <b>خُدعوا</b> باستثمار غير حقيقي، وصورته الترويج لاستثمارات وهمية، أي احتيال مالي.',
+  mat:'الترويج للاستثمار الوهمي الذي أدى إلى تسليم الأموال.'},
+ {id:'f5',cr:'fraud',sub:'trade',title:'الساعة «الأصلية»',src:'مبني على الكتاب ص ١٢٩',
+  s:[['باع تاجرٌ ساعة على أنها أصلية من ماركة عالمية',1],[' ',0],['وقبض ثمنها كاملًا',2],['، ثم تبيّن للمشتري أنها غير مطابقة للوصف.',0]],
+  why:'دفع المشتري الثمن <b>بإرادته</b> بعد أن <b>خُدع</b> بوصف كاذب للسلعة، وصورته بيع سلعة غير مطابقة للوصف، أي احتيال في البيع والشراء.',
+  mat:'وصف الساعة كذبًا بأنها أصلية، مما أدى إلى دفع ثمنها.'},
+ {id:'b1',cr:'breach',sub:'friends',title:'الجهاز المستعار',src:'نشاط الكتاب ص ١٣٣',
+  s:[['استعار طالب جهازًا إلكترونيًا من زميله لمدة يومين',2],['، وبعد انتهاء المدة طلب صاحبه إعادته، إلا أن الطالب ',0],['رفض إرجاعه',1],[' و',0],['ادّعى أنه أصبح ملكًا له',2],['.',0]],
+  why:'الجهاز سُلّم إليه <b>برضا صاحبه وعلى سبيل الأمانة</b>، ثم <b>امتنع عن إعادته</b>. وادعاؤه جاء بعد الاستلام، ولم يكن خداعًا ليحصل على الجهاز، لذلك ليست نصبًا. صورتها: استعارة غرض ثم رفض إعادته، أي بين الأصدقاء.',
+  mat:'رفض إعادة الجهاز والتصرف فيه بخلاف الاتفاق.',trap:'انتبه: «ادّعى» هنا لا تعني نصبًا؛ متى حصل على الجهاز وكيف؟'},
+ {id:'b2',cr:'breach',sub:'deal',title:'أمانة الجار',src:'مثال الكتاب ص ١٣٢',
+  s:[['سلّم رجلٌ جارَه مبلغًا ماليًا ليوصله إلى أخيه',2],['، ',0],['فاحتفظ الجار بالمبلغ لنفسه',1],[' ولم يوصله.',0]],
+  why:'المبلغ سُلّم إليه <b>على سبيل الأمانة</b> لغرض محدد (توصيله)، ثم <b>استولى عليه</b> بخلاف الاتفاق. صورتها: استلام أموال لتوصيلها ثم الاستيلاء عليها، أي في المعاملات.',
+  mat:'الاحتفاظ بالمبلغ والتصرف فيه بخلاف الغرض الذي سُلّم من أجله.'},
+ {id:'b3',cr:'breach',sub:'work',title:'أمين الصندوق',src:'مبني على الكتاب ص ١٣٢',
+  s:[['تسلّم موظفٌ أموال الشركة بحكم عمله',2],['، ',0],['فاحتفظ بها لنفسه',1],[' بدل أن يودعها في حساب الشركة.',0]],
+  why:'الأموال وصلت إليه <b>بحكم عمله وعلى سبيل الثقة</b>، ثم <b>احتفظ بها لنفسه</b>. صورتها: احتفاظ موظف بأموال سُلّمت إليه بحكم عمله، أي في العمل.',
+  mat:'احتفاظ الموظف بالأموال لنفسه بخلاف ما سُلّمت إليه من أجله.'},
+ {id:'b4',cr:'breach',sub:'elec',title:'كلمة المرور',src:'مبني على الكتاب ص ١٣٢',
+  s:[['أعطى شابٌّ صديقه كلمة مرور حسابه',2],[' ليساعده في أمر ما، ',0],['فاستغل الصديق الحساب لمصلحته الخاصة',1],['.',0]],
+  why:'الحساب أُتيح له <b>على سبيل الثقة</b> ولم يحصل عليه بخداع، ثم <b>استغله</b> بغير حق. صورتها: استغلال حساب أو بيانات أُتيحت على سبيل الثقة، أي الإلكترونية.',
+  mat:'استغلال الحساب بخلاف الغرض الذي أُعطي من أجله.'},
+ {id:'b5',cr:'breach',sub:'friends',title:'قضية الشجرة البعيدة',src:'قصة الكتاب ص ١٣١–١٣٢',special:true,
+  s:[['وضع تاجرٌ كيسَ دقيق أمانةً عند صديق قبل سفره',2],['، ولما عاد ',0],['أنكر الصديق الأمانة',1],[' وقال: «لم تعطني شيئًا!». ',0],['ذهب التاجر إلى القاضي شاكيًا',2],['.',0]],
+  why:'الكيس سُلّم إليه <b>على سبيل الأمانة</b>، ثم <b>أنكر استلامه</b>. صورتها: استعارة غرض أو تسلّمه ثم إنكار استلامه، أي بين الأصدقاء.',
+  mat:'إنكار استلام الأمانة والامتناع عن ردّها.',
+  bonus:{q:'قال القاضي للتاجر: اذهب إلى الشجرة التي سلّمته عندها الكيس. وبعد ساعة سأل الخائن: «هل تُرى صاحبك وصل إلى الشجرة؟». ما الجملة التي كشفت الخائن؟',
+    opts:['«لم تعطني شيئًا!»','«لا يا سيدي، فالشجرة بعيدة جدًا، يحتاج لساعة أخرى!»','«تحت شجرة كبيرة في أطراف المدينة»'],ans:1,
+    why:'كيف عرف أن الشجرة بعيدة إن لم يكن قد ذهب إليها واستلم الأمانة هناك؟ فاعترف بلسانه دون أن يشعر، وحكم عليه القاضي بردّ الأمانة.'}}
+];
+var MODES=[
+ {id:'all',name:'مراجعة شاملة',d:'كل الجرائم الثلاث · ١٠ قضايا',crs:['theft','fraud','breach'],n:10},
+ {id:'theft',name:'الدرس الثالث: السرقة',d:'أنواع السرقة · ٥ قضايا',crs:['theft'],n:5},
+ {id:'fraud',name:'الدرس الرابع: النصب والاحتيال',d:'الفرق بين النصب والسرقة · ٨ قضايا',crs:['fraud','theft'],n:8},
+ {id:'breach',name:'الدرس الخامس: خيانة الأمانة',d:'مع المقارنة بالجريمتين · ٨ قضايا',crs:['breach','fraud','theft'],n:8}
+];
+var mode=MODES[0];
+
+/* ===== الصوت (مولّد، بلا ملفات) ===== */
+var AC=null,sound=true;try{sound=localStorage.getItem('detSound')!=='0';}catch(e){}
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){}}return AC;}
+function tone(f,d,type,v,delay){var a=ac();if(!a||!sound)return;var t=a.currentTime+(delay||0),o=a.createOscillator(),g=a.createGain();o.type=type||'sine';o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(v||.15,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+d);}
+function sThud(){var a=ac();if(!a||!sound)return;var t=a.currentTime,o=a.createOscillator(),g=a.createGain();o.frequency.setValueAtTime(160,t);o.frequency.exponentialRampToValueAtTime(45,t+.18);g.gain.setValueAtTime(.5,t);g.gain.exponentialRampToValueAtTime(.001,t+.25);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.26);}
+function sGood(){tone(660,.18,'triangle',.14);tone(880,.22,'triangle',.14,.1);tone(1320,.3,'triangle',.1,.2);}
+function sBad(){tone(220,.25,'sawtooth',.06);tone(180,.3,'sawtooth',.05,.12);}
+function sClue(){tone(1040,.12,'sine',.12);tone(1560,.18,'sine',.08,.07);}
+function syncSnd(){$('snd').innerHTML=sound?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>';}
+$('snd').onclick=function(){sound=!sound;try{localStorage.setItem('detSound',sound?'1':'0');}catch(e){}syncSnd();if(sound)sClue();};syncSnd();
+
+/* ===== اختيار الملفات ===== */
+var mEl=$('modes');
+MODES.forEach(function(m){var b=document.createElement('button');b.type='button';b.className='mode'+(m===mode?' on':'');b.innerHTML='<b>'+m.name+'</b><span>'+m.d+'</span>';
+  b.onclick=function(){mode=m;[].forEach.call(mEl.children,function(x){x.classList.toggle('on',x===b);});};mEl.appendChild(b);});
+function show(id){['sStart','sCase','sItems','sEnd'].forEach(function(s){$(s).hidden=s!==id;});$('score').hidden=id!=='sCase';window.scrollTo({top:0,behavior:'smooth'});}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+var G=null;
+function startGame(){
+  var pool=CASES.filter(function(c){return mode.crs.indexOf(c.cr)>=0&&!c.special;});
+  var list;
+  if(mode.id==='theft'){list=shuffle(pool);}
+  else{ /* توازن بين الجرائم */
+    var by={};pool.forEach(function(c){(by[c.cr]=by[c.cr]||[]).push(c);});Object.keys(by).forEach(function(k){by[k]=shuffle(by[k]);});
+    list=[];var ks=mode.crs.slice(),i=0;while(list.length<mode.n&&ks.some(function(k){return by[k]&&by[k].length;})){var k=ks[i%ks.length];if(by[k]&&by[k].length)list.push(by[k].shift());i++;}
+    list=shuffle(list);
+  }
+  var hasBreach=mode.crs.indexOf('breach')>=0;
+  if(hasBreach){list=list.slice(0,mode.n-1);list.push(CASES.filter(function(c){return c.special;})[0]);}
+  G={list:list,i:0,pts:0,max:0,res:[]};
+  $('pts').textContent='٠';show('sCase');openCase();
+}
+$('go').onclick=function(){ac();startGame();};
+
+/* ===== القضية ===== */
+var st=null;
+function openCase(){
+  var c=G.list[G.i];st={c:c,step:'clue',tries:0,got:0,typeOk:false,subOk:null};
+  $('cTab').textContent='قضية رقم '+ar(String(G.i+1).padStart(2,'0'));
+  $('cTitle').textContent=c.title;
+  var story=$('cStory');story.innerHTML='';
+  c.s.forEach(function(p,k){var sp=document.createElement('span');sp.textContent=p[0];sp.className='seg'+(p[1]?' cand':'');sp.dataset.k=k;sp.style.setProperty('--d',k);if(p[1])sp.onclick=function(){clue(sp,p[1]);};story.appendChild(sp);});
+  var stp=$('stamp');stp.className='stamp';stp.textContent='';$('case').classList.remove('stamped');
+  $('verdict').innerHTML='';
+  board();
+  $('case').classList.add('clue-on');
+  taskClue();
+}
+function board(){var b=$('board');b.innerHTML='';G.list.forEach(function(c,k){var i=document.createElement('i');var r=G.res[k];if(r)i.className=r.p===r.m?'ok':(r.p>0?'half':'no');else if(k===G.i)i.className='cur';b.appendChild(i);});}
+function taskClue(){
+  var c=st.c;
+  $('task').innerHTML='<h3><span class="n">١</span>ابحث عن الدليل</h3><p class="hint">اضغط على العبارة المظلّلة في الملف التي <b>تكشف نوع الجريمة</b>: كيف وصل المال أو الشيء إلى يد الجاني؟</p><div class="msg" id="m1"></div>';
+}
+function clue(sp,kind){
+  if(st.step!=='clue')return;
+  if(kind===1){
+    sp.classList.add('good');sClue();var pts=st.tries===0?2:1;st.got+=pts;
+    $('m1').className='msg good';$('m1').innerHTML='أحسنت أيها المحقق! هذا هو الدليل. <span class="pts">+'+ar(pts)+'</span>';
+    $('case').classList.remove('clue-on');st.step='type';setTimeout(taskType,650);
+  }else{
+    if(sp.classList.contains('bad'))return;
+    sp.classList.add('bad');st.tries++;sBad();var cs=$('case');cs.classList.remove('shake');void cs.offsetWidth;cs.classList.add('shake');
+    var m=$('m1');m.className='msg bad';
+    if(st.tries>=2){m.innerHTML='الدليل هو العبارة المظلّلة باللون الأخضر.';var g=[].filter.call(document.querySelectorAll('.cand'),function(x){return st.c.s[+x.dataset.k][1]===1;});g.forEach(function(x){x.classList.add('good');});$('case').classList.remove('clue-on');st.step='type';setTimeout(taskType,1300);}
+    else m.innerHTML=(st.c.trap||'هذه العبارة لا تحدد نوع الجريمة وحدها. فكّر: هل أخذه خفية؟ أم خُدع صاحبه فسلّمه؟ أم سُلّم إليه أمانة؟');
+  }
+}
+function crIcon(k){return '<svg viewBox="0 0 24 24">'+CR[k].icon+'</svg>';}
+function taskType(){
+  var opts=['theft','fraud','breach'];
+  if(mode.id==='theft'){st.step='sub';st.typeOk=true;stampIt('theft');setTimeout(taskSub,700);return;}
+  var hint={theft:'أُخذ دون علم صاحبه أو رضاه',fraud:'سلّمه صاحبه لأنه خُدع',breach:'سُلّم إليه أمانة ثم خانها'};
+  if(mode.id==='fraud')opts=['theft','fraud'];
+  $('task').innerHTML='<h3><span class="n">٢</span>اختم الملف بنوع الجريمة</h3><p class="hint">ما الجريمة في هذه القضية؟</p><div class="choices" id="ty" style="'+(opts.length===2?'grid-template-columns:repeat(2,minmax(0,1fr))':'')+'"></div><div class="msg" id="m2"></div>';
+  opts.forEach(function(k){var b=document.createElement('button');b.type='button';b.className='ch';b.style.setProperty('--c',CR[k].c);b.innerHTML=crIcon(k)+'<div><b>'+CR[k].name+'</b><small>'+hint[k]+'</small></div>';b.dataset.k=k;b.onclick=function(){pickType(k,b);};$('ty').appendChild(b);});
+}
+function stampIt(k){$('case').classList.add('stamped');var s=$('stamp');s.style.setProperty('--sc',CR[k].c);s.textContent=CR[k].name;s.className='stamp';void s.offsetWidth;s.className='stamp slam';sThud();
+  var cs=$('case');cs.animate([{transform:'translateY(0)'},{transform:'translateY(3px)'},{transform:'translateY(0)'}],{duration:220,delay:180});}
+function pickType(k,b){
+  if(st.step!=='type')return;st.step='typed';var c=st.c;var ok=k===c.cr;
+  [].forEach.call(document.querySelectorAll('#ty .ch'),function(x){x.disabled=true;});
+  b.classList.add(ok?'ok':'no');
+  if(!ok){[].forEach.call(document.querySelectorAll('#ty .ch'),function(x){if(x.dataset.k===c.cr)x.classList.add('ok');});}
+  stampIt(c.cr);
+  st.typeOk=ok;if(ok){st.got+=1;setTimeout(sGood,300);}else setTimeout(sBad,300);
+  $('m2').className='msg '+(ok?'good':'bad');$('m2').innerHTML=ok?'حكم صحيح! <span class="pts">+١</span>':'ليس هذا… الجريمة هي <b>'+CR[c.cr].name+'</b>.';
+  setTimeout(function(){if(c.sub)taskSub();else if(c.bonus)taskBonus();else verdict();},1100);
+}
+function taskSub(){
+  var c=st.c,subs=CR[c.cr].subs;st.step='sub';
+  var lbl=c.cr==='theft'?'ما نوع السرقة؟':c.cr==='fraud'?'ما شكل النصب والاحتيال؟':'ما صورة خيانة الأمانة؟';
+  $('task').innerHTML='<h3><span class="n">٣</span>'+lbl+'</h3><p class="hint">اختر من الأنواع التي ذكرها الكتاب:</p><div class="subs" id="sb"></div><div class="msg" id="m3"></div>';
+  Object.keys(subs).forEach(function(k){var b=document.createElement('button');b.type='button';b.className='ch';b.style.setProperty('--c',CR[c.cr].c);b.innerHTML='<b>'+subs[k][0]+'</b>';b.onclick=function(){pickSub(k,b);};b.dataset.k=k;$('sb').appendChild(b);});
+}
+function pickSub(k,b){
+  if(st.step!=='sub')return;st.step='subbed';var c=st.c,ok=k===c.sub;
+  [].forEach.call(document.querySelectorAll('#sb .ch'),function(x){x.disabled=true;if(x.dataset.k===c.sub)x.classList.add('ok');});
+  if(!ok)b.classList.add('no');st.subOk=ok;if(ok){st.got+=1;sGood();}else sBad();
+  $('m3').className='msg '+(ok?'good':'bad');$('m3').innerHTML=ok?'دقيق جدًا! <span class="pts">+١</span>':'الصحيح: <b>'+CR[c.cr].subs[c.sub][0]+'</b>.';
+  setTimeout(function(){if(c.bonus)taskBonus();else verdict();},1000);
+}
+function taskBonus(){
+  var c=st.c,bn=c.bonus;st.step='bonus';
+  $('task').innerHTML='<h3><span class="n">★</span>سؤال القاضي الذكي</h3><p class="hint">'+bn.q+'</p><div class="subs" id="bb"></div><div class="msg" id="m4"></div>';
+  bn.opts.forEach(function(o,k){var b=document.createElement('button');b.type='button';b.className='ch';b.innerHTML='<b>'+o+'</b>';b.onclick=function(){
+    if(st.step!=='bonus')return;st.step='done';var ok=k===bn.ans;[].forEach.call(document.querySelectorAll('#bb .ch'),function(x,j){x.disabled=true;if(j===bn.ans)x.classList.add('ok');});if(!ok)b.classList.add('no');
+    if(ok){st.got+=2;sGood();}else sBad();st.bonusOk=ok;
+    $('m4').className='msg '+(ok?'good':'bad');$('m4').innerHTML=(ok?'كشفته! <span class="pts">+٢</span> ':'')+bn.why;setTimeout(verdict,1600);};$('bb').appendChild(b);});
+}
+function maxPts(c){return 2+(mode.id==='theft'?0:1)+(c.sub?1:0)+(c.bonus?2:0);}
+function verdict(){
+  var c=st.c,cr=CR[c.cr],m=maxPts(c);G.pts+=st.got;G.max+=m;G.res[G.i]={p:st.got,m:m,c:c};$('pts').textContent=ar(G.pts);board();
+  var subRow=c.sub?'<div class="row"><b>الصورة</b><div>'+cr.subs[c.sub][0]+': '+cr.subs[c.sub][1]+'</div></div>':'';
+  var last=G.i>=G.list.length-1;
+  $('task').innerHTML='';
+  $('verdict').innerHTML='<div class="verdict" style="--vc:'+cr.c+'"><h3>تقرير المحقق <span class="tag">'+cr.name+'</span><span class="pts" style="margin-inline-start:auto">'+ar(st.got)+' / '+ar(m)+'</span></h3>'+
+    '<div class="row"><b>لماذا؟</b><div>'+c.why+'</div></div>'+
+    '<div class="row"><b>الركن المادي</b><div>'+c.mat+'</div></div>'+subRow+
+    '<div class="def"><b>تعريف '+(c.cr==='theft'?'جريمة السرقة':c.cr==='fraud'?'جريمة النصب والاحتيال':'جريمة خيانة الأمانة')+':</b> '+cr.def+'</div>'+
+    '<div class="src">'+c.src+' · الكتاب ص '+cr.page+'</div>'+
+    '<div class="nx"><button class="btn" id="nx" type="button">'+(last?'النتيجة النهائية':'القضية التالية ←')+'</button></div></div>';
+  $('nx').onclick=function(){if(last)end();else{G.i++;openCase();}};
+  setTimeout(function(){$('verdict').scrollIntoView({behavior:'smooth',block:'nearest'});},200);
+}
+function end(){
+  var r=G.pts/Math.max(1,G.max),name,desc;
+  if(r>=.85){name='كبير المحققين';desc='تميّز بين الجرائم الثلاث بدقة.';}
+  else if(r>=.6){name='محقق متمرّس';desc='أداء قوي! راجع القضايا الصفراء والحمراء.';}
+  else {name='محقق متدرّب';desc='افتح «دليل المحقق» وراجع الأسئلة الثلاثة، ثم جرّب تحقيقًا جديدًا.';}
+  $('rank').textContent='رتبتك';$('rankName').textContent=name;
+  $('final').innerHTML=ar(G.pts)+' من '+ar(G.max)+' نقطة<div style="font-family:Tajawal;font-weight:500;font-size:1rem;color:#B9C2DA;margin-top:4px">'+desc+'</div>';
+  $('rev').innerHTML=G.res.map(function(x){var cl=x.p===x.m?'y':(x.p>0?'p':'x');return '<div class="'+cl+'"><i>'+(cl==='y'?'✓':cl==='p'?'½':'✗')+'</i><span><b>'+x.c.title+'</b> — '+CR[x.c.cr].name+(x.c.sub?' ('+CR[x.c.cr].subs[x.c.sub][0]+')':'')+'</span></div>';}).join('');
+  show('sEnd');setTimeout(function(){tone(523,.2,'triangle',.12);tone(659,.2,'triangle',.12,.15);tone(784,.35,'triangle',.12,.3);tone(1046,.5,'triangle',.1,.45);},200);
+}
+$('again').onclick=startGame;$('home').onclick=function(){show('sStart');};
+
+/* ===== هل يُسرق؟ ===== */
+var ITEMS=[
+ ['الهاتف',true,'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>'],
+ ['النقود',true,'<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9v.01M18 15v.01"/>'],
+ ['الساعة',true,'<circle cx="12" cy="12" r="6"/><path d="M12 9v3l2 1M9 6l1-4h4l1 4M9 18l1 4h4l1-4"/>'],
+ ['الحاسوب',true,'<rect x="4" y="5" width="16" height="10" rx="1"/><path d="M2 19h20"/>'],
+ ['الأراضي',false,'<path d="M2 18l6-7 4 4 3-3 7 6z"/><path d="M2 21h20"/>'],
+ ['المباني',false,'<path d="M4 21V8l6-4v17M10 21V10h10v11M7 10v.01M7 14v.01M14 14h2M14 17h2"/>']
+];
+function startItems(){
+  var box=$('items');box.innerHTML='';var done=0,right=0;$('itemsMsg').textContent='';
+  shuffle(ITEMS).forEach(function(it){var d=document.createElement('div');d.className='item';d.innerHTML='<svg viewBox="0 0 24 24">'+it[2]+'</svg>'+it[0]+'<div class="b2"><button type="button" data-v="1">منقول</button><button type="button" data-v="0">غير منقول</button></div>';
+    [].forEach.call(d.querySelectorAll('button'),function(b){b.onclick=function(){if(d.dataset.done)return;d.dataset.done=1;done++;var ok=(b.dataset.v==='1')===it[1];if(ok){right++;sGood();}else sBad();d.classList.add(ok?'ok':'no');
+      d.querySelector('.b2').outerHTML='<div class="r">'+(it[1]?'منقول، يصلح محلًّا للسرقة.':'لا تُعد من الممتلكات المنقولة.')+'</div>';
+      if(done===ITEMS.length){$('itemsMsg').className='msg good';$('itemsMsg').innerHTML='أجبت '+ar(right)+' من '+ar(ITEMS.length)+'. يشترط في السرقة أن يكون المال منقولًا مملوكًا للغير، مثل الهاتف والنقود والساعة والحاسوب، أما الأراضي والمباني فلا تُعد من الممتلكات المنقولة (ص ١٢٥).';}};});
+    box.appendChild(d);});
+  show('sItems');
+}
+$('goItems').onclick=function(){ac();startItems();};$('itemsBack').onclick=function(){show('sStart');};
+
+/* الدليل */
+$('hbBtn').onclick=function(){$('hb').hidden=false;};$('hbClose').onclick=function(){$('hb').hidden=true;};
+$('hb').onclick=function(e){if(e.target===$('hb'))$('hb').hidden=true;};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')$('hb').hidden=true;});
+})();
+</script>
+</body>
+</html>

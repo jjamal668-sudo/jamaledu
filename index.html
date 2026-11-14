@@ -869,6 +869,7 @@ html .pb-all b{ color:#101B33 !important; -webkit-text-fill-color:#101B33 !impor
   html #view-skills .sk-h[data-grp="m"]{ order:0; margin-top:0; } html #view-skills [data-grp="m"].lesson-card{ order:1; }
   html #view-skills .sk-h[data-grp="t"]{ order:2; } html #view-skills [data-grp="t"].lesson-card{ order:3; }
   html #view-skills .sk-h[data-grp="s"]{ order:4; } html #view-skills [data-grp="s"].lesson-card{ order:5; }
+  html #view-skills .sk-h[data-grp="q"]{ order:6; } html #view-skills [data-grp="q"].lesson-card{ order:7; }
   html #view-skills .lesson-card.vcard{ display:grid; grid-template-columns:96px minmax(0,1fr); align-items:center; border-radius:16px; min-height:0; }
   html #view-skills .vc-th{ grid-row:1/3; aspect-ratio:auto; height:100%; min-height:78px; border-bottom:0 !important; border-inline-end:1px solid var(--line); }
   html #view-skills .vc-th img{ width:100%; height:100%; object-fit:cover; }
@@ -1992,7 +1993,7 @@ html[data-theme="dark"] #view-home .ask-cta i{ color:#F5B72E; }
       <div class="pband" style="--g:linear-gradient(135deg,#0F6F68,#2560A6)"><button class="back-btn" onclick="showView('home')">→ الرئيسية</button>
       <header class="pg-head"><span class="pg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div class="pg-tx"><span class="pg-eye">خرائط ومهارات</span><h2>الخرائط والمهارات</h2><p>مسارات زمنية وخرائط تعرض معلومات الكتاب عند اللمس</p></div></header></div>
       <div class="grade-grid vgrid">
-        <div class="sk-h" data-grp="m"><span>🗺️</span>خرائط تفاعلية</div><div class="sk-h" data-grp="t"><span>⏳</span>مسارات وتاريخ</div><div class="sk-h" data-grp="s"><span>📊</span>مهارات إحصائية</div>
+        <div class="sk-h" data-grp="m"><span>🗺️</span>خرائط تفاعلية</div><div class="sk-h" data-grp="t"><span>⏳</span>مسارات وتاريخ</div><div class="sk-h" data-grp="s"><span>📊</span>مهارات إحصائية</div><div class="sk-h" data-grp="q"><span>⚖️</span>قضايا وقانون</div>
         <a class="lesson-card vcard" data-grp="m" href="skills/landforms_3d.html" style="--bc:#0F766E;--bcl:#5EEAD4">
           <span class="vc-th"><img src="img/th/landforms_3d.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">مجسّم ثلاثي الأبعاد</b></span>
           <div class="vc-bd"><div class="vc-meta">مجسّمات واختبار</div><h3>المظاهر التضاريسية بالأبعاد الثلاثة</h3><p>اضغط على الكلمة ليظهر شكلها: الهضاب والتلال والسهول والوديان والكثبان والخباري والجزر والخلجان والرؤوس والأخوار</p></div>
@@ -2057,6 +2058,11 @@ html[data-theme="dark"] #view-home .ask-cta i{ color:#F5B72E; }
           <span class="vc-th"><img src="img/th/pie_bubiyan.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">مهارة إحصائية</b></span>
           <div class="vc-bd"><h3>مساحة جزيرة بوبيان</h3><p>دائرة بيانية توضح ٥٪ من مساحة الكويت — ارسمها بنفسك ثم تحقق من إجابتك</p></div>
           <span class="go">افتح النشاط ←</span>
+        </a>
+        <a class="lesson-card vcard" data-grp="q" href="skills/detective.html" style="--bc:#B4232A;--bcl:#FCA5A5">
+          <span class="vc-th"><img src="img/th/detective.webp" alt="" width="560" height="350" loading="lazy" decoding="async"><b class="vc-badge">ملفات قضايا</b></span>
+          <div class="vc-bd"><div class="vc-meta">قضايا وحكم · الوحدة الخامسة</div><h3>المحقق القانوني</h3><p>اقرأ القضية، واكتشف الدليل، ثم احكم: سرقة أم نصب واحتيال أم خيانة أمانة؟</p></div>
+          <span class="go">افتح الملفات ←</span>
         </a>
       </div>
     </section>
