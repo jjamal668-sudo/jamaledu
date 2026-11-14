@@ -29,12 +29,12 @@
     gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     FX.ok = true;
     FX.resize();
-    for(var i = 0; i < 170; i++){ FX.motes.push({ x:Math.random(), y:Math.random(), z:.4 + Math.random() * .6, ph:Math.random() * 6.28 }); }
+    for(var i = 0; i < 110; i++){ FX.motes.push({ x:Math.random(), y:Math.random(), z:.4 + Math.random() * .6, ph:Math.random() * 6.28 }); }
     requestAnimationFrame(FX.frame);
   };
   FX.resize = function(){
     if(!cv){ return; }
-    dpr = Math.min(2, window.devicePixelRatio || 1);
+    dpr = Math.min(1.5, window.devicePixelRatio || 1);
     cv.width = Math.round(cv.clientWidth * dpr); cv.height = Math.round(cv.clientHeight * dpr);
     if(gl){ gl.viewport(0, 0, cv.width, cv.height); }
   };

@@ -7,7 +7,7 @@ from PIL import Image, ImageChops
 URL = os.environ.get('SHOW_URL', 'http://localhost:8766/lessons/lesson1/index.html')
 OUT = os.environ.get('OUT', '/tmp/l1check'); os.makedirs(OUT, exist_ok=True)
 SIZES = [(1366, 768), (1180, 820), (390, 844)]
-FREEZE = "#fx{display:none!important} *{animation:none!important;transition:none!important} #toast{display:none!important}"
+FREEZE = "#fx{display:none!important} *,*::before,*::after{animation:none!important;transition:none!important} #toast{display:none!important}"
 def state(pg):
     return pg.evaluate("""(()=>{const c=Cam.get();return {cx:Math.round(c.cx*10)/10,cy:Math.round(c.cy*10)/10,s:Math.round(c.s*1e5)/1e5,
       on:[...document.querySelectorAll('[data-r].on')].map(e=>e.getAttribute('data-r')).sort().join(','),
