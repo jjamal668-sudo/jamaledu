@@ -135,7 +135,7 @@
   }
   if(bc){ bc.onmessage = function(e){ onMsg(e.data); }; }
   window.addEventListener('storage', function(e){ if(e.key === 'jamal-lesson1-cmd' && e.newValue){ try{ onMsg(JSON.parse(e.newValue)); }catch(x){} } });
-  function openPresenter(){ window.open('presenter.html', 'jamal-presenter', 'width=1200,height=800'); }
+  function openPresenter(){ window.open('comic-presenter.html', 'jamal-presenter', 'width=1200,height=800'); }
 
   /* ---------- مفاتيح ولمس وأزرار ---------- */
   D.addEventListener('keydown', function(e){

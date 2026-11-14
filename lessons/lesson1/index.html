@@ -3,439 +3,372 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>مفهوم علم التاريخ — الدرس الأول</title>
-<link rel="icon" href="../../apple-touch-icon.png">
-<link rel="stylesheet" href="css/stage.css">
-<script>(function(){try{if(localStorage.getItem("jamalTheme")==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0D1A2B">
+<title>مفهوم علم التاريخ وخصائصه وأهميته وأركانه — منصة جمال التعليمية</title>
+<link rel="preload" href="assets/fonts/lalezar.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/tajawal-700.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/show.css">
 </head>
 <body>
-<div class="loading" id="loading">لحظة… نفتح كتاب التاريخ</div>
+<div class="bgl" id="bgA"></div><div class="bgl" id="bgB"></div>
+<div class="orb o1"></div><div class="orb o2"></div>
+<div class="dust" id="dust"></div>
 
-<div id="stage" aria-live="polite">
- <div id="world">
+<div id="vp"><div id="stage">
 
-  <!-- ===================== ٠) لوحة العنوان ===================== -->
-  <section class="panel" data-panel="title" style="left:6400px;top:160px;width:6080px;height:1500px;background:#F9DFA6">
-   <svg class="art" viewBox="0 0 6056 976" preserveAspectRatio="xMidYMid slice" style="top:620px;height:856px" aria-hidden="true">
-    <defs>
-     <linearGradient id="tSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F9DFA6"/><stop offset=".65" stop-color="#F6CB86"/><stop offset="1" stop-color="#EDB574"/></linearGradient>
-     <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2.4" fill="#2A1E14" opacity=".14"/></pattern>
-    </defs>
-    <rect width="6056" height="976" fill="url(#tSky)"/>
-    <circle cx="1450" cy="430" r="230" fill="#FFE9B0"/><circle cx="1450" cy="430" r="230" fill="none" stroke="#2A1E14" stroke-width="10"/>
-    <g fill="#E0A55A" stroke="#2A1E14" stroke-width="10" stroke-linejoin="round">
-     <path d="M0 760 Q 400 690 760 740 T 1500 730 T 2300 750 T 3100 730 T 3900 745 T 4700 725 T 5400 745 T 6056 735 V976 H0Z"/>
+<!-- ========== ١ الغلاف ========== -->
+<section class="slide s-cover" data-id="cover" data-bg="night" data-tr="zoom">
+  <div class="head">
+    <p class="unit in" style="--d:0">الوحدة الأولى · التاريخ: قراءة الماضي وفهم الحاضر</p>
+    <span class="badge in" data-a="pop" style="--d:250">الدرس الأول</span>
+    <h1 class="h1 in" style="--d:500">مفهوم علم التاريخ<em>وخصائصه وأهميته وأركانه</em></h1>
+  </div>
+  <svg class="pan" viewBox="0 0 1600 460" aria-hidden="true">
+    <defs><radialGradient id="sunG"><stop offset="0" stop-color="#FFE3A0"/><stop offset=".55" stop-color="#F2A93E"/><stop offset="1" stop-color="#F2A93E" stop-opacity="0"/></radialGradient>
+      <linearGradient id="gnd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A3352"/><stop offset="1" stop-color="#0D1A2B"/></linearGradient></defs>
+    <g class="ray" opacity=".22" stroke="#F7C86A" stroke-width="3"><path d="M800 330V40M800 330L1010 120M800 330L590 120M800 330L1100 260M800 330L500 260M800 330L930 60M800 330L670 60"/></g>
+    <circle class="sun" cx="800" cy="330" r="190" fill="url(#sunG)"/>
+    <circle class="sun" cx="800" cy="330" r="96" fill="#FBD58A"/>
+    <rect x="0" y="380" width="1600" height="80" fill="url(#gnd)"/>
+    <g fill="#1A3352" stroke="#F7C86A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+      <!-- ما قبل التاريخ: كهف -->
+      <path class="dr auto fill-in auto" style="--d:200" d="M1300 380Q1300 250 1405 228Q1510 250 1515 380Z"/>
+      <path class="dr auto" style="--d:500" fill="#0D1A2B" d="M1365 380Q1368 305 1408 298Q1450 305 1452 380Z"/>
+      <!-- القديمة: أهرام -->
+      <path class="dr auto fill-in auto" style="--d:500" d="M1020 380L1125 236L1230 380Z"/>
+      <path class="dr auto fill-in auto" style="--d:650" d="M1190 380L1255 292L1320 380Z"/>
+      <!-- القديمة: معبد -->
+      <path class="dr auto fill-in auto" style="--d:800" d="M845 290L950 238L1055 290ZM845 358H1055V380H845Z"/>
+      <path class="dr auto" style="--d:900" d="M868 296V356M908 296V356M950 296V356M992 296V356M1032 296V356" stroke-width="12"/>
+      <!-- الوسطى: قبة ومئذنة -->
+      <path class="dr auto fill-in auto" style="--d:1050" d="M560 380V318H720V380ZM575 318Q640 205 705 318Z"/>
+      <path class="dr auto fill-in auto" style="--d:1150" d="M740 380V200H764V380ZM736 200L752 168L768 200Z"/>
+      <!-- سفينة شراعية -->
+      <path class="dr auto fill-in auto" style="--d:1300" d="M330 368Q410 396 492 368L480 352H342Z"/>
+      <path class="dr auto fill-in auto" style="--d:1400" d="M412 352V238L482 344Z"/>
+      <!-- الحديثة: أبراج الكويت -->
+      <path class="dr auto" style="--d:1550" d="M178 380V120M232 380V200M128 380V250"/>
+      <circle class="dr auto fill-in auto" style="--d:1700" cx="178" cy="262" r="36"/>
+      <circle class="dr auto fill-in auto" style="--d:1800" cx="178" cy="196" r="19"/>
+      <circle class="dr auto fill-in auto" style="--d:1850" cx="232" cy="290" r="27"/>
+      <path class="dr auto" style="--d:100" d="M40 380H1560" stroke-width="4"/>
     </g>
-    <!-- ما قبل التاريخ: كهف ورسوم -->
-    <g stroke="#2A1E14" stroke-width="10" stroke-linejoin="round">
-     <path d="M30 760 C 60 520 220 430 420 470 C 560 500 610 640 600 760Z" fill="#B57A45"/>
-     <path d="M220 760 C 230 640 300 600 360 640 C 400 670 410 720 405 760Z" fill="#4A2E18"/>
-    </g>
-    <g stroke="#7A2E14" stroke-width="7" fill="none" stroke-linecap="round"><path d="M110 600 l40 -20 l30 20 M120 600 v30 M170 600 v30 M120 640 l-20 30 M175 640 l20 30"/><path d="M460 560 l30 -30 l30 30 l-30 40z"/></g>
-    <!-- الأهرامات -->
-    <g stroke="#2A1E14" stroke-width="10" stroke-linejoin="round"><path d="M780 760 L1090 360 L1400 760Z" fill="#E7B66B"/><path d="M1090 360 L1180 760 L1400 760Z" fill="#C98F48"/><path d="M1300 760 L1500 500 L1700 760Z" fill="#E7B66B"/><path d="M1500 500 L1560 760 L1700 760Z" fill="#C98F48"/></g>
-    <!-- معبد بأعمدة -->
-    <g stroke="#2A1E14" stroke-width="10" fill="#F4E5C5" stroke-linejoin="round">
-     <path d="M1880 470 L2200 360 L2520 470Z"/><rect x="1900" y="470" width="600" height="50"/>
-     <rect x="1940" y="520" width="60" height="220"/><rect x="2060" y="520" width="60" height="220"/><rect x="2180" y="520" width="60" height="220"/><rect x="2300" y="520" width="60" height="220"/><rect x="2410" y="520" width="60" height="220"/>
-     <rect x="1880" y="740" width="640" height="30"/>
-    </g>
-    <!-- قبة ومئذنة -->
-    <g stroke="#2A1E14" stroke-width="10" stroke-linejoin="round">
-     <path d="M2760 760 V560 H3180 V760Z" fill="#E9D3A4"/><path d="M2790 560 C 2800 380 3140 380 3150 560Z" fill="#3E8C86"/><path d="M2970 400 v-60" fill="none"/><circle cx="2970" cy="330" r="16" fill="#D8962F"/>
-     <path d="M3260 760 V300 H3340 V760Z" fill="#E9D3A4"/><path d="M3240 300 L3300 200 L3360 300Z" fill="#3E8C86"/><rect x="3245" y="420" width="110" height="26" fill="#C2522C"/>
-    </g>
-    <!-- سفينة شراعية -->
-    <g stroke="#2A1E14" stroke-width="10" stroke-linejoin="round"><path d="M3480 720 H3960 L3880 800 H3560Z" fill="#8A5530"/><path d="M3720 720 V420" fill="none"/><path d="M3720 430 C 3860 480 3880 610 3730 690Z" fill="#FFF3D6"/><path d="M3710 450 C 3600 520 3580 620 3700 690Z" fill="#F4E2BB"/></g>
-    <!-- قطار بخاري -->
-    <g stroke="#2A1E14" stroke-width="10" stroke-linejoin="round">
-     <rect x="4100" y="600" width="420" height="150" rx="16" fill="#21385A"/><rect x="4380" y="520" width="140" height="90" fill="#21385A"/><rect x="4140" y="540" width="60" height="70" fill="#2A1E14"/>
-     <circle cx="4180" cy="770" r="40" fill="#C2522C"/><circle cx="4300" cy="770" r="40" fill="#C2522C"/><circle cx="4430" cy="770" r="40" fill="#C2522C"/>
-     <path d="M4160 520 C 4120 450 4210 420 4180 360 C 4260 380 4300 300 4250 250" fill="none" stroke-width="12" opacity=".55"/>
-    </g>
-    <!-- مدينة حديثة -->
-    <g stroke="#2A1E14" stroke-width="10" stroke-linejoin="round" fill="#9FC7CF">
-     <rect x="4720" y="380" width="200" height="380"/><rect x="4950" y="250" width="170" height="510"/><rect x="5150" y="430" width="230" height="330"/><path d="M5420 760 V320 L5520 220 L5620 320 V760Z"/><rect x="5660" y="470" width="200" height="290"/>
-    </g>
-    <g fill="#FFF3D6" opacity=".9"><rect x="4760" y="430" width="40" height="40"/><rect x="4840" y="430" width="40" height="40"/><rect x="4760" y="520" width="40" height="40"/><rect x="4990" y="300" width="40" height="40"/><rect x="5060" y="300" width="40" height="40"/><rect x="4990" y="390" width="40" height="40"/><rect x="5190" y="480" width="50" height="40"/><rect x="5290" y="480" width="50" height="40"/><rect x="5470" y="360" width="40" height="40"/><rect x="5540" y="360" width="40" height="40"/><rect x="5700" y="520" width="50" height="40"/></g>
-    <rect width="6056" height="976" fill="url(#dots)"/>
-    <!-- سهم الزمن -->
-    <g stroke="#2A1E14" stroke-width="12" stroke-linecap="round" fill="none"><path d="M5900 900 H160"/><path d="M220 860 L160 900 L220 940"/></g>
-   </svg>
-   <div style="position:absolute;right:120px;top:40px;width:5800px;text-align:right">
-    <div class="qtag" style="position:relative;display:inline-block;background:var(--navy);font-size:110px">الدرس الأول</div>
-    <h1 style="margin:10px 0 0;font-family:var(--f-d);font-weight:400;font-size:230px;line-height:1.15;color:var(--ink);text-shadow:8px 8px 0 #FFF3D6">مفهوم علم التاريخ <br><span style="color:var(--terra)">وخصائصه وأهميته وأركانه</span></h1>
-   </div>
-   <div class="cap" data-r="learn" style="left:110px;top:60px;width:1250px;font-size:56px">
-    <span class="k">سنتعلم في هذا الدرس:</span>
-    مفهوم: علم التاريخ.<br>خصائص علم التاريخ.<br>أهمية دراسة علم التاريخ.<br>عناصر الحدث التاريخي الرئيسية.
-   </div>
-  </section>
+    <g fill="none" stroke="#6FB3D9" stroke-width="3" opacity=".7"><path class="dr auto" style="--d:1500" d="M290 404q20-10 40 0t40 0 40 0 40 0 40 0 40 0"/></g>
+  </svg>
+</section>
 
-  <!-- ===================== ١) الحاضر ثمرة الماضي ===================== -->
-  <section class="panel" data-panel="roots" style="left:10507px;top:1740px;width:1973px;height:1150px">
-   <svg class="art" viewBox="0 0 1949 1126" aria-hidden="true">
-    <defs><linearGradient id="rSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFE1E6"/><stop offset="1" stop-color="#F7E2B2"/></linearGradient></defs>
-    <rect width="1949" height="430" fill="url(#rSky)"/>
-    <!-- مدينة الحاضر -->
-    <g stroke="#2A1E14" stroke-width="8" stroke-linejoin="round" fill="#9FC7CF">
-     <rect x="80" y="170" width="150" height="260"/><rect x="250" y="90" width="120" height="340"/><rect x="390" y="210" width="170" height="220"/>
-     <rect x="1400" y="150" width="150" height="280"/><rect x="1570" y="60" width="130" height="370"/><rect x="1720" y="200" width="170" height="230"/>
-    </g>
-    <g fill="#FFF3D6"><rect x="110" y="210" width="30" height="30"/><rect x="170" y="210" width="30" height="30"/><rect x="280" y="130" width="30" height="30"/><rect x="320" y="130" width="30" height="30"/><rect x="1430" y="190" width="30" height="30"/><rect x="1600" y="100" width="30" height="30"/><rect x="1650" y="100" width="30" height="30"/><rect x="1750" y="240" width="30" height="30"/></g>
-    <!-- الطبقات: الماضي تحت الأرض -->
-    <path d="M0 430 H1949 V1126 H0Z" fill="#D9B07A"/>
-    <path d="M0 600 C 400 570 900 640 1300 600 S 1800 590 1949 610 V1126 H0Z" fill="#C49460"/>
-    <path d="M0 790 C 500 760 900 830 1400 790 S 1800 780 1949 800 V1126 H0Z" fill="#A9784A"/>
-    <path d="M0 960 C 450 930 950 1000 1450 960 S 1800 950 1949 970 V1126 H0Z" fill="#8C5F38"/>
-    <g fill="none" stroke="#2A1E14" stroke-width="8"><path d="M0 430 H1949"/><path d="M0 600 C 400 570 900 640 1300 600 S 1800 590 1949 610"/><path d="M0 790 C 500 760 900 830 1400 790 S 1800 780 1949 800"/><path d="M0 960 C 450 930 950 1000 1450 960 S 1800 950 1949 970"/></g>
-    <!-- لقى أثرية في الطبقات -->
-    <g stroke="#2A1E14" stroke-width="7" stroke-linejoin="round">
-     <path d="M240 520 c-30 0 -40 30 -30 60 c10 30 70 30 80 0 c10 -30 0 -60 -50 -60z" fill="#C2522C"/><rect x="225" y="500" width="30" height="24" fill="#C2522C"/>
-     <circle cx="1650" cy="520" r="34" fill="#E8C060"/><circle cx="1650" cy="520" r="18" fill="none"/>
-     <path d="M300 700 h170 v26 h-170z M320 726 h20 v50 h-20z M430 726 h20 v50 h-20z" fill="#F0DDB5"/>
-     <path d="M1500 690 c40 -20 120 -20 150 0 v60 c-30 -20 -110 -20 -150 0z" fill="#F4E5C5"/>
-     <path d="M640 880 l40 -60 l40 60 l-40 30z" fill="#6B5B4B"/>
-     <path d="M1200 880 c0 -40 80 -40 80 0 v40 h-80z" fill="#D8962F"/>
-    </g>
-    <!-- الإنسان في الحاضر وجذوره -->
-    <g stroke="#2A1E14" stroke-width="8" stroke-linejoin="round">
-     <circle cx="975" cy="200" r="46" fill="#E8B88A"/>
-     <path d="M915 250 h120 l20 120 h-160z" fill="#2C7A77"/><path d="M925 370 l-10 60 h50 l10 -60z M1015 370 l10 60 h-50 l-10 -60z" fill="#21385A"/>
-    </g>
-    <g id="rootsPath" fill="none" stroke="#5A3A1C" stroke-width="16" stroke-linecap="round">
-     <path d="M960 430 C 950 560 860 640 820 760 S 760 930 720 1100"/>
-     <path d="M990 430 C 1010 560 1110 640 1150 760 S 1220 930 1260 1100"/>
-     <path d="M975 430 C 975 600 990 800 975 1110"/>
-    </g>
-    <!-- نافذة على الماضي -->
-    <g stroke="#2A1E14" stroke-width="12"><circle cx="975" cy="1000" r="96" fill="#F6CB86"/></g>
-    <path d="M905 1040 L960 960 L1015 1040Z M990 1040 L1020 1000 L1050 1040Z" fill="#C98F48" stroke="#2A1E14" stroke-width="5"/>
-    <circle cx="975" cy="1000" r="96" fill="none" stroke="#FFE6A8" stroke-width="6" opacity=".9"/>
-    <text x="975" y="470" text-anchor="middle" font-family="Lalezar" font-size="54" fill="#2A1E14">الحاضر</text>
-    <text x="1840" y="1080" text-anchor="end" font-family="Lalezar" font-size="54" fill="#FFE6A8">الماضي</text>
-   </svg>
-   <div class="halftone"></div>
-   <div class="bloom live" style="left:880px;top:900px;width:200px;height:200px"></div>
-   <div class="bubble t-up" data-r="rootsQ" style="right:60px;top:500px;width:900px;--tail:70%">ما الذي يربط الإنسان في الحاضر بالزمن الماضي؟</div>
-   <div class="cap" data-r="rootsT" style="left:40px;right:40px;top:470px;font-size:60px">يعيش الإنسان في الحاضر، لكنه يظل مرتبطاً بجذوره الممتدة في الزمن الماضي، فالحاضر الذي نعيشه ليس إلا <b>ثمرةً لتجارب سابقة وأحداث متراكمة</b> صنعت ملامحه وستساهم في تقدّمه مستقبلاً.</div>
-  </section>
+<!-- ========== ٢ سنتعلم ========== -->
+<section class="slide s-learn" data-id="learn" data-bg="night" data-tr="slide">
+  <div class="ttl"><h2 class="h2 in">سنتعلم في هذا الدرس</h2></div>
+  <svg class="road" viewBox="0 0 1600 900" aria-hidden="true"><path class="in" data-a="fade" d="M1560 520C1480 520 1420 420 1300 420S1080 560 960 560 760 420 640 420 420 560 300 560 120 500 40 500" fill="none" stroke="#E9A23B" stroke-width="6" stroke-dasharray="2 18" stroke-linecap="round"/></svg>
+  <div class="stop fr" data-f="1" data-a="pop" style="--c:#E9A23B;left:1150px;top:360px"><div class="dot"><svg viewBox="0 0 64 64"><path d="M8 14c8-3 16-3 24 2v38c-8-5-16-5-24-2zM56 14c-8-3-16-3-24 2v38c8-5 16-5 24-2z"/></svg></div><small>١</small><b>مفهوم علم التاريخ</b></div>
+  <div class="stop fr" data-f="2" data-a="pop" style="--c:#2A9D8F;left:810px;top:500px"><div class="dot"><svg viewBox="0 0 64 64"><circle cx="27" cy="27" r="16"/><path d="M39 39l15 15"/></svg></div><small>٢</small><b>خصائص علم التاريخ</b></div>
+  <div class="stop fr" data-f="3" data-a="pop" style="--c:#D0603A;left:490px;top:360px"><div class="dot"><svg viewBox="0 0 64 64"><path d="M32 6l7 15 16 2-12 11 3 16-14-8-14 8 3-16L9 23l16-2z"/></svg></div><small>٣</small><b>أهمية دراسة علم التاريخ</b></div>
+  <div class="stop fr" data-f="4" data-a="pop" style="--c:#7D4F93;left:150px;top:500px"><div class="dot"><svg viewBox="0 0 64 64"><path d="M32 58s18-18 18-32a18 18 0 00-36 0c0 14 18 32 18 32z"/><circle cx="32" cy="26" r="7"/></svg></div><small>٤</small><b>عناصر الحدث التاريخي الرئيسية</b></div>
+</section>
 
-  <!-- ===================== ٢) الآية والتساؤلات ===================== -->
-  <section class="panel" data-panel="verse" style="left:8453px;top:1740px;width:1973px;height:1150px">
-   <svg class="art" viewBox="0 0 1949 1126" aria-hidden="true">
-    <defs><linearGradient id="vSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F9DFA6"/><stop offset="1" stop-color="#F2BE79"/></linearGradient></defs>
-    <rect width="1949" height="1126" fill="url(#vSky)"/>
-    <g opacity=".55" stroke="#E9A84F" stroke-width="22" stroke-linecap="round"><path d="M975 760 L975 640"/><path d="M975 760 L1180 690"/><path d="M975 760 L770 690"/><path d="M975 760 L1320 790"/><path d="M975 760 L630 790"/></g>
-    <circle cx="975" cy="820" r="120" fill="#FFE9B0" stroke="#2A1E14" stroke-width="9"/>
-    <g stroke="#2A1E14" stroke-width="9" stroke-linejoin="round">
-     <path d="M140 860 L330 620 L520 860Z" fill="#E7B66B"/><path d="M330 620 L380 860 L520 860Z" fill="#C98F48"/>
-     <path d="M1480 860 V700 h60 v160 M1580 860 V680 h60 v180 M1680 860 V710 h60 v150" fill="#F4E5C5"/><path d="M1460 700 h300 v-30 h-300z" fill="#F4E5C5"/>
+<!-- ========== ٣ الجذور ========== -->
+<section class="slide s-roots" data-id="roots" data-bg="earth" data-tr="iris">
+  <div class="ttl"><h2 class="h2 in">الحاضر ثمرةٌ للماضي</h2></div>
+  <div class="txt">
+    <div class="card fr" data-f="1" data-a="right">يعيش الإنسان في الحاضر، لكنه يظل مرتبطاً <mark>بجذوره الممتدة في الزمن الماضي</mark>،</div>
+    <div class="card fr" data-f="2" data-a="right">فالحاضر الذي نعيشه ليس إلا <mark>ثمرةً لتجارب سابقة وأحداث متراكمة</mark> صنعت ملامحه وستساهم في تقدّمه مستقبلاً.</div>
+  </div>
+  <svg class="tree" viewBox="0 0 700 800" aria-hidden="true">
+    <rect x="0" y="360" width="700" height="440" rx="30" fill="#3A2A1C"/>
+    <rect x="0" y="360" width="700" height="130" fill="#5A4129"/>
+    <rect x="0" y="490" width="700" height="150" fill="#4A3522"/>
+    <rect x="0" y="640" width="700" height="160" fill="#3A2A1C"/>
+    <path d="M0 360H700" stroke="#E4CC9C" stroke-width="5"/>
+    <!-- آثار في الطبقات -->
+    <g fill="#C79A5C" stroke="#E8CFA0" stroke-width="3">
+      <path d="M90 450c0-18 26-18 26-34h20c0 16 26 16 26 34 0 22-14 34-36 34s-36-12-36-34z"/>
+      <circle cx="560" cy="430" r="22"/><circle cx="560" cy="430" r="12" fill="none"/>
+      <path d="M140 580h70v14h-70zM150 594h12v50h-12zM188 594h12v50h-12z"/>
+      <path d="M470 560h90v50h-90z" fill="#E8D6B0"/><path d="M482 572h66M482 584h66M482 596h44" stroke="#8A6A3A"/>
+      <path d="M300 700l40-26 40 26-40 26z"/>
     </g>
-    <path d="M0 880 C 300 830 600 900 975 860 S 1600 840 1949 880 V1126 H0Z" fill="#E0A55A" stroke="#2A1E14" stroke-width="9"/>
-    <path d="M975 1126 C 960 1040 1010 960 990 880" fill="none" stroke="#B97E3E" stroke-width="40" stroke-linecap="round" opacity=".7"/>
-    <!-- مسافر يسير في الأرض -->
-    <g stroke="#2A1E14" stroke-width="7" stroke-linejoin="round" transform="translate(1180 930)">
-     <circle cx="0" cy="-90" r="22" fill="#E8B88A"/><path d="M-26 -66 h52 l12 70 h-76z" fill="#FFF3D6"/><path d="M-20 4 l-16 60 M20 4 l20 60" fill="none"/><path d="M40 -60 l40 140" fill="none" stroke-width="6"/>
+    <!-- الجذور -->
+    <g fill="none" stroke="#C99A5A" stroke-width="10" stroke-linecap="round" class="fr" data-f="1" data-a="fade">
+      <path class="dr" d="M350 360C350 420 330 470 260 520S150 600 120 650"/>
+      <path class="dr" d="M350 360C356 440 400 480 470 520S560 600 600 680"/>
+      <path class="dr" d="M350 360C340 470 360 560 340 760"/>
+      <path class="dr" d="M300 470C250 470 200 440 140 450" stroke-width="6"/>
+      <path class="dr" d="M410 470C460 460 510 440 560 440" stroke-width="6"/>
     </g>
-   </svg>
-   <div class="halftone"></div>
-   <div class="bloom live" style="left:815px;top:660px;width:320px;height:320px"></div>
-   <div class="cap" style="left:60px;right:60px;top:50px;background:#FFF8E8;padding:24px 40px">
-    <div class="verse" style="position:relative;font-size:80px;line-height:1.75">﴿قُلْ سِيرُوا فِي الْأَرْضِ فَانظُرُوا كَيْفَ بَدَأَ الْخَلْقَ ثُمَّ اللَّهُ يُنشِئُ النَّشْأَةَ الْآخِرَةَ إِنَّ اللَّهَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ﴾<small>العنكبوت (٢٠)</small></div>
-   </div>
-   <div class="bubble" data-r="vq1" style="right:60px;top:690px;width:880px;--tail:30%;font-size:58px">كيف تعرّف الإنسان إلى ما وقع في الأزمنة الماضية؟</div>
-   <div class="bubble" data-r="vq2" style="left:60px;top:690px;width:880px;--tail:70%;font-size:58px">وكيف استطاع الإنسان تدوين الأحداث وحفظها عبر العصور؟</div>
-   <div class="cap" data-r="vAns" style="left:60px;right:60px;top:700px;font-size:62px;text-align:center">إن الإجابة عن هذه التساؤلات تكمن في علمٍ راسخ يُعرف بـ:<br><span style="font-family:var(--f-d);font-size:120px;color:var(--terra);line-height:1.3">علم التاريخ</span></div>
-  </section>
-
-  <!-- ===================== ٣) التعريف ===================== -->
-  <section class="panel" data-panel="def" style="left:6400px;top:1740px;width:1973px;height:1150px">
-   <svg class="art" viewBox="0 0 1949 1126" aria-hidden="true">
-    <rect width="1949" height="1126" fill="#E9D3A4"/>
-    <!-- رفوف كتب -->
-    <g stroke="#2A1E14" stroke-width="8">
-     <rect x="60" y="60" width="1829" height="40" fill="#8A5530"/><rect x="60" y="300" width="1829" height="40" fill="#8A5530"/>
-     <g fill="#C2522C"><rect x="100" y="120" width="70" height="180"/><rect x="420" y="150" width="60" height="150"/><rect x="1400" y="130" width="70" height="170"/></g>
-     <g fill="#2C7A77"><rect x="180" y="140" width="60" height="160"/><rect x="490" y="120" width="80" height="180"/><rect x="1480" y="150" width="60" height="150"/><rect x="1760" y="120" width="70" height="180"/></g>
-     <g fill="#21385A"><rect x="250" y="110" width="70" height="190"/><rect x="580" y="140" width="60" height="160"/><rect x="1550" y="120" width="80" height="180"/></g>
-     <g fill="#D8962F"><rect x="330" y="130" width="70" height="170"/><rect x="1640" y="140" width="100" height="160"/></g>
+    <g fill="none" stroke="#FFE19A" stroke-width="5" stroke-linecap="round" class="fr" data-f="1" data-a="fade">
+      <path class="flow" d="M120 650C150 600 190 570 260 520S350 420 350 360"/>
+      <path class="flow" d="M600 680C560 600 540 560 470 520S356 440 350 360"/>
+      <path class="flow" d="M340 760C360 560 340 470 350 360"/>
     </g>
-    <!-- منصة القراءة والكتاب المفتوح -->
-    <g stroke="#2A1E14" stroke-width="9" stroke-linejoin="round">
-     <path d="M820 1126 L880 820 H1070 L1130 1126Z" fill="#8A5530"/>
-     <path d="M700 840 L975 760 L1250 840 L975 900Z" fill="#6B3E1E"/>
-     <path d="M720 820 C 820 760 920 770 975 800 C 1030 770 1130 760 1230 820 L975 880Z" fill="#FFF8E8"/>
-     <path d="M975 800 V880" fill="none"/>
+    <!-- الجذع والتاج -->
+    <path d="M330 362C335 290 320 230 300 190M370 362C365 290 380 230 410 190M350 362V160" stroke="#7A5532" stroke-width="30" stroke-linecap="round" fill="none"/>
+    <g fill="#2E7D5B"><circle cx="350" cy="140" r="110"/><circle cx="240" cy="180" r="80"/><circle cx="460" cy="180" r="80"/><circle cx="300" cy="80" r="70"/><circle cx="410" cy="80" r="70"/></g>
+    <g fill="#3E9A6F" opacity=".7"><circle cx="330" cy="110" r="60"/><circle cx="430" cy="150" r="44"/><circle cx="250" cy="160" r="40"/></g>
+    <g class="fr" data-f="2" data-a="fade">
+      <g fill="#FFD27A" class="glow"><circle cx="270" cy="150" r="40" opacity=".25"/><circle cx="420" cy="110" r="40" opacity=".25"/><circle cx="360" cy="210" r="40" opacity=".25"/><circle cx="310" cy="60" r="34" opacity=".25"/></g>
+      <g fill="#F2A93E" stroke="#FFE7B0" stroke-width="3"><circle class="pulse" cx="270" cy="150" r="18"/><circle class="pulse" cx="420" cy="110" r="18"/><circle class="pulse" cx="360" cy="210" r="18"/><circle class="pulse" cx="310" cy="60" r="16"/><circle class="pulse" cx="470" cy="200" r="15"/></g>
     </g>
-    <g stroke="#B9A07A" stroke-width="5"><path d="M780 815 h150 M790 835 h140 M1020 815 h150 M1020 835 h140"/></g>
-    <!-- مصباح -->
-    <g stroke="#2A1E14" stroke-width="8"><path d="M1470 1000 h140 l-20 -40 h-100z" fill="#D8962F"/><path d="M1540 960 c-40 -40 -30 -110 0 -130 c30 20 40 90 0 130z" fill="#FFD27A"/></g>
-   </svg>
-   <div class="halftone"></div>
-   <div class="bloom live" style="left:1400px;top:740px;width:280px;height:280px"></div>
-   <div class="qtag" style="right:70px;top:380px;background:var(--navy)">علم التاريخ:</div>
-   <div class="cap" style="left:60px;right:60px;top:520px;font-size:70px;line-height:1.85">هو علم يدرس <span class="gap" data-r="g1">أحداث الماضي</span> و<span class="gap" data-r="g2">أحوال الأمم والشعوب</span> بهدف <span class="gap" data-r="g3">فهمها</span> والاستفادة من خبراتها.</div>
-  </section>
+    <text x="590" y="340" text-anchor="middle" font-family="Lalezar" font-size="46" fill="#F7C86A">الحاضر</text>
+    <text x="590" y="780" text-anchor="middle" font-family="Lalezar" font-size="46" fill="#E4CC9C">الماضي</text>
+  </svg>
+</section>
 
-  <!-- ===================== ٤) خصائص علم التاريخ ===================== -->
-  <section class="panel" data-panel="chars" style="left:6400px;top:2970px;width:6080px;height:1200px">
-   <div class="strip"><h2>أولاً: خصائص علم التاريخ</h2><p>يتميز علم التاريخ بخصائص تبرز طبيعته في دراسة الأحداث وتحليلها، ومن أبرزها:</p></div>
-   <!-- ١ المصادر -->
-   <div class="sub" data-sub="c1" style="left:4076px;top:270px;width:1940px;height:880px">
-    <svg class="art" viewBox="0 0 1922 862" aria-hidden="true">
-     <rect width="1922" height="862" fill="#EAD6AF"/>
-     <g stroke="#2A1E14" stroke-width="8" stroke-linejoin="round">
-      <rect x="60" y="560" width="720" height="40" fill="#8A5530"/>
-      <rect x="90" y="360" width="80" height="200" fill="#C2522C"/><rect x="175" y="390" width="70" height="170" fill="#2C7A77"/><rect x="250" y="340" width="90" height="220" fill="#21385A"/><rect x="345" y="400" width="70" height="160" fill="#D8962F"/>
-      <path d="M440 560 c0 -60 260 -60 260 0z" fill="#F4E5C5"/><path d="M420 480 h300 a30 30 0 0 1 0 60 h-300 a30 30 0 0 1 0 -60z" fill="#F7E7C3"/>
-      <path d="M90 640 h620 l-40 180 h-540z" fill="#FFF8E8"/>
-     </g>
-     <g stroke="#B9A07A" stroke-width="6"><path d="M140 680 h500 M150 715 h480 M160 750 h460 M170 785 h300"/></g>
-     <g stroke="#2A1E14" stroke-width="10"><circle cx="560" cy="700" r="78" fill="rgba(200,240,255,.35)"/><path d="M615 755 l90 90" stroke-width="22" stroke-linecap="round"/></g>
-    </svg>
-    <div class="scan live" style="left:90px;top:640px;width:620px;height:180px"><i></i></div>
-    <div class="card" data-r="c1" style="right:30px;top:30px;width:1120px;height:800px"><div class="in"><div class="f"><span class="n">١</span><span class="h">اكشف الخاصية الأولى</span></div><div class="b"><h3>الاعتماد على المصادر والشواهد (الأدلة)</h3><p>ليتحقق من الأحداث الماضية</p></div></div></div>
-   </div>
-   <!-- ٢ التحليل -->
-   <div class="sub" data-sub="c2" style="left:2076px;top:270px;width:1940px;height:880px">
-    <svg class="art" viewBox="0 0 1922 862" aria-hidden="true">
-     <rect width="1922" height="862" fill="#E9D3A4"/>
-     <g stroke="#2A1E14" stroke-width="8" stroke-linejoin="round">
-      <path d="M90 300 l560 -40 l40 520 l-560 40z" fill="#F7E7C3"/>
-      <path d="M140 340 h420 M150 400 h440 M160 460 h400 M170 520 h430 M180 580 h300" stroke="#B9A07A" stroke-width="6"/>
-      <circle cx="420" cy="230" r="70" fill="none" stroke-width="6"/><path d="M420 160 v140 M350 230 h140" stroke-width="5"/>
-      <rect x="120" y="700" width="420" height="70" fill="#21385A"/><rect x="140" y="640" width="380" height="60" fill="#2C7A77"/>
-     </g>
-     <g stroke="#2A1E14" stroke-width="12"><circle cx="470" cy="470" r="150" fill="rgba(200,240,255,.35)"/><path d="M575 575 l150 150" stroke-width="34" stroke-linecap="round"/></g>
-    </svg>
-    <div class="bloom live" style="left:330px;top:330px;width:280px;height:280px"></div>
-    <div class="card" data-r="c2" style="right:30px;top:30px;width:1120px;height:800px"><div class="in"><div class="f"><span class="n">٢</span><span class="h">اكشف الخاصية الثانية</span></div><div class="b"><h3>التحليل والاستنتاج</h3><p>تحليل الأحداث واستنتاج الأدلة لفهمها بصورة أعمق</p></div></div></div>
-   </div>
-   <!-- ٣ التسلسل الزمني -->
-   <div class="sub" data-sub="c3" style="left:76px;top:270px;width:1940px;height:880px">
-    <svg class="art" viewBox="0 0 1922 862" aria-hidden="true">
-     <rect width="1922" height="862" fill="#EAD6AF"/>
-     <!-- ساعة رملية -->
-     <g stroke="#2A1E14" stroke-width="9" stroke-linejoin="round">
-      <rect x="160" y="40" width="300" height="34" fill="#8A5530"/><rect x="160" y="470" width="300" height="34" fill="#8A5530"/>
-      <path d="M200 74 C 200 200 300 230 310 272 C 300 314 200 344 200 470 H420 C 420 344 320 314 310 272 C 320 230 420 200 420 74Z" fill="rgba(220,240,250,.6)"/>
-      <path d="M230 110 C 240 200 300 230 310 260 C 320 230 380 200 390 110Z" fill="#E8C060" stroke="none"/>
-      <path d="M230 470 C 250 400 290 370 310 360 C 330 370 370 400 390 470Z" fill="#E8C060" stroke="none"/>
-     </g>
-     <!-- خط العصور -->
-     <path d="M1880 690 H80" stroke="#2A1E14" stroke-width="12"/><path d="M130 650 L80 690 L130 730" fill="none" stroke="#2A1E14" stroke-width="12" stroke-linecap="round"/>
-     <g>
-      <circle class="era" data-era="1" cx="1700" cy="690" r="34"/><circle class="era" data-era="2" cx="1260" cy="690" r="34"/><circle class="era" data-era="3" cx="820" cy="690" r="34"/><circle class="era" data-era="4" cx="380" cy="690" r="34"/>
-     </g>
-     <g text-anchor="middle"><text class="era-l" x="1700" y="790">عصور ما قبل التاريخ</text><text class="era-l" x="1260" y="790">العصور القديمة</text><text class="era-l" x="820" y="790">العصور الوسطى</text><text class="era-l" x="380" y="790">العصور الحديثة</text></g>
-     <!-- رموز العصور -->
-     <g stroke="#2A1E14" stroke-width="7" stroke-linejoin="round">
-      <path d="M1630 630 c10 -80 60 -110 110 -90 c30 20 40 60 30 90z" fill="#B57A45"/>
-      <path d="M1200 630 h120 l-60 -50z" fill="#F4E5C5"/><rect x="1210" y="600" width="18" height="30" fill="#F4E5C5"/><rect x="1251" y="600" width="18" height="30" fill="#F4E5C5"/><rect x="1292" y="600" width="18" height="30" fill="#F4E5C5"/>
-      <path d="M770 630 v-60 h20 v20 h20 v-20 h20 v20 h20 v-20 h20 v60z" fill="#D9C39A"/>
-      <path d="M330 630 v-40 c0 -40 100 -40 100 0 v40z" fill="#3E8C86"/>
-     </g>
-    </svg>
-    <div class="card" data-r="c3" style="right:30px;top:30px;width:1120px;height:560px"><div class="in"><div class="f"><span class="n">٣</span><span class="h">اكشف الخاصية الثالثة</span></div><div class="b"><h3>دراسة الأحداث وفق تسلسل زمني</h3><p>لفهم التغيير والتطور عبر العصور</p></div></div></div>
-   </div>
-  </section>
+<!-- ========== ٤ الآية ========== -->
+<section class="slide s-verse" data-id="verse" data-bg="deep" data-tr="fade">
+  <div class="vq">
+    <p class="verse in" data-a="wipe" style="--d:200">﴿قُلْ سِيرُوا فِي الْأَرْضِ فَانظُرُوا كَيْفَ بَدَأَ الْخَلْقَ ثُمَّ اللَّهُ يُنشِئُ النَّشْأَةَ الْآخِرَةَ إِنَّ اللَّهَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ﴾</p>
+    <div class="ref in" style="--d:1100">العنكبوت (٢٠)</div>
+    <p class="says fr" data-f="1">تدعو هذه الآية الكريمة إلى النظر في أحوال الأمم السابقة والتأمل في أحداثها، الأمر الذي يثير تساؤلات مهمة:</p>
+  </div>
+  <div class="qs">
+    <div class="q card fr fo" data-f="2" data-o="4" data-a="pop"><i>١</i>كيف تعرّف الإنسان إلى ما وقع في الأزمنة الماضية؟</div>
+    <div class="q card fr fo" data-f="3" data-o="4" data-a="pop"><i>٢</i>وكيف استطاع الإنسان تدوين الأحداث وحفظها عبر العصور؟</div>
+  </div>
+  <div class="ansr fr" data-f="4" data-a="pop" data-fx="burst">
+    <p>إن الإجابة عن هذه التساؤلات تكمن في علمٍ راسخ يُعرف بـ:</p>
+    <div class="big">علم التاريخ</div>
+  </div>
+</section>
 
-  <!-- ===================== ٥) أهمية دراسة علم التاريخ ===================== -->
-  <section class="panel" data-panel="imp" style="left:160px;top:160px;width:6080px;height:1200px">
-   <div class="strip" style="background:#7A2E14"><h2>ثانياً: أهمية دراسة علم التاريخ</h2><p>تتجلى أهمية دراسة علم التاريخ في إسهامه في تنمية وعي الإنسان بذاته ومجتمعه، ومن أبرز جوانب هذه الأهمية:</p></div>
-   <div class="sub" data-sub="i1" style="left:4076px;top:270px;width:1940px;height:880px">
-    <svg class="art" viewBox="0 0 1922 862" aria-hidden="true">
-     <rect width="1922" height="862" fill="#EAD6AF"/>
-     <g stroke="#2A1E14" stroke-width="8" stroke-linejoin="round">
-      <path d="M80 420 h260 v-60 h40 v60 h80 v-120 l60 -60 l60 60 v120 h60 v320 h-560z" fill="#D9C39A" opacity=".8"/>
-      <rect x="100" y="620" width="560" height="70" fill="#21385A"/><rect x="120" y="560" width="520" height="60" fill="#C2522C"/>
-      <path d="M140 560 c80 -50 160 -50 240 -10 c80 -40 160 -40 240 10z" fill="#FFF8E8"/>
-      <path d="M560 300 c40 -90 120 -150 160 -170 c-20 60 -60 150 -150 190z" fill="#FFF3D6"/><path d="M570 310 L520 420" fill="none"/>
-      <path d="M470 700 h120 v80 h-120z" fill="#2A1E14"/>
-     </g>
-    </svg>
-    <div class="card" data-r="i1" style="right:30px;top:30px;width:1180px;height:800px"><div class="in"><div class="f"><span class="n">١</span><span class="h">ما الأهمية الأولى؟</span></div><div class="b"><p style="font-size:56px">استخلاص الدروس من خبرات وتجارب الأمم السابقة وما حققته من نجاحات وما واجهته من تحديات وربطها بالقضايا المعاصرة.</p></div></div></div>
-   </div>
-   <div class="sub" data-sub="i2" style="left:2076px;top:270px;width:1940px;height:880px">
-    <svg class="art" viewBox="0 0 1922 862" aria-hidden="true">
-     <defs><linearGradient id="iSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFE1E6"/><stop offset="1" stop-color="#F7E2B2"/></linearGradient></defs>
-     <rect width="1922" height="862" fill="url(#iSky)"/>
-     <!-- سور وبوابة -->
-     <g stroke="#2A1E14" stroke-width="8" stroke-linejoin="round">
-      <path d="M40 560 v-120 h40 v-30 h40 v30 h40 v-30 h40 v30 h40 v-30 h40 v30 h40 v-30 h40 v30 h40 v-30 h40 v30 h40 v-30 h40 v30 h40 v120z" fill="#D9C39A"/>
-      <path d="M250 560 v-90 c0 -60 120 -60 120 0 v90z" fill="#6B3E1E"/>
-      <path d="M540 560 v-60 l60 -50 l60 50 v60z" fill="#D9C39A"/>
-     </g>
-     <!-- سارية وعلم الكويت -->
-     <path d="M420 120 V440" stroke="#2A1E14" stroke-width="12"/>
-     <g class="wave" stroke="#2A1E14" stroke-width="6">
-      <path d="M426 130 h360 v70 h-360z" fill="#1E8C4B"/><path d="M426 200 h360 v70 h-360z" fill="#FFFFFF"/><path d="M426 270 h360 v70 h-360z" fill="#C8102E"/>
-      <path d="M426 130 l110 70 v70 l-110 70z" fill="#111"/>
-     </g>
-     <!-- بحر وسفينة -->
-     <path d="M0 600 h1922 v262 h-1922z" fill="#5FA9B8"/>
-     <g stroke="#2A1E14" stroke-width="7" stroke-linejoin="round"><path d="M220 640 h300 l-50 60 h-200z" fill="#8A5530"/><path d="M370 640 v-150" fill="none"/><path d="M372 500 c80 30 90 100 0 130z" fill="#FFF3D6"/></g>
-     <g stroke="#2A1E14" stroke-width="7"><circle cx="650" cy="760" r="60" fill="#E8C060"/><circle cx="650" cy="760" r="36" fill="none"/></g>
-    </svg>
-    <div class="bloom live" style="left:330px;top:40px;width:420px;height:420px"></div>
-    <div class="card" data-r="i2" style="right:30px;top:30px;width:1060px;height:800px"><div class="in"><div class="f"><span class="n">٢</span><span class="h">ما الأهمية الثانية؟</span></div><div class="b"><p style="font-size:56px">تعزيز الهوية الوطنية وترسيخ انتماء الفرد وارتباطه بوطنه من خلال التعرف إلى منجزاته الحضارية.</p></div></div></div>
-   </div>
-   <div class="sub" data-sub="i3" style="left:76px;top:270px;width:1940px;height:880px">
-    <svg class="art" viewBox="0 0 1922 862" aria-hidden="true">
-     <rect width="1922" height="862" fill="#E9D3A4"/>
-     <g stroke="#2A1E14" stroke-width="8" stroke-linejoin="round">
-      <rect x="60" y="560" width="760" height="40" fill="#8A5530"/>
-      <path d="M200 560 c0 -120 40 -200 110 -230 c70 30 110 110 110 230z" fill="#2C7A77"/>
-      <circle cx="310" cy="270" r="66" fill="#E8B88A"/><path d="M240 250 c20 -70 120 -80 140 -10 c-40 -20 -100 -20 -140 10z" fill="#FFF3D6"/>
-      <path d="M380 330 c40 10 60 40 40 80" fill="none"/>
-      <circle cx="620" cy="470" r="80" fill="#5FA9B8"/><path d="M560 450 c40 -20 80 10 120 -10 M570 500 c30 10 70 -10 100 10" fill="none" stroke-width="6"/><path d="M620 550 v10 M580 560 h80" fill="none"/>
-      <path d="M100 600 l40 200 M780 600 l-40 200" fill="none"/>
-     </g>
-     <g fill="#FFD27A" stroke="#2A1E14" stroke-width="5"><circle cx="420" cy="150" r="16"/><circle cx="470" cy="110" r="22"/><circle cx="540" cy="80" r="30"/></g>
-    </svg>
-    <div class="bloom live" style="left:420px;top:-40px;width:260px;height:260px"></div>
-    <div class="card" data-r="i3" style="right:30px;top:30px;width:1060px;height:800px"><div class="in"><div class="f"><span class="n">٣</span><span class="h">ما الأهمية الثالثة؟</span></div><div class="b"><p style="font-size:56px">تنمية مهارات التفكير لفهم القضايا المختلفة بصورة أعمق بما يدعم اتخاذ قرارات أكثر وعياً في الحاضر والمستقبل.</p></div></div></div>
-   </div>
-  </section>
+<!-- ========== ٥ التعريف ========== -->
+<section class="slide s-def" data-id="def" data-bg="night" data-tr="slide">
+  <div class="ttl"><h2 class="h2 in">ما علم التاريخ؟</h2></div>
+  <div class="card defc in" style="--d:200">
+    <span class="lab">علم التاريخ</span>
+    <p>هو علم يدرس <span class="blank fr" data-f="1" data-a="fade"><span class="sz">أحداث الماضي</span><b>أحداث الماضي</b></span> <span style="white-space:nowrap">و<span class="blank fr" data-f="2" data-a="fade"><span class="sz">أحوال الأمم والشعوب</span><b>أحوال الأمم والشعوب</b></span></span> بهدف <span class="blank fr" data-f="3" data-a="fade" data-fx="burst"><span class="sz">فهمها والاستفادة من خبراتها</span><b>فهمها والاستفادة من خبراتها</b></span>.</p>
+  </div>
+  <svg class="art" viewBox="0 0 460 560" aria-hidden="true">
+    <ellipse cx="230" cy="500" rx="200" ry="26" fill="#000" opacity=".25"/>
+    <path class="dr auto fill-in auto" style="--d:300" d="M40 300c60-26 130-26 190 6v190c-60-30-130-30-190-6z" fill="#F4E6C8" stroke="#E9A23B" stroke-width="4"/>
+    <path class="dr auto fill-in auto" style="--d:400" d="M420 300c-60-26-130-26-190 6v190c60-30 130-30 190-6z" fill="#FBF3E2" stroke="#E9A23B" stroke-width="4"/>
+    <g stroke="#B79B6A" stroke-width="4" stroke-linecap="round"><path class="dr auto" style="--d:700" d="M70 340c40-10 90-8 130 6M70 372c40-10 90-8 130 6M70 404c40-10 90-8 130 6M260 346c40-14 90-16 130-6M260 378c40-14 90-16 130-6M260 410c40-14 90-16 100-8"/></g>
+    <path class="dr auto fill-in auto" style="--d:900" d="M330 70c40 40 50 120 10 210l-20 30-6-36c-20-80-10-150 16-204z" fill="#F7C86A" stroke="#E9A23B" stroke-width="3"/>
+    <path class="dr auto" style="--d:1000" d="M338 90c-6 70-10 140-20 214" stroke="#B5781E" stroke-width="3" fill="none"/>
+    <g transform="translate(70 70)"><path class="dr auto fill-in auto" style="--d:1100" d="M10 0h110M10 200h110M20 0c0 60 45 75 45 100S20 140 20 200M110 0c0 60-45 75-45 100s45 40 45 100" fill="rgba(111,179,217,.18)" stroke="#6FB3D9" stroke-width="5" stroke-linecap="round"/><path d="M40 170q25-20 50 0v26H40z" fill="#F7C86A"/><path d="M45 50q20 22 40 0" fill="#F7C86A"/></g>
+  </svg>
+</section>
 
-  <!-- ===================== ٦) عناصر الحدث التاريخي ===================== -->
-  <section class="panel" data-panel="elems" style="left:3240px;top:1440px;width:3000px;height:1250px">
-   <div class="strip" style="background:#2C7A77"><h2>ثالثاً: عناصر الحدث التاريخي الرئيسية</h2></div>
-   <svg class="art" viewBox="0 0 2976 1226" style="top:0" aria-hidden="true">
-    <rect y="230" width="2976" height="996" fill="#EAD6AF"/>
-    <g stroke="#2A1E14" stroke-width="9">
-     <ellipse cx="2480" cy="1060" rx="380" ry="90" fill="#4E7F3B"/><ellipse cx="1488" cy="1060" rx="380" ry="90" fill="#2F5E8C"/><ellipse cx="496" cy="1060" rx="380" ry="90" fill="#8A4A2A"/>
-    </g>
-    <g font-family="Lalezar" font-size="200" fill="#C9B48D" text-anchor="middle"><text x="2480" y="820">؟</text><text x="1488" y="820">؟</text><text x="496" y="820">؟</text></g>
-   </svg>
-   <!-- الزمان -->
-   <div data-r="e1" style="position:absolute;right:40px;top:270px;width:900px;height:940px">
-    <svg viewBox="0 0 900 940" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true">
-     <rect x="0" y="0" width="900" height="760" fill="#EAD6AF"/>
-     <g stroke="#2A1E14" stroke-width="9" stroke-linejoin="round">
-      <rect x="470" y="230" width="230" height="40" fill="#8A5530"/><rect x="470" y="660" width="230" height="40" fill="#8A5530"/>
-      <path d="M500 270 C 500 380 580 420 585 465 C 580 510 500 550 500 660 H670 C 670 550 590 510 585 465 C 590 420 670 380 670 270Z" fill="rgba(220,240,250,.7)"/>
-      <path d="M530 660 C 545 600 570 575 585 570 C 600 575 625 600 640 660Z" fill="#E8C060" stroke="none"/>
-      <rect x="140" y="340" width="300" height="300" rx="20" fill="#FFF8E8"/><rect x="140" y="340" width="300" height="80" rx="20" fill="#C2522C"/><circle cx="290" cy="530" r="50" fill="none" stroke="#C2522C"/>
-      <circle cx="330" cy="700" r="110" fill="#F4E2BB"/><path d="M330 700 v-70 M330 700 l50 30" fill="none"/>
-     </g>
-     <ellipse cx="450" cy="790" rx="380" ry="90" fill="#4E7F3B" stroke="#2A1E14" stroke-width="9"/>
-    </svg>
-    <div class="qtag" style="right:240px;top:20px;background:#4E7F3B">الزمان</div>
-    <div class="bubble" style="right:120px;bottom:-10px;width:660px;font-size:62px;text-align:center;padding:20px 30px">متى وقع الحدث؟</div>
-   </div>
-   <!-- المكان -->
-   <div data-r="e2" style="position:absolute;right:1032px;top:270px;width:900px;height:940px">
-    <svg viewBox="0 0 900 940" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true">
-     <rect x="0" y="0" width="900" height="760" fill="#EAD6AF"/>
-     <g stroke="#2A1E14" stroke-width="9" stroke-linejoin="round">
-      <path d="M220 330 v-90 h40 v30 h40 v-30 h40 v30 h40 v-30 h40 v30 h40 v-30 h40 v90z" fill="#D9C39A"/>
-      <path d="M140 760 L240 520 L460 560 L660 500 L780 760Z" fill="#9FC7CF"/>
-      <path d="M260 600 c60 -30 120 0 180 -20 c60 -20 100 10 140 40 c-40 40 -120 60 -200 60 c-60 0 -110 -40 -120 -80z" fill="#C9B07A"/>
-      <path d="M450 600 c-80 -90 -60 -220 0 -240 c60 20 80 150 0 240z" fill="#D7303A"/><circle cx="450" cy="440" r="34" fill="#FFF8E8"/>
-     </g>
-     <ellipse cx="450" cy="790" rx="380" ry="90" fill="#2F5E8C" stroke="#2A1E14" stroke-width="9"/>
-    </svg>
-    <div class="qtag" style="right:260px;top:20px;background:#2F5E8C">المكان</div>
-    <div class="bubble" style="right:120px;bottom:-10px;width:660px;font-size:62px;text-align:center;padding:20px 30px">أين وقع الحدث؟</div>
-   </div>
-   <!-- الشخصيات والأطراف -->
-   <div data-r="e3" style="position:absolute;left:44px;top:270px;width:900px;height:940px">
-    <svg viewBox="0 0 900 940" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true">
-     <rect x="0" y="0" width="900" height="760" fill="#EAD6AF"/>
-     <g stroke="#2A1E14" stroke-width="9" stroke-linejoin="round">
-      <circle cx="250" cy="420" r="60" fill="#5A4632"/><path d="M160 760 c0 -160 40 -240 90 -260 c50 20 90 100 90 260z" fill="#8A5530"/>
-      <circle cx="650" cy="420" r="60" fill="#5A4632"/><path d="M560 760 c0 -160 40 -240 90 -260 c50 20 90 100 90 260z" fill="#2C7A77"/>
-      <circle cx="450" cy="360" r="72" fill="#5A4632"/><path d="M340 760 c0 -190 50 -280 110 -300 c60 20 110 110 110 300z" fill="#21385A"/>
-     </g>
-     <ellipse cx="450" cy="790" rx="380" ry="90" fill="#8A4A2A" stroke="#2A1E14" stroke-width="9"/>
-    </svg>
-    <div class="qtag" style="right:120px;top:20px;background:#8A4A2A">الشخصيات والأطراف</div>
-    <div class="bubble" style="right:120px;bottom:-10px;width:660px;font-size:62px;text-align:center;padding:20px 30px">من شارك في الحدث؟</div>
-   </div>
-   <div class="bloom" data-glow="e" style="left:1100px;top:500px;width:800px;height:800px"></div>
-  </section>
+<!-- ========== ٦ فاصل: الخصائص ========== -->
+<section class="slide s-sec" data-id="sec1" data-bg="gold" data-tr="curtain" style="--c:#E9A23B">
+  <div class="big in" data-a="pop">١</div>
+  <h1 class="h1 in" style="--d:200">أولاً: خصائص علم التاريخ</h1>
+  <p class="lead in" style="--d:450">يتميز علم التاريخ بخصائص تبرز طبيعته في دراسة الأحداث وتحليلها، ومن أبرزها:</p>
+  <div class="line"></div>
+  <div class="icons">
+    <span class="in" data-a="pop" style="--d:900"><svg viewBox="0 0 64 64"><path d="M14 8h28l10 10v40H14z"/><path d="M42 8v10h10M22 28h22M22 36h22M22 44h14"/></svg></span>
+    <span class="in" data-a="pop" style="--d:1050"><svg viewBox="0 0 64 64"><circle cx="27" cy="27" r="16"/><path d="M39 39l15 15M20 27h14M27 20v14"/></svg></span>
+    <span class="in" data-a="pop" style="--d:1200"><svg viewBox="0 0 64 64"><path d="M18 6h28M18 58h28M22 6c0 18 20 20 20 26s-20 8-20 26M42 6c0 18-20 20-20 26s20 8 20 26"/></svg></span>
+  </div>
+</section>
 
-  <!-- ===================== ٧) الشاهد: اتفاقية ١٨٩٩م ===================== -->
-  <section class="panel" data-panel="shahid" style="left:160px;top:1440px;width:3000px;height:1250px">
-   <div class="strip" style="background:#5B2A12;height:200px"><h2>شاهد من تاريخ الكويت</h2></div>
-   <svg class="art" viewBox="0 0 2976 1226" aria-hidden="true">
-    <rect y="200" width="2976" height="1026" fill="#E9D3A4"/>
-    <!-- علمان وبحر -->
-    <path d="M760 1226 V860 h880 V1226Z" fill="#5FA9B8"/>
-    <g stroke="#2A1E14" stroke-width="8">
-     <path d="M840 1050 V830" /><path d="M1520 1050 V830"/>
-    </g>
-    <g class="wave" stroke="#2A1E14" stroke-width="5">
-     <rect x="846" y="836" width="230" height="140" fill="#1F3A7A"/>
-     <path d="M846 836 L1076 976 M1076 836 L846 976" stroke="#FFFFFF" stroke-width="26"/><path d="M846 836 L1076 976 M1076 836 L846 976" stroke="#C8102E" stroke-width="10"/>
-     <path d="M961 836 V976 M846 906 H1076" stroke="#FFFFFF" stroke-width="40"/><path d="M961 836 V976 M846 906 H1076" stroke="#C8102E" stroke-width="22"/>
-    </g>
-    <g class="wave" stroke="#2A1E14" stroke-width="5"><rect x="1526" y="836" width="230" height="140" fill="#C8102E"/><text x="1641" y="930" text-anchor="middle" font-family="Ruqaa" font-size="74" fill="#FFF3D6" stroke="none">كويت</text></g>
-    <g stroke="#2A1E14" stroke-width="7" stroke-linejoin="round"><path d="M1100 1120 h300 l-50 60 h-200z" fill="#8A5530"/><path d="M1250 1120 v-150" fill="none"/><path d="M1252 980 c80 30 90 100 0 130z" fill="#FFF3D6"/></g>
-   </svg>
-   <div class="ripple" style="left:1160px;top:1150px;width:160px;height:60px"></div>
-   <div class="ripple" style="left:1300px;top:1170px;width:120px;height:46px;animation-delay:1.2s"></div>
-   <div class="photo" style="left:40px;top:240px;width:680px;height:826px"><img src="assets/img/mubarak.jpg" alt="الشيخ مبارك الصباح"><div class="lbl">الشيخ مبارك الصباح</div></div>
-   <div class="photo" style="left:760px;top:240px;width:880px;height:580px"><img src="assets/img/kuwait-map.jpg" alt="خريطة دولة الكويت"></div>
-   <div data-r="pin" style="position:absolute;left:1270px;top:470px;width:90px;height:120px"><svg viewBox="0 0 90 120" style="width:100%;height:100%"><path d="M45 118 C 10 70 0 50 0 40 a45 45 0 0 1 90 0 c0 10 -10 30 -45 78z" fill="#D7303A" stroke="#2A1E14" stroke-width="6"/><circle cx="45" cy="40" r="16" fill="#FFF8E8"/></svg></div>
-   <div class="cap" data-r="pinL" style="left:1000px;top:640px;font-size:46px;padding:12px 24px">مدينة الكويت</div>
-   <div class="seal" data-r="seal" style="left:1380px;top:220px">١٨٩٩<small>م</small></div>
-   <!-- اللفافة -->
-   <div class="cap" style="left:1690px;top:240px;width:1270px;height:960px;background:#FFF8E8;font-size:50px;line-height:1.6;padding:34px 40px">
-    <div data-r="sq1" style="position:absolute;inset:34px 40px;font-size:60px;line-height:1.6;font-weight:700">هل تساءلت يوماً كيف وصلت إلينا تفاصيل اتفاقيات الحماية الموقعة بين دولة الكويت والمملكة المتحدة والأحداث المواكبة لها؟</div>
-    <div data-r="sp" style="position:absolute;inset:34px 40px">في عام <b>١٨٩٩م</b> وقّع <b>الشيخ مبارك الصباح</b> في <b>مدينة الكويت</b> اتفاقية مع بريطانيا عرفت باتفاقية الحماية البريطانية، وتُعد هذه الاتفاقية من المحطات المهمة في تاريخ الكويت الحديث، وقد عُرفت تفاصيل هذه الاتفاقية من خلال <b>الوثائق والمراسلات الرسمية</b> التي حفظت أحداثها ونصوصها، مما مكّن الباحثين والمؤرخين من دراسة ظروفها ونتائجها وأثرها في مسيرة دولة الكويت.</div>
-    <div data-r="sq2" style="position:absolute;inset:34px 40px;font-family:var(--f-d);font-size:110px;line-height:1.3;color:var(--navy);display:flex;align-items:center;justify-content:center;text-align:center">ماذا نتعلم من هذا الشاهد؟</div>
-    <div data-r="sa" style="position:absolute;inset:34px 40px;font-size:60px;line-height:1.6"><span class="k" style="font-family:var(--f-d);color:var(--navy);display:block;font-size:72px">ماذا نتعلم من هذا الشاهد؟</span>أهمية علم التاريخ في <b>توثيق الأحداث وحفظها</b>، من خلال الوثائق والمصادر التاريخية وفهم القرارات التي أسهمت في تشكيل مسار الدولة وتطورها عبر الزمن وتعزيز الهوية الوطنية.</div>
-   </div>
-  </section>
+<!-- ========== ٧ الخصائص (قلّابة) ========== -->
+<section class="slide s-chars" data-id="chars" data-bg="gold" data-tr="slide">
+  <div class="ttl" style="--c:#E9A23B"><span class="num in" data-a="pop">١</span><h2 class="h2 in">خصائص علم التاريخ</h2></div>
+  <div class="flips">
+    <div class="flip" data-f="1" data-fx="burst" style="--c:#E9A23B;--c2:#F6E2B8;--cd:#8A5A12">
+      <div class="inr">
+        <div class="fc front"><span class="n">١</span><em>اكشف الخاصية الأولى</em></div>
+        <div class="fc back"><div class="top"><span class="n">١</span>
+          <svg viewBox="0 0 400 290"><g stroke="#8A5A12" stroke-width="4" stroke-linejoin="round"><path d="M60 230h200v26H60zM70 204h180v26H70z" fill="#B5652E"/><path d="M80 178h160v26H80z" fill="#2E6E8E"/><path d="M220 60h110l-10 140H210z" fill="#FBF3E2"/><path d="M235 90h80M233 112h80M231 134h60" stroke-width="3"/><circle cx="300" cy="190" r="44" fill="rgba(111,179,217,.3)"/><path d="M332 222l34 34" stroke-width="10" stroke-linecap="round"/></g></svg></div>
+          <div class="bd"><h3>الاعتماد على المصادر والشواهد (الأدلة)</h3><p>ليتحقق من الأحداث الماضية.</p></div></div>
+      </div>
+    </div>
+    <div class="flip" data-f="2" data-fx="burst" style="--c:#E9A23B;--c2:#F6E2B8;--cd:#8A5A12">
+      <div class="inr">
+        <div class="fc front"><span class="n">٢</span><em>اكشف الخاصية الثانية</em></div>
+        <div class="fc back"><div class="top"><span class="n">٢</span>
+          <svg viewBox="0 0 400 290"><g stroke="#8A5A12" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M70 50h190v200H70z" fill="#FBF3E2"/><circle cx="110" cy="100" r="16" fill="#E9A23B"/><circle cx="200" cy="90" r="16" fill="#2A9D8F"/><circle cx="150" cy="180" r="16" fill="#D0603A"/><circle cx="225" cy="200" r="16" fill="#7D4F93"/><path d="M124 108l62-14M118 114l26 52M164 182l46 14M206 104l14 80" stroke-dasharray="6 7"/><circle cx="270" cy="150" r="56" fill="rgba(111,179,217,.3)"/><path d="M310 190l46 46" stroke-width="12"/></g></svg></div>
+          <div class="bd"><h3>التحليل والاستنتاج</h3><p>تحليل الأحداث واستنتاج الأدلة لفهمها بصورة أعمق.</p></div></div>
+      </div>
+    </div>
+    <div class="flip" data-f="3" data-fx="burst" style="--c:#E9A23B;--c2:#F6E2B8;--cd:#8A5A12">
+      <div class="inr">
+        <div class="fc front"><span class="n">٣</span><em>اكشف الخاصية الثالثة</em></div>
+        <div class="fc back"><div class="top"><span class="n">٣</span>
+          <svg viewBox="0 0 400 290"><g stroke="#8A5A12" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M150 30h100M150 210h100M160 30c0 60 40 70 40 90s-40 30-40 90M240 30c0 60-40 70-40 90s40 30 40 90" fill="rgba(111,179,217,.25)"/><path d="M175 190q25-20 50 0v20h-50z" fill="#E9A23B"/><path d="M40 254H360"/><circle cx="330" cy="254" r="10" fill="#E9A23B"/><circle cx="240" cy="254" r="10" fill="#E9A23B"/><circle cx="160" cy="254" r="10" fill="#E9A23B"/><circle cx="70" cy="254" r="10" fill="#E9A23B"/><path d="M60 254l-20 0m10-8l-10 8 10 8"/></g></svg></div>
+          <div class="bd"><h3>دراسة الأحداث وفق تسلسل زمني</h3><p>لفهم التغيير والتطور عبر العصور.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- ===================== ٨) الممارسات ===================== -->
-  <section class="panel" data-panel="acts" style="left:160px;top:2770px;width:6080px;height:1000px">
-   <div class="strip" style="background:#2A1E14;height:200px"><h2>الممارسات</h2></div>
-   <svg class="art" viewBox="0 0 6056 976" aria-hidden="true"><rect y="200" width="6056" height="776" fill="#EAD6AF"/></svg>
-   <div class="halftone" style="top:200px"></div>
-   <div class="act" data-sub="a1" style="right:40px;top:240px;width:1940px;height:700px">
-    <div class="tag">نشاط (١)</div>
-    <div class="q">ماذا سيحدث لو لم يسجل الإنسان أحداثه وتجاربه عبر الزمن؟</div>
-   </div>
-   <div class="act" data-sub="a2" style="right:2060px;top:240px;width:1940px;height:700px">
-    <div class="tag">نشاط (٢)</div>
-    <div class="q">اذكر اثنين من خصائص علم التاريخ.</div>
-    <div class="ans" data-r="a2a">من خصائصه: <b>الاعتماد على المصادر والشواهد (الأدلة)</b>، و<b>التحليل والاستنتاج</b>، و<b>دراسة الأحداث وفق تسلسل زمني</b>.</div>
-   </div>
-   <div class="act" data-sub="a3" style="left:40px;top:240px;width:1940px;height:700px">
-    <div class="tag">نشاط (٣)</div>
-    <div class="q">استخرج من الشاهد عناصر الحدث التاريخي الرئيسية في اتفاقية الحماية.</div>
-    <div class="ans" data-r="a3a">الزمان: <b>عام ١٨٩٩م</b><br>المكان: <b>مدينة الكويت</b><br>الشخصيات والأطراف: <b>الشيخ مبارك الصباح، وبريطانيا</b></div>
-   </div>
-  </section>
+<!-- ========== ٨ العصور ========== -->
+<section class="slide s-eras" data-id="eras" data-bg="gold" data-tr="zoom">
+  <div class="head"><h2 class="h2 in">دراسة الأحداث وفق تسلسل زمني</h2><p class="sub in" style="--d:200">لفهم <b>التغيير والتطور</b> عبر العصور</p></div>
+  <div class="tl">
+    <div class="rail"></div><div class="prog"></div>
+    <div class="era fr" data-f="1" data-a="pop" style="right:12.5%">
+      <svg class="ic" viewBox="0 0 230 200"><g stroke="#F7C86A" stroke-width="4" stroke-linejoin="round" fill="#1A3352"><path d="M20 190Q24 70 115 54Q206 70 210 190Z"/><path d="M80 190Q84 130 115 126Q146 130 150 190Z" fill="#0D1A2B"/><path d="M170 100l18-12 6 20zM40 120l14 4-8 12z" fill="#E9A23B"/></g></svg>
+      <div class="knot"></div><b>عصور ما قبل التاريخ</b></div>
+    <div class="era fr" data-f="2" data-a="pop" style="right:37.5%">
+      <svg class="ic" viewBox="0 0 230 200"><g stroke="#F7C86A" stroke-width="4" stroke-linejoin="round" fill="#1A3352"><path d="M10 190L80 80L150 190Z"/><path d="M120 92h100v14H120zM120 180h100v10H120z"/><path d="M132 106v74M158 106v74M184 106v74M208 106v74" stroke-width="10"/><path d="M116 92L170 60L224 92Z"/></g></svg>
+      <div class="knot"></div><b>العصور القديمة</b></div>
+    <div class="era fr" data-f="3" data-a="pop" style="right:62.5%">
+      <svg class="ic" viewBox="0 0 230 200"><g stroke="#F7C86A" stroke-width="4" stroke-linejoin="round" fill="#1A3352"><path d="M30 190V90h40v20h20V90h50v20h20V90h40v100Z"/><path d="M30 90V60h14v10h12V60h14v30M160 90V60h14v10h12V60h14v30"/><path d="M98 190v-40q17-24 34 0v40Z" fill="#0D1A2B"/></g></svg>
+      <div class="knot"></div><b>العصور الوسطى</b></div>
+    <div class="era fr" data-f="4" data-a="pop" style="right:87.5%" data-fx="burst">
+      <svg class="ic" viewBox="0 0 230 200"><g stroke="#F7C86A" stroke-width="4" stroke-linejoin="round" fill="#1A3352"><path d="M20 190V100h44v90M70 190V50h50v140M126 190V80h44v110M176 190v-60h40v60"/><path d="M84 70h22M84 96h22M84 122h22M34 120h16M34 146h16M140 100h16M140 126h16" stroke-width="6"/></g><path d="M176 70v60M196 70v60" stroke="#6FB3D9" stroke-width="4"/><circle cx="186" cy="94" r="16" fill="#1A3352" stroke="#6FB3D9" stroke-width="4"/></svg>
+      <div class="knot"></div><b>العصور الحديثة</b></div>
+  </div>
+  <div class="arrowtxt in" style="--d:600"><span>الأقدم ←</span><span>← الأحدث</span></div>
+</section>
 
- </div>
- <div id="spot"></div>
- <div id="motionblur"></div>
- <canvas id="fx"></canvas>
-</div>
+<!-- ========== ٩ فاصل: الأهمية ========== -->
+<section class="slide s-sec" data-id="sec2" data-bg="teal" data-tr="curtain" style="--c:#2A9D8F">
+  <div class="big in" data-a="pop">٢</div>
+  <h1 class="h1 in" style="--d:200">ثانياً: أهمية دراسة علم التاريخ</h1>
+  <p class="lead in" style="--d:450">تتجلى أهمية دراسة علم التاريخ في إسهامه في تنمية وعي الإنسان بذاته ومجتمعه، ومن أبرز جوانب هذه الأهمية:</p>
+  <div class="line"></div>
+  <div class="icons">
+    <span class="in" data-a="pop" style="--d:900"><svg viewBox="0 0 64 64"><path d="M8 14c8-3 16-3 24 2v38c-8-5-16-5-24-2zM56 14c-8-3-16-3-24 2v38c8-5 16-5 24-2z"/></svg></span>
+    <span class="in" data-a="pop" style="--d:1050"><svg viewBox="0 0 64 64"><path d="M14 58V6M14 8h36l-8 10 8 10H14"/></svg></span>
+    <span class="in" data-a="pop" style="--d:1200"><svg viewBox="0 0 64 64"><path d="M22 58v-8c-8-4-12-12-12-20a22 22 0 0144 0c0 6-2 10-6 12l2 10h-8v6z"/><circle cx="32" cy="28" r="6"/></svg></span>
+  </div>
+</section>
 
-<div class="hud tl">
- <button class="hb" id="bFs" type="button" title="ملء الشاشة (F)" aria-label="ملء الشاشة"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
- <button class="hb" id="bPresenter" type="button" title="شاشة المعلم (P)" aria-label="شاشة المعلم"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></button>
- <button class="hb" id="bOverview" type="button" title="نظرة عامة (O)" aria-label="نظرة عامة على اللوحات"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
-</div>
-<div class="hud tr"><div class="brand"><span class="dt" id="dt"></span><span class="cp">© منصة جمال التعليمية</span></div></div>
-<div class="hud bc"><div class="navbar">
- <button class="hb" id="bNext" type="button" aria-label="التالي"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
- <span class="cnt" id="cnt">١ / ١</span>
- <button class="hb" id="bPrev" type="button" aria-label="السابق"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+<!-- ========== ١٠ الأهمية (قلّابة) ========== -->
+<section class="slide s-imp" data-id="imp" data-bg="teal" data-tr="slide">
+  <div class="ttl" style="--c:#2A9D8F"><span class="num in" data-a="pop">٢</span><h2 class="h2 in">أهمية دراسة علم التاريخ</h2></div>
+  <div class="flips">
+    <div class="flip" data-f="1" data-fx="burst" style="--c:#2A9D8F;--c2:#D3EEE9;--cd:#155E55">
+      <div class="inr">
+        <div class="fc front"><span class="n">١</span><em>اكشف الجانب الأول</em></div>
+        <div class="fc back"><div class="top"><span class="n">١</span>
+          <svg viewBox="0 0 400 290"><g stroke="#155E55" stroke-width="4" stroke-linejoin="round"><path d="M240 60l50-26 50 26zM244 66h92v10h-92zM250 76v80M272 76v80M296 76v80M320 76v80M244 156h92v12h-92z" fill="#E8F5F2"/><path d="M60 170c40-18 80-18 120 4v80c-40-22-80-22-120-4zM300 170c-40-18-80-18-120 4v80c40-22 80-22 120-4z" fill="#FBF3E2"/><path d="M80 196h70M80 214h70M200 196h70M200 214h70" stroke-width="3"/><path d="M110 40c30 30 34 80 6 120l-10 14-4-20c-12-50-6-90 8-114z" fill="#F7C86A"/></g></svg></div>
+          <div class="bd"><h3>استخلاص الدروس من خبرات وتجارب الأمم السابقة</h3><p>وما حققته من نجاحات وما واجهته من تحديات وربطها بالقضايا المعاصرة.</p></div></div>
+      </div>
+    </div>
+    <div class="flip" data-f="2" data-fx="burst" style="--c:#2A9D8F;--c2:#D3EEE9;--cd:#155E55">
+      <div class="inr">
+        <div class="fc front"><span class="n">٢</span><em>اكشف الجانب الثاني</em></div>
+        <div class="fc back"><div class="top"><span class="n">٢</span>
+          <svg viewBox="0 0 400 290"><path d="M40 290V200h30v-20h30v20h40v-20h30v20h40v-20h30v20h40v-20h30v20h30v90z" fill="#C9A87A" stroke="#7A5A30" stroke-width="4"/><path d="M180 200V40" stroke="#5A4A3A" stroke-width="6"/><g class="wave"><path d="M184 44h140v26H184z" fill="#007A3D"/><path d="M184 70h140v26H184z" fill="#fff"/><path d="M184 96h140v26H184z" fill="#CE1126"/><path d="M184 44l40 26v26l-40 26z" fill="#000"/></g></svg></div>
+          <div class="bd"><h3>تعزيز الهوية الوطنية</h3><p>وترسيخ انتماء الفرد وارتباطه بوطنه من خلال التعرف إلى منجزاته الحضارية.</p></div></div>
+      </div>
+    </div>
+    <div class="flip" data-f="3" data-fx="burst" style="--c:#2A9D8F;--c2:#D3EEE9;--cd:#155E55">
+      <div class="inr">
+        <div class="fc front"><span class="n">٣</span><em>اكشف الجانب الثالث</em></div>
+        <div class="fc back"><div class="top"><span class="n">٣</span>
+          <svg viewBox="0 0 400 290"><g stroke="#155E55" stroke-width="4" stroke-linejoin="round"><path d="M110 270v-40c-30-16-46-46-46-80a86 86 0 01172 0c0 24-8 40-24 50l8 44h-40v26z" fill="#FBF3E2"/><circle cx="150" cy="130" r="30" fill="#7FD1C3"/><path d="M150 92v-10M150 178v-10M112 130h-10M198 130h-10M124 104l-8-8M176 156l8 8M176 104l8-8M124 156l-8 8" stroke-width="6" stroke-linecap="round"/><circle cx="305" cy="160" r="60" fill="#D3EEE9"/><path d="M245 160h120M305 100c-24 30-24 90 0 120M305 100c24 30 24 90 0 120" fill="none"/></g></svg></div>
+          <div class="bd"><h3>تنمية مهارات التفكير</h3><p>لفهم القضايا المختلفة بصورة أعمق بما يدعم اتخاذ قرارات أكثر وعياً في الحاضر والمستقبل.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ١١ العناصر ========== -->
+<section class="slide s-elems" data-id="elems" data-bg="terra" data-tr="iris">
+  <div class="ttl" style="--c:#D0603A"><span class="num in" data-a="pop">٣</span><h2 class="h2 in">ثالثاً: عناصر الحدث التاريخي الرئيسية</h2></div>
+  <svg class="hub" viewBox="0 0 1600 900" aria-hidden="true"><g fill="none" stroke-width="5" stroke-linecap="round" stroke-dasharray="4 12">
+    <path class="fr dr" data-f="1" data-a="fade" d="M930 380C1060 390 1200 420 1270 500" stroke="#8BC34A"/>
+    <path class="fr dr" data-f="2" data-a="fade" d="M800 470V520" stroke="#4FA3D9"/>
+    <path class="fr dr" data-f="3" data-a="fade" d="M670 380C540 390 400 420 330 500" stroke="#E07A4F"/></g></svg>
+  <div class="core in" data-a="pop" style="top:320px;width:300px;height:300px;margin:-150px 0 0 -150px;font-size:50px">الحدث<br>التاريخي</div>
+  <div class="node fr" data-f="1" data-a="pop" data-fx="burst" style="--c:#8BC34A;left:1105px;top:500px"><div class="cir" style="width:200px;height:200px"><svg viewBox="0 0 150 150"><rect x="20" y="30" width="70" height="70" rx="8" fill="#fff" stroke="#5F8F2E" stroke-width="5"/><path d="M20 50h70" stroke="#C0392B" stroke-width="14"/><path d="M38 66h8M56 66h8M38 82h8M56 82h8" stroke="#5F8F2E" stroke-width="5"/><path d="M90 40h44M90 130h44M96 40c0 30 20 36 20 45s-20 15-20 45M128 40c0 30-20 36-20 45s20 15 20 45" fill="rgba(111,179,217,.25)" stroke="#8A5A12" stroke-width="5"/><path d="M100 120q12-10 24 0v10h-24z" fill="#E9A23B"/><circle cx="55" cy="118" r="22" fill="#FBF3E2" stroke="#5F8F2E" stroke-width="5"/><path d="M55 104v14l10 6" stroke="#5F8F2E" stroke-width="5" stroke-linecap="round"/></svg></div><b>الزمان</b><span>متى وقع الحدث؟</span></div>
+  <div class="node fr" data-f="2" data-a="pop" data-fx="burst" style="--c:#4FA3D9;left:635px;top:500px"><div class="cir" style="width:200px;height:200px"><svg viewBox="0 0 150 150"><path d="M10 50l40-14 50 14 40-14v90l-40 14-50-14-40 14z" fill="#E7F0D8" stroke="#2E6E8E" stroke-width="5"/><path d="M40 70c16 10 30-8 46 6s30 10 40 0" stroke="#6FB3D9" stroke-width="8" fill="none"/><path d="M75 92s22-22 22-40a22 22 0 00-44 0c0 18 22 40 22 40z" fill="#D0603A" stroke="#8E2E14" stroke-width="4"/><circle cx="75" cy="52" r="8" fill="#fff"/></svg></div><b>المكان</b><span>أين وقع الحدث؟</span></div>
+  <div class="node fr" data-f="3" data-a="pop" data-fx="burst" style="--c:#E07A4F;left:165px;top:500px"><div class="cir" style="width:200px;height:200px"><svg viewBox="0 0 150 150"><g stroke="#7A3A20" stroke-width="4"><circle cx="40" cy="56" r="16" fill="#E6C29A"/><path d="M14 120c0-26 12-40 26-40s26 14 26 40z" fill="#2E6E8E"/><circle cx="110" cy="56" r="16" fill="#E6C29A"/><path d="M84 120c0-26 12-40 26-40s26 14 26 40z" fill="#7D4F93"/><circle cx="75" cy="46" r="20" fill="#E6C29A"/><path d="M55 40q20-26 40 0" fill="#fff"/><path d="M42 130c0-34 15-52 33-52s33 18 33 52z" fill="#1C2533"/><path d="M75 80v50" stroke="#E9A23B"/></g></svg></div><b>الشخصيات والأطراف</b><span>من شارك في الحدث؟</span></div>
+</section>
+
+<!-- ========== ١٢ الشاهد ========== -->
+<section class="slide s-shahid" data-id="shahid" data-bg="earth" data-tr="curtain">
+  <div class="frame in fo" data-o="3" data-a="left"><img src="assets/img/mubarak.jpg" alt="الشيخ مبارك الصباح"><div class="cap">الشيخ مبارك الصباح</div></div>
+  <div class="mapc fr" data-f="3" data-a="pop">
+    <img src="assets/img/kuwait-map.jpg" alt="خريطة دولة الكويت">
+    <svg class="pin fr" data-f="3" data-a="fade" viewBox="0 0 70 90" style="left:60.5%;top:47%"><path d="M35 88S64 56 64 32a29 29 0 00-58 0c0 24 29 56 29 56z" fill="#D0603A" stroke="#fff" stroke-width="4"/><circle cx="35" cy="32" r="11" fill="#fff"/></svg>
+    <span class="pinlab fr" data-f="3" style="left:60.5%;top:47%">مدينة الكويت</span>
+  </div>
+  <div class="seal1899 fr" style="left:70px;top:530px" data-f="4" data-a="stamp" data-fx="slam">١٨٩٩م<small>اتفاقية الحماية</small></div>
+  <div class="card scroll in" data-a="right" style="--d:200">
+    <p class="lab">شاهد من تاريخ الكويت</p>
+    <div class="stk">
+      <p class="txt fr fo" data-f="1" data-o="2">هل تساءلت يوماً كيف وصلت إلينا تفاصيل اتفاقيات الحماية الموقعة بين دولة الكويت والمملكة المتحدة والأحداث المواكبة لها؟</p>
+      <p class="txt fr" data-f="2" style="font-size:29px">في عام <b>١٨٩٩م</b> وقّع <b>الشيخ مبارك الصباح</b> في <b>مدينة الكويت</b> اتفاقية مع <b>بريطانيا</b> عرفت باتفاقية الحماية البريطانية، وتُعد هذه الاتفاقية من المحطات المهمة في تاريخ الكويت الحديث، وقد عُرفت تفاصيل هذه الاتفاقية من خلال الوثائق والمراسلات الرسمية التي حفظت أحداثها ونصوصها، مما مكّن الباحثين والمؤرخين من دراسة ظروفها ونتائجها وأثرها في مسيرة دولة الكويت.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ١٣ ماذا نتعلم ========== -->
+<section class="slide s-learned" data-id="learned" data-bg="earth" data-tr="slide">
+  <div class="ttl"><h2 class="h2 in">ماذا نتعلم من هذا الشاهد؟</h2></div>
+  <div class="card qbig fr" data-f="1">أهمية علم التاريخ في توثيق الأحداث وحفظها، من خلال الوثائق والمصادر التاريخية وفهم القرارات التي أسهمت في تشكيل مسار الدولة وتطورها عبر الزمن وتعزيز الهوية الوطنية.</div>
+  <div class="learn3">
+    <div class="card fr" data-f="1" data-a="pop" style="transition-delay:.5s"><svg viewBox="0 0 110 110"><path d="M24 10h46l16 16v74H24z" fill="#FBF3E2" stroke="#8A5A12" stroke-width="4"/><path d="M36 40h38M36 52h38M36 64h26" stroke="#B79B6A" stroke-width="4"/><circle cx="72" cy="84" r="14" fill="#D0603A"/></svg><b>توثيق الأحداث وحفظها</b></div>
+    <div class="card fr" data-f="1" data-a="pop" style="transition-delay:.7s"><svg viewBox="0 0 110 110"><path d="M20 90h70M30 90V60M50 90V40M70 90V54M90 90V30" stroke="#2A9D8F" stroke-width="10" stroke-linecap="round"/><path d="M24 50l22-18 20 12 26-24" stroke="#E9A23B" stroke-width="5" fill="none" stroke-linecap="round"/></svg><b>فهم القرارات التي أسهمت في تشكيل مسار الدولة</b></div>
+    <div class="card fr" data-f="1" data-a="pop" style="transition-delay:.9s"><svg viewBox="0 0 110 110"><path d="M26 104V12" stroke="#5A4A3A" stroke-width="5"/><path d="M28 16h66v18H28z" fill="#007A3D"/><path d="M28 34h66v18H28z" fill="#fff" stroke="#ddd"/><path d="M28 52h66v18H28z" fill="#CE1126"/><path d="M28 16l20 18v18L28 70z" fill="#000"/></svg><b>تعزيز الهوية الوطنية</b></div>
+  </div>
+</section>
+
+<!-- ========== ١٤ نشاط ١ ========== -->
+<section class="slide s-act" data-id="a1" data-bg="plum" data-tr="curtain">
+  <div class="head"><span class="act-tag in" data-a="pop">نشاط (١)</span><p class="qq in" style="--d:250">ماذا سيحدث لو لم يسجل الإنسان أحداثه وتجاربه عبر الزمن؟</p></div>
+  <div class="talk">
+    <span class="in" data-a="pop" style="--d:600"><svg viewBox="0 0 64 64"><path d="M6 12h32a6 6 0 016 6v14a6 6 0 01-6 6H22l-10 8v-8H6z"/><path d="M50 26h4a6 6 0 016 6v12a6 6 0 01-6 6h-2v8l-10-8h-8"/></svg></span>
+    <span class="in" data-a="pop" style="--d:750"><svg viewBox="0 0 64 64"><path d="M24 54h16M26 60h12M22 46c0-6-10-10-10-22a20 20 0 0140 0c0 12-10 16-10 22z"/></svg></span>
+    <span class="in" data-a="pop" style="--d:900"><svg viewBox="0 0 64 64"><path d="M10 54l6-2 34-34-4-4-34 34z"/><path d="M42 18l4 4M8 58h48"/></svg></span>
+  </div>
+</section>
+
+<!-- ========== ١٥ نشاط ٢ ========== -->
+<section class="slide s-act" data-id="a2" data-bg="plum" data-tr="slide">
+  <div class="head"><span class="act-tag in" data-a="pop">نشاط (٢)</span><p class="qq in" style="--d:250">اذكر اثنين من خصائص علم التاريخ.</p></div>
+  <div class="chips">
+    <div class="card fr" data-f="1" data-a="pop">الاعتماد على المصادر والشواهد (الأدلة)</div>
+    <div class="card fr" data-f="1" data-a="pop" style="transition-delay:.18s">التحليل والاستنتاج</div>
+    <div class="card fr" data-f="1" data-a="pop" style="transition-delay:.36s">دراسة الأحداث وفق تسلسل زمني</div>
+  </div>
+</section>
+
+<!-- ========== ١٦ نشاط ٣ ========== -->
+<section class="slide s-act" data-id="a3" data-bg="plum" data-tr="slide">
+  <div class="head"><span class="act-tag in" data-a="pop">نشاط (٣)</span><p class="qq in" style="--d:250;font-size:48px">استخرج من الشاهد عناصر الحدث التاريخي الرئيسية في اتفاقية الحماية؟</p></div>
+  <div class="slots">
+    <div class="sl in" style="--c:#8BC34A;--d:400"><div class="k">الزمان</div><div class="v fr" data-f="1" data-a="pop" data-fx="burst">١٨٩٩م</div></div>
+    <div class="sl in" style="--c:#4FA3D9;--d:550"><div class="k">المكان</div><div class="v fr" data-f="2" data-a="pop" data-fx="burst">مدينة الكويت</div></div>
+    <div class="sl in" style="--c:#E07A4F;--d:700"><div class="k">الشخصيات والأطراف</div><div class="v fr" data-f="3" data-a="pop" data-fx="burst">الشيخ مبارك الصباح، وبريطانيا</div></div>
+  </div>
+</section>
+
+<!-- ========== ١٧ الخلاصة ========== -->
+<section class="slide s-sum" data-id="sum" data-bg="night" data-tr="zoom">
+  <div class="ttl"><h2 class="h2 in">خريطة الدرس</h2></div>
+  <svg class="mm" viewBox="0 0 1600 900" aria-hidden="true"><g fill="none" stroke-width="6" stroke-linecap="round">
+    <path class="fr dr" data-f="1" data-a="fade" d="M930 400C1020 380 1080 250 1180 240" stroke="#E9A23B"/>
+    <path class="fr dr" data-f="2" data-a="fade" d="M670 400C580 380 520 250 420 240" stroke="#2A9D8F"/>
+    <path class="fr dr" data-f="3" data-a="fade" d="M800 560V640" stroke="#D0603A"/></g></svg>
+  <div class="center in" data-a="pop" style="position:absolute;left:50%;top:430px;transform:translate(-50%,-50%);width:260px;height:260px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#F7C86A,#E9A23B);display:grid;place-items:center;font-family:Lalezar;font-size:58px;color:#0D1A2B;text-align:center;line-height:1.1;box-shadow:0 0 0 18px rgba(233,162,59,.15),0 0 0 40px rgba(233,162,59,.07)">علم<br>التاريخ</div>
+  <div class="br fr" data-f="1" data-a="pop" style="--c:#E9A23B;right:110px;top:200px">الخصائص</div>
+  <div class="leaf fr" data-f="1" data-a="right" style="--c:#E9A23B;right:110px;top:290px;transition-delay:.25s">الاعتماد على المصادر والشواهد</div>
+  <div class="leaf fr" data-f="1" data-a="right" style="--c:#E9A23B;right:110px;top:395px;transition-delay:.4s">التحليل والاستنتاج</div>
+  <div class="leaf fr" data-f="1" data-a="right" style="--c:#E9A23B;right:110px;top:500px;transition-delay:.55s">دراسة الأحداث وفق تسلسل زمني</div>
+  <div class="br fr" data-f="2" data-a="pop" style="--c:#2A9D8F;left:110px;top:200px">الأهمية</div>
+  <div class="leaf fr" data-f="2" data-a="left" style="--c:#2A9D8F;left:110px;top:290px;transition-delay:.25s">استخلاص الدروس من خبرات الأمم السابقة</div>
+  <div class="leaf fr" data-f="2" data-a="left" style="--c:#2A9D8F;left:110px;top:395px;transition-delay:.4s">تعزيز الهوية الوطنية</div>
+  <div class="leaf fr" data-f="2" data-a="left" style="--c:#2A9D8F;left:110px;top:500px;transition-delay:.55s">تنمية مهارات التفكير</div>
+  <div class="br fr" data-f="3" data-a="pop" style="--c:#D0603A;left:50%;top:640px;transform:translateX(-50%)">عناصر الحدث التاريخي</div>
+  <div class="leaf fr" data-f="3" data-a="pop" style="--c:#D0603A;right:440px;top:735px;width:220px;transition-delay:.25s">الزمان</div>
+  <div class="leaf fr" data-f="3" data-a="pop" style="--c:#D0603A;right:690px;top:735px;width:220px;transition-delay:.4s">المكان</div>
+  <div class="leaf fr" data-f="3" data-a="pop" style="--c:#D0603A;right:940px;top:735px;width:220px;transition-delay:.55s" data-fx="burst">الشخصيات والأطراف</div>
+</section>
+
 </div></div>
-<div class="prog"><i id="prog"></i></div>
-<div class="toast" id="toast"></div>
 
+<canvas id="fx"></canvas>
+<div class="tap p" id="tapP"></div><div class="tap n" id="tapN"></div>
 
-<script src="js/comic.js"></script>
-<script src="js/particles.js"></script>
-<script src="js/deck.js"></script>
-<script src="js/engine.js"></script>
+<div class="hud tr"><div class="date"><b id="dateTxt"></b><span>© منصة جمال التعليمية</span></div></div>
+<div class="hud tl">
+  <button class="hb" id="btnFs" type="button" title="ملء الشاشة" aria-label="ملء الشاشة"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+  <button class="hb" id="btnPr" type="button" title="شاشة المعلم" aria-label="شاشة المعلم"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></button>
+</div>
+<div class="bar">
+  <div class="nav"><button id="btnPrev" type="button" aria-label="السابق"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><span class="cnt" id="cnt"></span><button id="btnNext" type="button" aria-label="التالي"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button></div>
+  <div class="track" id="track"></div>
+</div>
+
+<script src="js/lesson.js"></script>
+<script src="js/show.js"></script>
 </body>
 </html>
