@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>أرشيف المؤرخ — منصة جمال التعليمية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700;800&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+:root{--wood:#2B1D12;--wood2:#3D2A1A;--paper:#F7EDD5;--paper2:#EBDAB2;--ink:#2A2015;--sub:#5A4A33;--gold:#F5B72E;--pri:#1E7D4F;--sec:#2F5DA8;--wr:#8A5A1F;--or:#B4532A;--ma:#6B4E9B;--mut:#D8C8A8}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Tajawal',system-ui,sans-serif;color:#FFF7E6;min-height:100vh;background:var(--wood);
+ background-image:radial-gradient(900px 600px at 80% -10%,rgba(245,183,46,.18),transparent 60%),repeating-linear-gradient(92deg,rgba(255,255,255,.025) 0 3px,transparent 3px 46px),repeating-linear-gradient(88deg,rgba(0,0,0,.08) 0 2px,transparent 2px 90px)}
+button{font-family:inherit}
+[hidden]{display:none!important}
+.page{max-width:1080px;margin:0 auto;padding:max(12px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 30px max(16px,env(safe-area-inset-left))}
+.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:6px 0 14px}
+.top .ttl{flex:1;min-width:0}
+.top h1{margin:0;font-family:'Cairo',sans-serif;font-weight:900;font-size:clamp(1.1rem,2.6vw,1.5rem)}
+.top p{margin:.1rem 0 0;font-size:.82rem;color:var(--mut)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:.86rem;color:#FFF7E6;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);padding:.45em .95em;border-radius:999px;text-decoration:none;cursor:pointer}
+.pill svg{width:18px;height:18px}
+.pill b{font-family:'Cairo';color:var(--gold)}
+.btn{border:0;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:900;font-size:1.08rem;padding:.7em 1.6em;border-radius:999px;background:var(--gold);color:#241A0E;box-shadow:0 10px 26px -8px rgba(245,183,46,.6);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:#FFF7E6;border:2px solid rgba(255,255,255,.3);box-shadow:none}
+
+/* البداية */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+.hero h2{font-family:'Lalezar',serif;font-weight:400;font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.05;margin:0;color:var(--gold)}
+.hero .lead{font-size:1.1rem;line-height:1.95;color:#F1E3C4;margin:.6rem 0 1rem}
+.missions{display:grid;gap:10px;margin:0 0 14px}
+.ms{all:unset;cursor:pointer;display:grid;grid-template-columns:46px minmax(0,1fr) auto;gap:12px;align-items:center;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.14);border-radius:18px;padding:10px 14px;transition:.2s}
+.ms:hover{border-color:var(--gold);background:rgba(245,183,46,.10)}
+.ms:focus-visible{outline:3px solid var(--gold)}
+.ms i{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--gold);color:#241A0E;font-style:normal;font-family:'Cairo';font-weight:900;font-size:1.2rem}
+.ms b{display:block;font-family:'Cairo';font-weight:800;font-size:1.02rem}
+.ms span{display:block;font-size:.82rem;color:var(--mut)}
+.ms em{font-style:normal;color:var(--gold);font-size:1.05rem;letter-spacing:2px;white-space:nowrap}
+.seal{max-width:340px;width:100%;margin:0 auto;display:block}
+
+/* الفرز */
+.desk{position:relative;background:var(--paper);color:var(--ink);border-radius:26px;padding:18px clamp(14px,3vw,26px) 20px;box-shadow:0 30px 60px -24px rgba(0,0,0,.7);background-image:radial-gradient(rgba(120,90,40,.10) 1px,transparent 1.3px);background-size:18px 18px}
+.dhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.dhead h2{margin:0;font-family:'Cairo';font-weight:900;font-size:clamp(1.1rem,2.6vw,1.4rem);flex:1}
+.prog{display:flex;gap:4px}.prog i{width:14px;height:6px;border-radius:9px;background:rgba(0,0,0,.12)}.prog i.ok{background:var(--pri)}.prog i.no{background:#C0392B}.prog i.cur{background:var(--gold)}
+.streak{font-family:'Cairo';font-weight:900;color:var(--or);font-size:.95rem;min-width:70px;text-align:left}
+.q{text-align:center;color:var(--sub);font-weight:700;margin:2px 0 10px;font-size:1rem}
+.q b{color:var(--ink)}
+.stage{position:relative;height:clamp(200px,30vw,250px);display:grid;place-items:center}
+.card{position:relative;width:min(260px,70vw);background:#FFFDF6;border-radius:18px;padding:16px 14px 14px;text-align:center;box-shadow:0 16px 30px -10px rgba(60,40,10,.45),0 0 0 1px rgba(0,0,0,.06);transform-origin:50% 100%}
+.card::before{content:"";position:absolute;top:-10px;left:50%;width:70px;height:20px;margin-left:-35px;background:rgba(245,183,46,.55);transform:rotate(-3deg);border-radius:3px}
+.card svg{width:84px;height:84px;display:block;margin:0 auto 6px}
+.card b{display:block;font-family:'Cairo';font-weight:900;font-size:1.3rem}
+.card small{display:block;color:var(--sub);font-size:.86rem;margin-top:2px;line-height:1.6}
+.card.in{animation:cin .45s cubic-bezier(.2,1.3,.4,1) both}
+@keyframes cin{from{opacity:0;transform:translateY(-40px) rotate(-6deg) scale(.9)}to{opacity:1;transform:none}}
+.card.bad{animation:shk .45s}
+@keyframes shk{20%{transform:translateX(-10px) rotate(-2deg)}40%{transform:translateX(10px) rotate(2deg)}60%{transform:translateX(-6px)}80%{transform:translateX(5px)}}
+.st{position:absolute;top:14px;left:10px;font-family:'Lalezar';font-size:1.6rem;line-height:1;border:4px solid var(--sc);color:var(--sc);padding:.12em .35em .02em;border-radius:10px;transform:rotate(-14deg) scale(2.2);opacity:0;background:rgba(255,253,246,.7)}
+.st.on{animation:sl .35s cubic-bezier(.2,1.6,.4,1) forwards}
+@keyframes sl{to{opacity:.95;transform:rotate(-14deg) scale(1)}}
+.bins{display:grid;gap:12px;margin-top:12px}
+.bins.b2{grid-template-columns:1fr 1fr}.bins.b3{grid-template-columns:1fr 1fr 1fr}
+.bin{cursor:pointer;border:0;border-radius:20px;padding:14px 10px 12px;color:#fff;background:var(--bc);text-align:center;box-shadow:inset 0 -6px 0 rgba(0,0,0,.18),0 10px 20px -10px rgba(0,0,0,.5);transition:transform .12s}
+.bin:hover{transform:translateY(-3px)}
+.bin:active{transform:translateY(1px)}
+.bin svg{width:34px;height:34px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 auto 4px}
+.bin b{display:block;font-family:'Cairo';font-weight:900;font-size:1.2rem}
+.bin small{display:block;font-size:.8rem;opacity:.92;line-height:1.5}
+.bin .cnt{display:inline-block;margin-top:6px;background:rgba(0,0,0,.2);border-radius:99px;padding:0 .7em;font-family:'Cairo';font-weight:800;font-size:.85rem}
+.bin.pulse{animation:pl .5s}
+@keyframes pl{40%{transform:scale(1.07)}}
+.bin:disabled{cursor:default;opacity:.75}
+.fb{min-height:3.4em;margin-top:12px;padding:.6rem .9rem;border-radius:14px;line-height:1.85;font-weight:600;background:rgba(0,0,0,.04)}
+.fb.good{background:rgba(30,125,79,.12)}.fb.bad{background:rgba(192,57,43,.10)}
+.fb .nx{float:left;margin:-2px 0 0 0;padding:.35em 1.2em;font-size:.95rem}
+
+/* المهمة ٣ */
+.claim{background:#FFFDF6;border-radius:18px;padding:16px 18px;font-size:clamp(1.15rem,2.6vw,1.4rem);line-height:2;font-weight:700;box-shadow:0 12px 24px -12px rgba(60,40,10,.4);position:relative}
+.claim .who{display:block;font-size:.9rem;color:var(--sub);font-weight:800}
+.claim .p{cursor:pointer;border-radius:6px;padding:0 .12em;background:rgba(245,183,46,.18);box-shadow:inset 0 -2px 0 rgba(160,110,10,.5)}
+.claim .p:hover{background:rgba(245,183,46,.38)}
+.claim .p.wr{background:rgba(192,57,43,.16);box-shadow:inset 0 -3px 0 #C0392B;text-decoration:line-through}
+.claim .p.ok{background:rgba(30,125,79,.18);box-shadow:inset 0 -3px 0 var(--pri)}
+.claim .p.mis{animation:shk .4s}
+.fix{display:inline-block;color:var(--pri);font-weight:900;margin-inline-start:.3em;animation:cin .4s both}
+.steps{display:grid;gap:10px;margin-top:6px}
+.slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:10px 0}
+.slot{min-height:96px;border:2.5px dashed rgba(90,74,51,.35);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;text-align:center;font-weight:800;font-size:.95rem;line-height:1.5;color:var(--sub)}
+.slot i{font-style:normal;font-family:'Cairo';font-weight:900;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(90,74,51,.15);margin-bottom:4px}
+.slot.f{border-style:solid;border-color:var(--pri);background:rgba(30,125,79,.10);color:var(--ink);animation:cin .35s both}
+.slot.f i{background:var(--pri);color:#fff}
+.pool{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sc{cursor:pointer;border:2px solid rgba(90,74,51,.25);background:#FFFDF6;border-radius:16px;padding:12px 14px;font-weight:800;font-size:1rem;line-height:1.6;color:var(--ink);text-align:right;display:flex;gap:10px;align-items:center;transition:transform .12s}
+.sc:hover{transform:translateY(-2px);border-color:var(--gold)}
+.sc svg{width:34px;height:34px;flex:none;stroke:var(--wr);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sc.used{visibility:hidden}
+.sc.bad{animation:shk .4s;border-color:#C0392B}
+
+/* النهاية */
+.end{text-align:center}
+.end h2{font-family:'Lalezar';font-weight:400;font-size:clamp(2rem,6vw,3.2rem);color:var(--gold);margin:.3rem 0}
+.cert{max-width:620px;margin:10px auto 0;background:var(--paper);color:var(--ink);border-radius:20px;padding:20px 22px;box-shadow:0 30px 60px -24px rgba(0,0,0,.7);border:6px double #B88A2E}
+.cert .stars{font-size:2rem;color:#D49A12;letter-spacing:6px}
+.cert p{margin:.4rem 0;line-height:1.9;font-weight:600}
+.lib{max-width:620px;margin:14px auto 0;text-align:right;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:14px 16px;line-height:1.95;color:#F1E3C4}
+.lib b{color:var(--gold)}
+.foot{margin-top:22px;text-align:center;font-size:.8rem;color:var(--mut)}
+.hb{position:fixed;inset:0;z-index:50;background:rgba(15,10,5,.72);display:grid;place-items:center;padding:16px}
+.hb .in{background:#FFFDF6;color:var(--ink);border-radius:24px;max-width:720px;width:100%;max-height:88vh;overflow:auto;padding:22px clamp(16px,3vw,28px)}
+.hb h2{font-family:'Cairo';font-weight:900;margin:0 0 .4rem}
+.hb .k{border-radius:14px;padding:.7rem 1rem;line-height:1.9;margin:.6rem 0;background:rgba(245,183,46,.14)}
+.hb .k b{font-family:'Cairo'}
+@media (max-width:760px){
+ .top .ttl{flex:1 1 100%;order:-1}
+ .dhead h2{flex:1 1 100%}
+ .hero{grid-template-columns:1fr}.seal{max-width:170px;order:-1}
+ .bins.b3 .bin small{display:none}
+ .slots{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .pool{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="page">
+ <div class="top">
+  <a class="pill" href="../index.html#skills">← المنصة</a>
+  <div class="ttl"><h1>أرشيف المؤرخ</h1><p>الوحدة الأولى · الدرس الثاني: مصادر دراسة التاريخ وخطوات البحث فيه</p></div>
+  <span class="pill" id="score" hidden>النجوم <b id="stars">٠</b></span>
+  <button class="pill" id="hbBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5.5C6.5 4.6 9.3 4.8 12 6.5c2.7-1.7 5.5-1.9 8-1v13c-2.5-.9-5.3-.7-8 1-2.7-1.7-5.5-1.9-8-1z"/><path d="M12 6.5v13"/></svg>دليل الباحث</button>
+  <button class="pill" id="snd" type="button" aria-label="الصوت"></button>
+ </div>
+
+ <section id="sStart">
+  <div class="hero">
+   <div>
+    <h2>أرشيف المؤرخ</h2>
+    <p class="lead">وصلت إلى الأرشيف صناديق مليئة بمصادر تاريخية مختلطة! ساعد المؤرخ في <b>فرزها</b>، و<b>صحّح</b> خطأ أحد الطلاب، ثم <b>رتّب</b> خطوات البحث التاريخي لتحصل على شهادة الباحث.</p>
+    <div class="missions" id="missions"></div>
+    <button class="btn" id="goAll" type="button">ابدأ من المهمة الأولى</button>
+   </div>
+   <svg class="seal" viewBox="0 0 200 200" aria-hidden="true">
+    <circle cx="100" cy="100" r="92" fill="#3D2A1A" stroke="#F5B72E" stroke-width="3"/>
+    <circle cx="100" cy="100" r="80" fill="none" stroke="#F5B72E" stroke-opacity=".35" stroke-dasharray="3 7"/>
+    <g transform="translate(46 30)"><rect x="0" y="34" width="108" height="62" rx="6" fill="#B88A4E"/><path d="M0 40l10-30h88l10 30" fill="#D9AE6E"/><rect x="40" y="52" width="28" height="12" rx="3" fill="#3D2A1A"/>
+     <path d="M22 30c0-14 8-26 18-26s10 10 6 18" fill="none" stroke="#F7EDD5" stroke-width="6" stroke-linecap="round"/><rect x="58" y="2" width="30" height="36" rx="2" fill="#F7EDD5" transform="rotate(12 73 20)"/><circle cx="32" cy="22" r="9" fill="#F5B72E"/></g>
+    <text x="100" y="166" text-anchor="middle" font-family="Cairo" font-weight="900" font-size="15" fill="#F5B72E">مصادر دراسة التاريخ</text>
+   </svg>
+  </div>
+ </section>
+
+ <section id="sSort" hidden>
+  <div class="desk">
+   <div class="dhead"><h2 id="sTitle"></h2><div class="prog" id="prog"></div><div class="streak" id="streak"></div></div>
+   <p class="q" id="sQ"></p>
+   <div class="stage" id="stage"></div>
+   <div class="bins" id="bins"></div>
+   <div class="fb" id="fb"></div>
+  </div>
+ </section>
+
+ <section id="sFix" hidden>
+  <div class="desk">
+   <div class="dhead"><h2>المهمة الثالثة: المؤرخ المدقّق</h2><div class="streak" id="fxs"></div></div>
+   <div id="fixA">
+    <p class="q">قال أحد الطلاب العبارة التالية. <b>اضغط على الجزء الخطأ فيها:</b></p>
+    <div class="claim" id="claim"></div>
+    <div class="fb" id="fb2"></div>
+   </div>
+   <div id="fixB" hidden>
+    <p class="q">رتّب <b>خطوات البحث التاريخي</b>: اضغط على الخطوات بالترتيب الصحيح من الأولى إلى الرابعة.</p>
+    <div class="slots" id="slots"></div>
+    <div class="pool" id="pool"></div>
+    <div class="fb" id="fb3"></div>
+   </div>
+  </div>
+ </section>
+
+ <section id="sEnd" hidden>
+  <div class="end">
+   <h2 id="eTitle">شهادة الباحث التاريخي</h2>
+   <div class="cert" id="cert"></div>
+   <div class="lib"><b>شاهد من دولة الكويت:</b> أين يجد الباحثون المصادر التاريخية لدراسة تاريخ الكويت؟ في <b>مكتبة الكويت الوطنية</b> التي أُنشئت بموجب المرسوم الأميري رقم (٥٢) لسنة ١٩٩٤م، وتضم مراسلات رسمية ومعاهدات ووثائق تاريخية وصورًا ومخطوطات وسجلات ومواد أرشيفية جُمعت من داخل الكويت ومن أرشيفات عالمية. (ص ٢٠)</div>
+   <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" id="again" type="button">العب مرة أخرى</button><button class="btn ghost" id="home" type="button">قائمة المهام</button></div>
+  </div>
+ </section>
+
+ <div class="foot">المصدر: كتاب الاجتماعيات للصف العاشر — الوحدة الأولى، الدرس الثاني (ص ١٩–٢١).</div>
+</div>
+
+<div class="hb" id="hb" hidden><div class="in">
+ <button class="btn ghost" id="hbClose" type="button" style="float:left;color:#2A2015;border-color:#2A2015;padding:.35em 1em;font-size:.95rem">إغلاق</button>
+ <h2>دليل الباحث</h2>
+ <div class="k"><b>مصادر دراسة التاريخ:</b> هي كل ما يتركه الإنسان أو تنقله الأمم عبر الأجيال من معلومات وآثار وشهادات تساعد على معرفة الأحداث التاريخية ودراستها وتفسيرها.</div>
+ <div class="k"><b>من حيث الشكل:</b> مكتوبة · شفوية · مادية.</div>
+ <div class="k" style="background:rgba(30,125,79,.12)"><b>المصادر الأولية:</b> هي المصادر التي تعود إلى زمن الحدث نفسه، وتنقل صورة مباشرة عن الماضي. أمثلة: روايات شفوية، آثار قديمة، عملات، نقوش، رسائل، معاهدات، وثائق رسمية، مخطوطات.</div>
+ <div class="k" style="background:rgba(47,93,168,.12)"><b>المصادر الثانوية:</b> هي المصادر التي كُتبت بعد وقوع الحدث، وتعتمد على المصادر الأولية في تحليل وتفسير الأحداث التاريخية وربط الأسباب بالنتائج. أمثلة: مؤلفات المؤرخين والباحثين، الصور الحديثة، الخرائط الحديثة، الدراسات والأبحاث، التسجيلات والأفلام.</div>
+ <div class="k"><b>خطوات البحث التاريخي:</b> ١) تحديد الموضوع أو المشكلة التاريخية ٢) جمع المعلومات والبيانات من مصادر متعددة ٣) نقد المصادر للتحقق من صحة المعلومات ودقتها ٤) تنظيم المعلومات وكتابة البحث التاريخي.</div>
+ <p style="color:#5A4A33;font-size:.85rem">المصدر: الكتاب ص ١٩–٢٠</p>
+</div></div>
+
+<script>
+(function(){
+'use strict';
+var AR='٠١٢٣٤٥٦٧٨٩';function ar(n){return String(n).replace(/\d/g,function(d){return AR[d];});}
+function $(id){return document.getElementById(id);}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+/* ===== رسومات العناصر ===== */
+var S='fill="none" stroke="#6B4A22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"';
+var IC={
+ oral:'<g '+S+'><path d="M10 22h26a6 6 0 016 6v10a6 6 0 01-6 6H22l-8 7v-7h-4a6 6 0 01-6-6V28a6 6 0 016-6z" fill="#F3E2BD"/><path d="M50 34h4a6 6 0 016 6v10a6 6 0 01-6 6h-2v7l-8-7H40" fill="#E9D3A4"/><path d="M14 31h18M14 37h12"/></g>',
+ ruins:'<g '+S+'><path d="M8 58h56M12 52h48" /><path d="M14 52V26M24 52V26M44 52V30M54 52V36" stroke-width="4"/><path d="M10 24h20l-3-5H13zM40 28h18" fill="#E9D3A4"/><path d="M34 52l4-8 3 8" fill="#E9D3A4"/></g>',
+ coin:'<g '+S+'><circle cx="30" cy="34" r="20" fill="#F5C850"/><circle cx="30" cy="34" r="14"/><path d="M24 34c0-5 4-8 6-8s6 3 6 8-4 8-6 8-6-3-6-8z"/><circle cx="48" cy="44" r="14" fill="#E2A92C"/><circle cx="48" cy="44" r="9"/></g>',
+ carve:'<g '+S+'><path d="M14 58V18c0-6 6-10 18-10s18 4 18 10v40z" fill="#CFC3AE"/><path d="M8 58h48"/><path d="M22 22h20M20 30h24M22 38h18M20 46h22" stroke-width="2.6"/></g>',
+ letter:'<g '+S+'><rect x="8" y="16" width="48" height="34" rx="3" fill="#FFF6E0"/><path d="M8 18l24 18 24-18"/><circle cx="46" cy="44" r="7" fill="#B4232A" stroke="#7A1418"/></g>',
+ treaty:'<g '+S+'><rect x="12" y="6" width="40" height="52" rx="3" fill="#FFF6E0"/><path d="M18 16h28M18 22h28M18 28h22"/><path d="M18 44l6-4 4 4 5-4 5 4 6-4"/><circle cx="44" cy="50" r="7" fill="#B4232A" stroke="#7A1418"/><path d="M40 56l-2 6M48 56l2 6" stroke="#B4232A"/></g>',
+ doc:'<g '+S+'><path d="M14 6h28l10 10v42H14z" fill="#FFF6E0"/><path d="M42 6v10h10"/><path d="M20 22h24M20 28h24M20 34h18"/><rect x="20" y="42" width="24" height="10" rx="2" fill="#2F5DA8" stroke="#1D3E78"/></g>',
+ manu:'<g '+S+'><path d="M14 10h34v44H14z" fill="#EAD7A8"/><path d="M10 10a4 4 0 008 0 4 4 0 00-8 0zM10 54a4 4 0 008 0 4 4 0 00-8 0z" fill="#C9A86A"/><path d="M48 10a4 4 0 008 0 4 4 0 00-8 0zM48 54a4 4 0 008 0 4 4 0 00-8 0z" fill="#C9A86A"/><path d="M20 20c5-2 10 2 15 0s8 2 10 0M20 28c5-2 10 2 15 0s8 2 10 0M20 36c5-2 10 2 15 0M20 44c4-2 9 2 14 0"/></g>',
+ author:'<g '+S+'><path d="M8 12c8-3 16-3 24 2v42c-8-5-16-5-24-2z" fill="#2F5DA8"/><path d="M56 12c-8-3-16-3-24 2v42c8-5 16-5 24-2z" fill="#3E73C4"/><path d="M14 22h12M14 28h12M38 22h12M38 28h12"/></g>',
+ photo:'<g '+S+'><rect x="8" y="12" width="48" height="40" rx="3" fill="#FFF"/><rect x="13" y="17" width="38" height="26" fill="#BFD9EE"/><path d="M13 43l12-12 8 8 6-5 12 9" fill="#7FB07A"/><circle cx="42" cy="24" r="4" fill="#F5C850"/></g>',
+ map:'<g '+S+'><path d="M6 16l16-6 20 6 16-6v40l-16 6-20-6-16 6z" fill="#E7F0D8"/><path d="M22 10v40M42 16v40"/><path d="M28 26c4 4 8-2 10 4s-4 10 0 12" stroke="#B4232A" stroke-dasharray="3 3"/></g>',
+ study:'<g '+S+'><rect x="10" y="8" width="34" height="46" rx="2" fill="#FFF6E0"/><path d="M16 18h22M16 24h22M16 30h16"/><path d="M18 46v-6M24 46v-10M30 46v-4" stroke="#2F5DA8" stroke-width="3"/><circle cx="44" cy="40" r="10" fill="rgba(191,217,238,.6)"/><path d="M51 47l8 8" stroke-width="3.5"/></g>',
+ film:'<g '+S+'><rect x="6" y="18" width="38" height="28" rx="4" fill="#3A3A3A"/><path d="M44 26l14-8v28l-14-8z" fill="#555"/><circle cx="16" cy="12" r="6" fill="#777"/><circle cx="32" cy="12" r="6" fill="#777"/></g>',
+ sword:'<g '+S+'><path d="M50 8L22 40l4 4L56 14l2-8z" fill="#D9D9D9"/><path d="M16 38l12 12M20 46l-8 8" stroke-width="4"/><circle cx="10" cy="56" r="3" fill="#C9A86A"/></g>',
+ pot:'<g '+S+'><path d="M22 10h20M24 10c0 6-12 10-12 24 0 12 8 20 20 20s20-8 20-20c0-14-12-18-12-24" fill="#C9763E"/><path d="M14 30h36" stroke="#7A3E18"/><path d="M16 38h32" stroke="#7A3E18"/></g>',
+ book:'<g '+S+'><path d="M10 12h36a6 6 0 016 6v38H16a6 6 0 01-6-6z" fill="#7C3E2A"/><path d="M10 50a6 6 0 016-6h36" /><path d="M20 22h22M20 28h16" stroke="#F5C850"/></g>'
+};
+function ic(k){return '<svg viewBox="0 0 64 64">'+IC[k]+'</svg>';}
+
+/* ===== البيانات من الكتاب ص ١٩ ===== */
+var PRI={name:'أولي',full:'مصدر أولي',c:'var(--pri)',why:'يعود إلى زمن الحدث نفسه، وينقل صورة مباشرة عن الماضي'};
+var SEC={name:'ثانوي',full:'مصدر ثانوي',c:'var(--sec)',why:'كُتب بعد وقوع الحدث، ويعتمد على المصادر الأولية في التحليل والتفسير'};
+var M1=[
+ ['oral','روايات شفوية','حكايات يرويها من عاش الحدث',1],
+ ['ruins','آثار قديمة','بقايا مبانٍ من زمن قديم',1],
+ ['coin','عملات','نقود قديمة من زمن الحدث',1],
+ ['carve','نقوش','كتابات منقوشة على الحجر',1],
+ ['letter','رسائل','رسائل كُتبت وقت الحدث',1],
+ ['treaty','معاهدات','اتفاقيات وُقّعت في زمنها',1],
+ ['doc','وثائق رسمية','وثائق صدرت وقت الحدث',1],
+ ['manu','مخطوطات','نصوص مكتوبة باليد قديمًا',1],
+ ['author','مؤلفات المؤرخين والباحثين','كتب أُلّفت عن أحداث ماضية',0],
+ ['photo','الصور الحديثة','صور التُقطت في زمننا',0],
+ ['map','الخرائط الحديثة','خرائط رُسمت حديثًا',0],
+ ['study','الدراسات والأبحاث','بحوث تحلّل أحداث الماضي',0],
+ ['film','التسجيلات والأفلام','أفلام وتسجيلات عن التاريخ',0],
+ ['book','الكتب التاريخية الحديثة','كتاب صدر حديثًا يتحدث عن الماضي',0,'انتبه! الكتاب الحديث يتحدث عن الماضي، لكنه كُتب بعد وقوع الحدث، لذلك هو مصدر ثانوي (نشاط ص ٢١).']
+];
+var FORMS={w:{name:'مكتوبة',c:'#8A5A1F',d:'كتابة على ورق أو غيره',i:'<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>'},
+ o:{name:'شفوية',c:'#B4532A',d:'تُروى وتُنقل بالكلام',i:'<path d="M4 6h12a3 3 0 013 3v5a3 3 0 01-3 3H9l-4 3v-3a3 3 0 01-1-2V9a3 3 0 010-3z"/>'},
+ m:{name:'مادية',c:'#6B4E9B',d:'أشياء وبقايا ملموسة',i:'<path d="M3 21h18M5 21V9M10 21V9M14 21V9M19 21V9M3 9h18l-9-6z"/>'}};
+var M2=[
+ ['manu','مخطوطات','w'],['letter','رسائل','w'],['treaty','معاهدات','w'],['doc','وثائق رسمية','w'],['author','مؤلفات المؤرخين','w'],
+ ['oral','روايات شفوية','o'],
+ ['coin','عملات قديمة','m'],['ruins','آثار قديمة','m'],['sword','أسلحة قديمة','m'],['pot','أوانٍ فخارية قديمة','m']
+];
+var STEPS=[
+ ['تحديد الموضوع أو المشكلة التاريخية','<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 113.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/>'],
+ ['جمع المعلومات والبيانات من مصادر متعددة','<path d="M3 7l9-4 9 4-9 4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/>'],
+ ['نقد المصادر للتحقق من صحة المعلومات ودقتها','<circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20M7.5 10l2 2 3.5-4"/>'],
+ ['تنظيم المعلومات وكتابة البحث التاريخي','<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3M4 4h8"/>']
+];
+
+/* ===== الصوت ===== */
+var AC=null,sound=true;try{sound=localStorage.getItem('arcSound')!=='0';}catch(e){}
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){}}return AC;}
+function tone(f,d,t,v,dl){var a=ac();if(!a||!sound)return;var s=a.currentTime+(dl||0),o=a.createOscillator(),g=a.createGain();o.type=t||'sine';o.frequency.setValueAtTime(f,s);g.gain.setValueAtTime(v||.14,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(a.destination);o.start(s);o.stop(s+d);}
+function sGood(n){var b=523*Math.pow(1.06,Math.min(n||0,8));tone(b,.15,'triangle',.13);tone(b*1.5,.22,'triangle',.11,.08);}
+function sBad(){tone(196,.25,'sawtooth',.05);tone(165,.3,'sawtooth',.045,.1);}
+function sThud(){var a=ac();if(!a||!sound)return;var t=a.currentTime,o=a.createOscillator(),g=a.createGain();o.frequency.setValueAtTime(150,t);o.frequency.exponentialRampToValueAtTime(50,t+.15);g.gain.setValueAtTime(.4,t);g.gain.exponentialRampToValueAtTime(.001,t+.2);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.21);}
+function syncSnd(){$('snd').innerHTML=sound?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>';}
+$('snd').onclick=function(){sound=!sound;try{localStorage.setItem('arcSound',sound?'1':'0');}catch(e){}syncSnd();};syncSnd();
+
+/* ===== التنقل ===== */
+var R={s:[0,0,0],chain:false};
+var MS=[
+ {n:'١',t:'المهمة الأولى: أولي أم ثانوي؟',d:'افرز ١٤ مصدرًا حسب علاقتها بالحدث التاريخي',go:function(){startSort(1);}},
+ {n:'٢',t:'المهمة الثانية: ما شكل المصدر؟',d:'مكتوب أم شفوي أم مادي؟ · ١٠ مصادر',go:function(){startSort(2);}},
+ {n:'٣',t:'المهمة الثالثة: المؤرخ المدقّق',d:'صحّح خطأ طالب، ثم رتّب خطوات البحث',go:function(){startFix();}}
+];
+function starsTxt(n){return '★★★'.slice(0,n)+'☆☆☆'.slice(0,3-n);}
+function renderMissions(){var m=$('missions');m.innerHTML='';MS.forEach(function(x,k){var b=document.createElement('button');b.type='button';b.className='ms';b.innerHTML='<i>'+x.n+'</i><div><b>'+x.t+'</b><span>'+x.d+'</span></div><em>'+starsTxt(R.s[k])+'</em>';b.onclick=function(){ac();R.chain=false;x.go();};m.appendChild(b);});}
+renderMissions();
+$('goAll').onclick=function(){ac();R.chain=true;startSort(1);};
+function show(id){['sStart','sSort','sFix','sEnd'].forEach(function(s){$(s).hidden=s!==id;});$('score').hidden=id==='sStart'||id==='sEnd';$('stars').textContent=ar(R.s[0]+R.s[1]+R.s[2]);window.scrollTo({top:0,behavior:'smooth'});}
+function done(k,st){R.s[k]=Math.max(R.s[k],st);renderMissions();
+  if(R.chain&&k<2){MS[k+1].go();}else if(R.chain){finish();}else show('sStart');}
+
+/* ===== الفرز (المهمة ١ و٢) ===== */
+var T=null;
+function startSort(m){
+  var items=m===1?shuffle(M1):shuffle(M2);
+  T={m:m,items:items,i:0,ok:0,str:0,best:0,res:[],busy:false};
+  $('sTitle').textContent=m===1?'المهمة الأولى: أولي أم ثانوي؟':'المهمة الثانية: ما شكل المصدر؟';
+  $('sQ').innerHTML=m===1?'هل هذا المصدر <b>أولي</b> يعود إلى زمن الحدث، أم <b>ثانوي</b> كُتب بعده؟':'صنّف المصدر <b>من حيث الشكل</b>:';
+  var bins=$('bins');bins.className='bins '+(m===1?'b2':'b3');bins.innerHTML='';
+  var defs=m===1?[['1',PRI.full,'var(--pri)','يعود إلى زمن الحدث نفسه','<path d="M12 3a9 9 0 100 18 9 9 0 000-18z"/><path d="M12 7v5l3 2"/>'],['0',SEC.full,'var(--sec)','كُتب بعد وقوع الحدث','<path d="M4 5.5C6.5 4.6 9.3 4.8 12 6.5c2.7-1.7 5.5-1.9 8-1v13c-2.5-.9-5.3-.7-8 1-2.7-1.7-5.5-1.9-8-1z"/><path d="M12 6.5v13"/>']]
+    :Object.keys(FORMS).map(function(k){var f=FORMS[k];return [k,f.name,f.c,f.d,f.i];});
+  defs.forEach(function(d){var b=document.createElement('button');b.type='button';b.className='bin';b.dataset.v=d[0];b.style.setProperty('--bc',d[2]);b.innerHTML='<svg viewBox="0 0 24 24">'+d[4]+'</svg><b>'+d[1]+'</b><small>'+d[3]+'</small><span class="cnt" data-c="0">٠</span>';b.onclick=function(){answer(b);};bins.appendChild(b);});
+  show('sSort');next();
+}
+function prog(){var p=$('prog');p.innerHTML='';T.items.forEach(function(x,k){var i=document.createElement('i');if(T.res[k]!=null)i.className=T.res[k]?'ok':'no';else if(k===T.i)i.className='cur';p.appendChild(i);});}
+function next(){
+  if(T.i>=T.items.length){endSort();return;}
+  var it=T.items[T.i];T.busy=false;T.tries=0;
+  $('stage').innerHTML='<div class="card in" id="card">'+ic(it[0])+'<b>'+it[1]+'</b>'+(T.m===1?'<small>'+it[2]+'</small>':'')+'<span class="st" id="st"></span></div>';
+  $('fb').className='fb';$('fb').innerHTML='';prog();
+  [].forEach.call(document.querySelectorAll('.bin'),function(b){b.disabled=false;});
+  $('streak').textContent=T.str>=2?'🔥 '+ar(T.str):'';
+}
+function answer(b){
+  if(T.busy)return;var it=T.items[T.i],v=b.dataset.v;
+  var right=T.m===1?String(it[3]):it[2];var ok=v===right;
+  if(!ok){T.tries++;var c=$('card');c.classList.remove('bad');void c.offsetWidth;c.classList.add('bad');sBad();T.str=0;$('streak').textContent='';
+    if(T.res[T.i]==null)T.res[T.i]=false;prog();
+    $('fb').className='fb bad';$('fb').innerHTML=hintFor(it)+(T.tries>=2?'':' جرّب مرة أخرى.');
+    if(T.tries<2)return;b=document.querySelector('.bin[data-v="'+right+'"]');}
+  T.busy=true;if(ok&&T.res[T.i]==null){T.res[T.i]=true;T.ok++;T.str++;T.best=Math.max(T.best,T.str);}
+  [].forEach.call(document.querySelectorAll('.bin'),function(x){x.disabled=true;});
+  var st=$('st');var label=T.m===1?(right==='1'?'أولي':'ثانوي'):FORMS[right].name;var col=getComputedStyle(b).getPropertyValue('--bc');
+  st.style.setProperty('--sc',col.trim());st.textContent=label;st.classList.add('on');sThud();if(ok)setTimeout(function(){sGood(T.str);},120);
+  var cn=b.querySelector('.cnt');var n=+cn.dataset.c+1;cn.dataset.c=n;cn.textContent=ar(n);
+  $('fb').className='fb good';$('fb').innerHTML='<button class="btn nx" id="nx" type="button">التالي ←</button>'+(ok?'<b>صحيح!</b> ':'<b>الإجابة: '+label+'.</b> ')+explain(it,right);
+  $('nx').onclick=function(){fly(b);};
+  $('streak').textContent=T.str>=2?'🔥 '+ar(T.str):'';prog();
+}
+function hintFor(it){
+  if(T.m===1)return it[4]?'فكّر: متى كُتب هذا المصدر؟ قبل الحدث أم بعده؟':'سؤال المؤرخ: هل يعود هذا المصدر إلى <b>زمن الحدث نفسه</b>؟ أم كُتب أو صُنع <b>بعد وقوعه</b>؟';
+  return 'تذكّر: هل نقرؤه مكتوبًا؟ أم يُروى بالكلام؟ أم هو شيء ملموس؟';
+}
+function explain(it,right){
+  if(T.m===1){if(it[4])return it[4];return it[1]+(right==='1'?' من المصادر الأولية، لأنها '+'تعود إلى زمن الحدث نفسه وتنقل صورة مباشرة عن الماضي.':' من المصادر الثانوية، لأنها كُتبت بعد وقوع الحدث، وتعتمد على المصادر الأولية في تحليل وتفسير الأحداث التاريخية.');}
+  var f=FORMS[right];return it[1]+' من المصادر <b>ال'+f.name+'</b>: '+f.d+'.';
+}
+function fly(b){
+  var c=$('card'),r1=c.getBoundingClientRect(),r2=b.getBoundingClientRect();
+  var dx=(r2.left+r2.width/2)-(r1.left+r1.width/2),dy=(r2.top+r2.height/2)-(r1.top+r1.height/2);
+  var a=c.animate([{transform:'none',opacity:1},{transform:'translate('+dx+'px,'+dy+'px) scale(.2) rotate(8deg)',opacity:.2}],{duration:380,easing:'cubic-bezier(.5,0,.8,.4)',fill:'forwards'});
+  a.onfinish=function(){b.classList.remove('pulse');void b.offsetWidth;b.classList.add('pulse');T.i++;next();};
+}
+function endSort(){
+  var n=T.items.length,r=T.ok/n,st=r>=.9?3:r>=.65?2:r>0?1:0;
+  $('stage').innerHTML='<div class="card in" style="width:min(380px,86vw)"><b style="font-size:1.5rem">'+(st===3?'عمل رائع!':st===2?'أحسنت!':'محاولة جيدة')+'</b><div style="font-size:2.2rem;color:#D49A12;letter-spacing:6px;margin:.2rem 0">'+starsTxt(st)+'</div><small>أصبت من المحاولة الأولى في '+ar(T.ok)+' من '+ar(n)+'، وأطول سلسلة صحيحة: '+ar(T.best)+'</small></div>';
+  $('bins').innerHTML='';$('streak').textContent='';prog();
+  $('fb').className='fb good';$('fb').innerHTML='<button class="btn nx" id="nx" type="button">'+(R.chain?'المهمة التالية ←':'العودة للمهام')+'</button>'+(T.m===1?'تذكّر القاعدة: <b>الأولي</b> يعود إلى زمن الحدث نفسه، و<b>الثانوي</b> كُتب بعد وقوعه واعتمد على الأولي.':'المصادر من حيث الشكل: <b>مكتوبة</b> و<b>شفوية</b> و<b>مادية</b>.');
+  tone(523,.2,'triangle',.12);tone(659,.2,'triangle',.12,.15);tone(784,.35,'triangle',.12,.3);
+  $('nx').onclick=function(){done(T.m-1,st);};
+}
+
+/* ===== المهمة ٣ ===== */
+var F=null;
+function startFix(){
+  F={a:0,b:0,stepI:0,bErr:0};show('sFix');$('fixA').hidden=false;$('fixB').hidden=true;
+  var parts=[['الكتب التاريخية الحديثة',0],[' تُعد ',-1],['من المصادر الأولية',1],[' لأنها ',-1],['تتحدث عن الماضي',0],['.',-1]];
+  var cl=$('claim');cl.innerHTML='<span class="who">قال أحد الطلاب (نشاط ص ٢١):</span>«';
+  parts.forEach(function(p){var s=document.createElement('span');s.textContent=p[0];if(p[1]>=0){s.className='p';s.onclick=function(){pick(s,p[1]);};}cl.appendChild(s);});
+  cl.appendChild(document.createTextNode('»'));$('fb2').className='fb';$('fb2').innerHTML='';$('fxs').textContent='';
+  F.tries=0;
+}
+function pick(s,ok){
+  if(F.locked)return;
+  if(!ok){F.tries++;s.classList.remove('mis');void s.offsetWidth;s.classList.add('mis');sBad();$('fb2').className='fb bad';$('fb2').innerHTML='هذا الجزء صحيح في ذاته. ابحث عن التصنيف الخطأ.';return;}
+  F.locked=true;s.classList.add('wr');sThud();F.a=F.tries===0?2:1;
+  var fx=document.createElement('span');fx.className='fix';fx.textContent='من المصادر الثانوية';s.after(fx);setTimeout(function(){sGood(2);},150);
+  $('fb2').className='fb good';$('fb2').innerHTML='<button class="btn nx" id="nx2" type="button">التالي ←</button><b>الخطأ:</b> عدّ الكتب التاريخية الحديثة من المصادر الأولية. <b>التصحيح:</b> هي من المصادر <b>الثانوية</b>، لأنها كُتبت بعد وقوع الحدث وتعتمد على المصادر الأولية في التحليل والتفسير، أما الأولية فتعود إلى زمن الحدث نفسه.';
+  $('nx2').onclick=startSteps;
+}
+function startSteps(){
+  $('fixA').hidden=true;$('fixB').hidden=false;F.stepI=0;F.bErr=0;
+  var sl=$('slots');sl.innerHTML='';for(var i=0;i<4;i++){var d=document.createElement('div');d.className='slot';d.innerHTML='<i>'+ar(i+1)+'</i>الخطوة '+ar(i+1);sl.appendChild(d);}
+  var pool=$('pool');pool.innerHTML='';
+  shuffle(STEPS.map(function(s,k){return [s,k];})).forEach(function(x){var b=document.createElement('button');b.type='button';b.className='sc';b.innerHTML='<svg viewBox="0 0 24 24">'+x[0][1]+'</svg><span>'+x[0][0]+'</span>';b.onclick=function(){step(b,x[1]);};pool.appendChild(b);});
+  $('fb3').className='fb';$('fb3').innerHTML='يعتمد الباحث على خطوات متسلسلة تساعده في الوصول إلى الحقائق التاريخية.';
+}
+var WHY=['قبل أي شيء يحدد الباحث ماذا سيدرس.','بعد تحديد الموضوع يجمع المعلومات من مصادر متعددة، لا من مصدر واحد.','لا يقبل المعلومات كما هي، بل ينقد المصادر ليتحقق من صحتها ودقتها.','في النهاية ينظّم ما توصل إليه ويكتب بحثه.'];
+function step(b,k){
+  if(k!==F.stepI){F.bErr++;b.classList.remove('bad');void b.offsetWidth;b.classList.add('bad');sBad();$('fb3').className='fb bad';$('fb3').innerHTML='ليست هذه الخطوة '+ar(F.stepI+1)+'. '+(F.stepI===0?'ما أول ما يفعله الباحث قبل جمع أي معلومة؟':'ماذا يفعل الباحث بعد «'+STEPS[F.stepI-1][0]+'»؟');return;}
+  b.classList.add('used');var sl=$('slots').children[k];sl.className='slot f';sl.innerHTML='<i>'+ar(k+1)+'</i>'+STEPS[k][0];sGood(k+1);
+  $('fb3').className='fb good';$('fb3').innerHTML=WHY[k];F.stepI++;
+  if(F.stepI===4){F.b=F.bErr===0?2:F.bErr<=2?1:0;var st=Math.max(1,Math.min(3,F.a+F.b-1));if(F.a+F.b>=4)st=3;
+    setTimeout(function(){tone(523,.2,'triangle',.12);tone(659,.2,'triangle',.12,.15);tone(784,.35,'triangle',.12,.3);
+      $('fb3').innerHTML='<button class="btn nx" id="nx3" type="button">'+(R.chain?'شهادة الباحث ←':'العودة للمهام')+'</button><b>رتّبتها كلها!</b> '+starsTxt(st)+' · لماذا لا يكفي مصدر واحد؟ لأن البحث التاريخي يقوم على جمع المعلومات من مصادر موثوقة ومتعددة ونقدها والتحقق منها للوصول إلى حقائق دقيقة (ص ٢٠).';
+      $('nx3').onclick=function(){done(2,st);};},500);}
+}
+function finish(){
+  var t=R.s[0]+R.s[1]+R.s[2];var title=t>=8?'باحث تاريخي متميّز':t>=5?'باحث تاريخي':'باحث مبتدئ';
+  $('cert').innerHTML='<div style="font-family:Cairo;font-weight:900;color:#8A5A1F">منصة جمال التعليمية · أرشيف المؤرخ</div><h3 style="font-family:Lalezar;font-weight:400;font-size:2rem;margin:.3rem 0">'+title+'</h3><div class="stars">'+'★'.repeat(t)+'<span style="opacity:.3">'+'★'.repeat(9-t)+'</span></div><p>أتممت مهام الأرشيف الثلاث: فرز المصادر الأولية والثانوية، وتصنيفها حسب الشكل، وتدقيق المعلومة وترتيب خطوات البحث التاريخي.</p>';
+  show('sEnd');R.chain=false;
+}
+$('again').onclick=function(){R.chain=true;startSort(1);};$('home').onclick=function(){show('sStart');};
+$('hbBtn').onclick=function(){$('hb').hidden=false;};$('hbClose').onclick=function(){$('hb').hidden=true;};
+$('hb').onclick=function(e){if(e.target===$('hb'))$('hb').hidden=true;};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')$('hb').hidden=true;});
+})();
+</script>
+</body>
+</html>
